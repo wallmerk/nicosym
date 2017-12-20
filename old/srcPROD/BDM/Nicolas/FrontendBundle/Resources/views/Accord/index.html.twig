@@ -1,0 +1,109 @@
+{% extends "@BDMNicolasFrontend/layout.html.twig" %}
+
+{% block content %}
+
+    <main>
+
+
+        <div class="breadCrumb breadcrumb--border container">
+            <ol class="breadCrumb-nav" role="navigation">
+                <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Acceuil</a></li>
+                <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Accords Mets Vins</a></li>
+            </ol>
+        </div>
+
+        <p class="nicolas-title text-center">
+            accords mets et vins
+            <i class="ns-TitleSection-icon"></i>
+        </p>
+
+        <section class="agreementSection container">
+
+            <div class="article-container">
+
+                <section class="agreementList text-center">
+                    <p class="article-paragraph">
+                        Retrouvez tous les accords met-vins de Nicolas en cliquant sur les pictos proposés
+                    </p>
+                    {% for alliance in alliances %}
+                        <a href="{{ path('_products_by_alliance',{'alliance':alliance.slug }) }}"
+                           class="agreementList-item">
+                            <img src="{{ asset('/uploads/backend/product/alliance/'~alliance.badge) }}">
+                            <span class="agreementList-desc">{% if alliance.label %}{{ alliance.label }}{% endif %}</span>
+                        </a>
+                    {% endfor %}
+                </section>
+
+
+            </div>
+        </section>
+
+        <section class="featureSection" style="background-image: url(assets/frontend/images/feature_bg.jpg)">
+            <div class="featureSection-content container text-center">
+                <p class="featureSection-text">
+                    Les bons recettes de nicolas
+                </p>
+            </div>
+        </section>
+        {% if articleIcons is defined and articleIcons %}
+            <section class="recettesSection container">
+                <p class="recettesSection-text">
+                    Retrouvez toutes les bonnes recettes de Nicolas à travers nos fiches pratiques. De nombreuses
+                    suggestions vos aideront à sublimer vos plats. N'attendez plus, consultez, téléchargez et imprimez
+                    sans
+                    modération!
+                </p>
+                <div class="recettesList">
+                    {% for icon in articleIcons %}
+                        <a href="{{ icon.url }}" class="col-xs-6 col-md-2 recettesList-item" target="_blank">
+                            <div class="recettesList-img"
+                                 style="background-image: url({{ asset('/uploads/backend/article/icon/' ~ icon.img) }})">
+                            </div>
+                            <span class="recettesList-desc">{{ icon.label }}</span>
+                        </a>
+                    {% endfor %}
+                </div>
+            </section>
+        {% endif %}
+        {% if articleSliders is defined and articleSliders %}
+            <section class="sliderRecipe">
+                <div id="recipe-slider" class="owl-carousel owl-theme">
+                    {% for slider in articleSliders %}
+                        <div class="sliderRecipe-item">
+                            <div class="sliderRecipe-content">
+                                <p class="nicolas-title">
+                                    à la lune
+                                    <i class="ns-TitleSection-icon"></i>
+                                </p>
+                                <p class="sliderRecipe-desc">
+                                    {{ slider.title }}
+                                </p>
+                                <div class="sliderRecipe-link">
+                                    <a class="nicoButton nicoButton-default product-button" href="{{ slider.link }}"
+                                       target="_blank">
+							<span class="nicoButton-content">
+								<i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>
+								Découvrir
+							</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <img src="{{ asset('/uploads/backend/content/article/slider/'~slider.background) }}" alt="">
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+        {% endif %}
+
+    </main>
+
+{% endblock %}
+
+{% block front_end_css %}
+{% endblock %}
+
+{% block front_end_js %}
+    <script type="text/javascript">
+
+    </script>
+{% endblock %}

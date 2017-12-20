@@ -1,0 +1,147 @@
+<aside>
+    <div id="sidebar" class="nav-collapse">
+        <!-- sidebar menu start-->
+        <div class="leftside-navigation">
+            <ul class="sidebar-menu" id="nav-accordion">
+
+
+                <li>
+                    <a {% if active_menu is defined and active_menu == 'dashboard' %}class="active"{% endif %}
+                       href="{{ path('_backend_dashboard') }}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="sub-menu">
+                    <a {% if active_menu is defined and active_menu == 'products'
+                       or active_menu=='product_category' or active_menu=='product_sub_category'
+                       or active_menu=='brands' or active_menu=='colors' %}class="active"{% endif %}
+                       href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Catalogue</span>
+                    </a>
+                    <ul class="sub">
+                        <li {% if active_menu is defined and active_menu=='products' %}class="active"{% endif %}><a
+                                    href="{{ path('_backend_product') }}">Produits</a></li>
+                        <li {% if active_menu is defined and active_menu=='product_category' %}class="active"{% endif %} >
+                            <a href="{{ path('_backend_product_category') }}">Categories</a></li>
+                        <li {% if active_menu is defined and active_menu=='product_sub_category' %}class="active"{% endif %} >
+                            <a href="{{ path('_backend_product_sub_category') }}">Sous Categories</a></li>
+                        <li {% if active_menu is defined and active_menu=='brands' %}class="active"{% endif %} >
+                            <a href="{{ path('_backend_product_brand') }}">Marques</a></li>
+                        <li {% if active_menu is defined and active_menu=='colors' %}class="active"{% endif %} >
+                            <a href="{{ path('_backend_color') }}">Couleurs</a></li>
+                        <li {% if active_menu is defined and active_menu=='tastes' %}class="active"{% endif %} >
+                            <a href="{{ path('_backend_taste') }}">Goûts</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a {% if active_menu is defined and active_menu=='alliances' %}class="active"{% endif %}
+                       href="{{ path('_backend_alliance') }}">
+                        <i class="fa fa-book"></i>
+                        <span>Alliances</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a {% if active_menu is defined and active_menu == 'regions' %}class="active"{% endif %}
+                       href="{{ path('_backend_region') }}">
+                        <i class="fa fa-book"></i>
+                        <span>Regions</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a {% if active_menu is defined and active_menu == 'countries' %}class="active"{% endif %}
+                       href="{{ path('_backend_country') }}">
+                        <i class="fa fa-book"></i>
+                        <span>Pays</span>
+                    </a>
+                </li>
+
+                <li class="sub-menu">
+                    <a {% if active_menu is defined and active_menu == 'articles' or active_menu=='article_icon'  or active_menu=='article_slider' %}class="active"{% endif %}
+                       href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Recettes</span>
+                    </a>
+                    <ul class="sub">
+                        <li {% if active_menu is defined and  active_menu=='articles' %}class="active"{% endif %}><a
+                                    href="{{ path('_backend_articles') }}">Recettes</a>
+                        </li>
+                        <li {% if active_menu is defined and active_menu == 'article_icon' %}class="active"{% endif %} >
+                            <a href="{{ path('_backend_articles_icons') }}">Icons</a>
+                        </li>
+                        <li {% if active_menu is defined and active_menu == 'article_slider' %}class="active"{% endif %} >
+                            <a href="{{ path('_backend_content_article_slider') }}">Slider</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sub-menu">
+                    <a {% if active_menu is defined and active_menu == 'sliders' or active_menu=='footer_block'  or active_menu=='widgets' %}class="active"{% endif %}
+                       href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Contenu</span>
+                    </a>
+                    <ul class="sub">
+                        <li {% if active_menu is defined and  active_menu=='sliders' %}class="active"{% endif %}><a
+                                    href="{{ path('_backend_content_home_slider') }}">Home Slider</a></li>
+
+                    </ul>
+                    <ul class="sub">
+                        <li {% if active_menu is defined and  active_menu=='widgets' %}class="active"{% endif %}><a
+                                    href="{{ path('_backend_content_home_widget') }}">Home Widgets</a></li>
+
+                    </ul>
+                    <ul class="sub">
+                        <li {% if active_menu is defined and  active_menu=='footer_block' %}class="active"{% endif %}><a
+                                    href="{{ path('_backend_content_footer_block') }}">Block footer</a></li>
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a {% if active_menu is defined and active_menu == 'stores' %}class="active"{% endif %}
+                       href="{{ path('_backend_stores') }}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Magasins</span>
+                    </a>
+                </li>
+
+
+                <li class="sub-menu">
+                    <a {% if active_menu is defined and active_menu == 'pages' or active_menu=='services' %}class="active"{% endif %}
+                       href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Pages</span>
+                    </a>
+                    <ul class="sub">
+                        <li {% if active_menu is defined and  active_menu=='services' %}class="active"{% endif %}><a
+                                    href="{{ path('_backend_services') }}">Services</a></li>
+                    </ul>
+                    <ul class="sub">
+                        <li {% if active_menu is defined and  active_menu=='pages' %}class="active"{% endif %}><a
+                                    href="{{ path('_backend_pages') }}">Autres pages</a></li>
+
+                    </ul>
+
+
+                </li>
+
+                <li>
+                    <a {% if active_menu is defined and active_menu == 'newsletter' %}class="active"{% endif %}
+                       href="{{ path('_backend_newsletter') }}">
+                        <i class="fa fa-envelope"></i>
+                        <span>Newsletter</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <!-- sidebar menu end-->
+    </div>
+</aside>
+<!--sidebar end-->

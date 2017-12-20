@@ -1,0 +1,62 @@
+/********************************************
+ * 				contact us page				*
+ ********************************************/
+
+
+.contactSection {
+	margin-top: 2em;
+	margin-bottom: 4em;
+}
+.contactBloc {
+    margin-bottom: 2em;
+}
+.contactBloc-container {
+	background: #f7f4eb;
+    text-align: center;
+    padding: 2em 4em;
+
+    @media (max-width: $screen-md-min) {
+        padding: 2em 1em ;
+    }
+
+    .contactBloc-title {
+    	font-size: 1.5em;
+    	text-transform: uppercase;
+    	font-weight: 800;
+    	margin-bottom:1.5em;
+    }
+}
+
+
+.contactTel-link {
+	background: #541617;
+    color: #fff;
+    padding: .6em .6em;
+    padding-left: 2em;
+    display: inline-block;
+    border-radius: 20px;
+    position: relative;
+    &:hover {
+    	color: #fff;
+    	text-decoration: none;
+    }
+}
+
+.contactTel-icon {
+    color: #fcb714;
+    position: absolute;
+    top: 3px;
+    left: 6px;
+    font-size: 1.5em;
+}
+.contactTel-phoneNumber {
+    color: #541617;
+    background: #fcb714;
+    padding: .3em .7em;
+    border-radius: 20px;
+}
+
+.contactTel-opening {
+	margin-top: 1em;
+	margin-bottom: 3em;
+}

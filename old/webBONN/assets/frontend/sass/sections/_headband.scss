@@ -1,0 +1,41 @@
+/********************************************
+ * 				HeadBand					*
+ ********************************************/
+
+
+.headBand {
+	height: 250px;
+    position: relative;
+    line-height: 250px;
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+
+    .headBand-content {
+    	width: 35em;
+	    display: inline-block;
+	    position: relative;
+	    vertical-align: middle;
+	    line-height: normal;
+	    margin: auto;
+	    @media (max-width: $screen-sm-min){
+	    	width: 100%;
+	    }
+    }
+	.headBand-title {
+		font-size: 2.1875em;
+	    text-transform: uppercase;
+	    font-family: $font-raleway;
+	}
+
+	.headBand-description  {
+ 		border-top: 1px dotted #fff;
+    	padding-top: 1em;
+
+		p {
+		font-size: .956em;
+		font-weight: 500;
+		letter-spacing: 1px;
+		}
+	}
+}

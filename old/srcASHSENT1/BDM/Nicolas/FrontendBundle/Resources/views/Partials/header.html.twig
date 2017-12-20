@@ -1,0 +1,544 @@
+<header>
+    <div class="topNavigation">
+        <div class="topNavigation-list container">
+
+            <div class="topNavigation-item topNavigation-store">
+                <a href="{{ path('_find_us') }}" class="topNavigation-link">
+                    <i class="ns-Icon ns-Icon--pin2 topNavigation-icon"></i>
+                    Mon magasin
+                </a>
+                <div class="topNav-store--inner">
+                    <div class="container">
+                        <div class="quickSearch">
+                            <form method="post" action="{{ path('_find_us') }}" class="col-sm-5 quickSearch-form">
+                                <input class="quickSearch-input" type="text" name="search"
+                                       placeholder="Indiquez votre ville">
+                                <button type="submit" class="quickSearch-submit">
+                                    <i class="ns-Icon ns-Icon--knurr quickSearch-icon"></i>
+                                </button>
+                            </form>
+
+                            <form action="{{ path('_find_us') }}" method="post" class="col-sm-5 nearMeStorefinderForm">
+                                <button type="submit" class="nicoButton nicoButton-default">
+                                    <span class="nicoButton-content">
+                                        <i class="nicoButton-icon ns-Icon ns-Icon--pin"></i>
+                                        trouvez-moi
+                                    </span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {#<div class="topNavigation-item topNavigation-account">#}
+            {#<a href="trouvez-nous.html" class="topNavigation-link">#}
+            {#<i class="ns-Icon ns-Icon--lock2 topNavigation-icon"></i>#}
+            {#Mon compte#}
+            {#</a>#}
+            {#</div>#}
+
+            <div class="topNavigation-item hidden-xs">
+                <a href="tel:0800802020" class="contactTel-link topNavigation-link">
+                    <i class="ns-Icon ns-Icon--tel topNavigation-icon"></i>
+                    <span class="contactTel-label">Contactez-nous </span>
+                </a>
+            </div>
+
+            <div class="topNavigation-item topNav-item--right hidden-xs topNavigation-newsletter">
+                <a href="#" class="topNavigation-link">Newsletter</a>
+
+                <div class="topNav-newsletter--inner">
+                    <div class="container">
+                        <div class="quickSearch">
+                            <form method="post" action="{{ path('_subscription') }}" class="col-sm-12 quickSearch-form">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <input class="quickSearch-input" type="email" required name="email"
+                                               placeholder="Indiquez votre email">
+                                        {#<button type="button" class="quickSearch-submit">#}
+                                        {#<i class="ns-Icon ns-Icon--knurr quickSearch-icon"></i>#}
+                                        {#</button>#}
+                                        {#</form>#}
+                                    </div>
+                                    <div class="col-md-3">
+                                        {#<form action="/" method="post" class="col-sm-5 nearMeStorefinderForm">#}
+                                        <button type="submit" class="nicoButton nicoButton-default">
+                                            <span class="nicoButton-content"><i class="nicoButton-icon ns-Icon ns-Icon--mail"></i>Souscription</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>    <!-- END Top-bar -->
+
+    <div class="header">
+        <div class="container">
+            <div class="logo col-sm-4">
+
+                <span class="show-menu-button visible-xs-1">
+                    <label for="show-mobile-menu" class="show-mobile-menu">
+                        <span class="burger-menu"></span>
+                        <span class="burger-menu"></span>
+                        <span class="burger-menu"></span>
+                    </label>
+                    <input type="checkbox" id="show-mobile-menu" role="button">
+                </span>
+
+                <a href="{{ path('_home') }}">
+                    <img src="{{ asset('assets/frontend/images/logo.png') }}" alt="Nicolas logo">
+                </a>
+
+            </div>
+            <div class="search col-sm-4">
+                <form method="get" action="{{ path('_products_by_key_word') }}" class="quickSearch-form">
+                    <input class="quickSearch-input" type="text" name="key_word"
+                           placeholder="Tapez ici votre recherche">
+                    <button type="submit" class="quickSearch-submit">
+                        <i class="ns-Icon ns-Icon--knurr quickSearch-icon"></i>
+                    </button>
+                </form>
+            </div>
+
+            {{ render(controller('BDMNicolasFrontendBundle:Partials:navigationMobile')) }}
+
+        </div>
+    </div> <!-- ENd header -->
+
+    <nav class="navigation hidden-xs">
+        <div class="principalNav">
+            <div class="container">
+
+                {{ render(controller('BDMNicolasFrontendBundle:Partials:navigation')) }}
+                {#<ul class="ns-principalNav-bar">#}
+                {#<li class="ns-principalNav-item ns-principalNav-item-home">#}
+                {#<a class="ns-principalNav-link" href="{{ path('_home') }}"><img src="assets/frontend/images/home.png" alt="home"></a>#}
+                {#</li>#}
+
+                {#<li class="ns-principalNav-item"><a href="#" class="ns-principalNav-link">vins</a>#}
+                {#<div class="megadrop">#}
+                {#<div class="container">#}
+                {#<div class="leftLayer">#}
+
+                {#<div class="layerMenu-bloc">#}
+                {#<p class="layerMenu-title">By région</p>#}
+                {#<ul class="layerMenu-list">#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Bordeaux</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Bourgogne</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Rhône</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Languedoc</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Loire et#}
+                {#centre</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Alsace</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Beaujolais-Mâconnais</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Jura-Savoiz-Bugey</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Provence</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Sud-Ouest</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Corse</a></li>#}
+                {#</ul>#}
+                {#</div>#}
+
+                {#<div class="layerMenu-bloc">#}
+                {#<p class="layerMenu-title">Vins du monde</p>#}
+                {#<ul class="layerMenu-list">#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Afrique du#}
+                {#Sud</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Argentine</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Australie</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Chili</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Espagne</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Hongrie</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Italie</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Maroc</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Portugal</a>#}
+                {#</li>#}
+                {#</ul>#}
+                {#</div>#}
+                {#<div class="layerMenu-bloc">#}
+                {#<p class="layerMenu-title">Par Couleur</p>#}
+                {#<ul class="layerMenu-list">#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Rouge</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Rosé</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Blanc</a></li>#}
+                {#</ul>#}
+                {#<p class="layerMenu-title">Gammes nicolas</p>#}
+                {#<ul class="layerMenu-list">#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Les grumes</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">les petites#}
+                {#Récoltes</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Cub#}
+                {#Collection</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Etienne#}
+                {#Nicolas</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">AOC</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Vins Bio</a>#}
+                {#</li>#}
+                {#</ul>#}
+                {#<p class="layerMenu-title">Vins en primeur</p>#}
+                {#<ul class="layerMenu-list">#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">primeurs#}
+                {#2015</a></li>#}
+
+                {#</ul>#}
+                {#</div>#}
+                {#<div class="nico-btn-1"><a href="#">découvrir tous nos vins</a></div>#}
+                {#<div class="nico-btn-1"><a href="#">découvrir notre quide des millésimes</a></div>#}
+
+                {#</div><!-- EndlefLayer -->#}
+
+                {#<div class="rightLayer"></div>#}
+                {#</div> <!-- EndRightLayer -->#}
+                {#</div> <!-- End MegaDrop -->#}
+                {#</li>#}
+
+                {#<li class="ns-principalNav-item"><a href="#" class="ns-principalNav-link">champagnes</a>#}
+                {#<div class="megadrop">#}
+                {#<div class="container">#}
+                {#<div class="leftLayer">#}
+
+                {#<div class="layerMenu-bloc">#}
+                {#<p class="layerMenu-title">Type</p>#}
+                {#<ul class="layerMenu-list">#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Extra-brut</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Brut</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Demi-sec</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Millésimés</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Blanc de#}
+                {#blancs</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Blanc de#}
+                {#noirs</a></li>#}
+                {#</ul>#}
+                {#</div>#}
+
+                {#<div class="layerMenu-bloc">#}
+                {#<p class="layerMenu-title">Marque</p>#}
+                {#<ul class="layerMenu-list">#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Ruinart</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Laurent-Perrier</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Malard</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Louis#}
+                {#Roedererc</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Bollinger</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Moet &amp;#}
+                {#Chandon</a></li>#}
+                {#</ul>#}
+                {#</div>#}
+                {#<div class="layerMenu-bloc">#}
+                {#<p class="layerMenu-title">Par Couleur</p>#}
+                {#<ul class="layerMenu-list">#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Rosé</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Blanc</a></li>#}
+                {#</ul>#}
+                {#</div>#}
+                {#<div class="nico-btn-1"><a href="#">découvrir tous nos champagnes</a></div>#}
+                {#<div class="nico-btn-1"><a href="#">découvrir nos autres affervescents</a></div>#}
+                {#</div><!-- EndlefLayer -->#}
+
+                {#<div class="rightLayer"></div>#}
+                {#</div> <!-- EndRightLayer -->#}
+                {#</div> <!-- End MegaDrop -->#}
+                {#</li>#}
+
+                {#<li class="ns-principalNav-item"><a href="#" class="ns-principalNav-link">spirtueux</a>#}
+                {#<div class="megadrop">#}
+                {#<div class="container">#}
+                {#<div class="leftLayer">#}
+
+                {#<div class="layerMenu-bloc">#}
+                {#<p class="layerMenu-title">By région</p>#}
+                {#<ul class="layerMenu-list">#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Bordeaux</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Bourgogne</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Rhône</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Languedoc</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Loire et#}
+                {#centre</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Alsace</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Beaujolais-Mâconnais</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Jura-Savoiz-Bugey</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Provence</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Sud-Ouest</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Corse</a></li>#}
+                {#</ul>#}
+                {#</div>#}
+
+                {#<div class="layerMenu-bloc">#}
+                {#<p class="layerMenu-title">Vins du monde</p>#}
+                {#<ul class="layerMenu-list">#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Afrique du#}
+                {#Sud</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Argentine</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Australie</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Chili</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Espagne</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Hongrie</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Italie</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Maroc</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Portugal</a>#}
+                {#</li>#}
+                {#</ul>#}
+                {#</div>#}
+                {#<div class="layerMenu-bloc">#}
+                {#<p class="layerMenu-title">Par Couleur</p>#}
+                {#<ul class="layerMenu-list">#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Rouge</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Rosé</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Blanc</a></li>#}
+                {#</ul>#}
+                {#<p class="layerMenu-title">Gammes nicolas</p>#}
+                {#<ul class="layerMenu-list">#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Les grumes</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">les petites#}
+                {#Récoltes</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Cub#}
+                {#Collection</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Etienne#}
+                {#Nicolas</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">AOC</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Vins Bio</a>#}
+                {#</li>#}
+                {#</ul>#}
+                {#<p class="layerMenu-title">Vins en primeur</p>#}
+                {#<ul class="layerMenu-list">#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">primeurs#}
+                {#2015</a></li>#}
+
+                {#</ul>#}
+                {#</div>#}
+                {#<div class="nico-btn-1"><a href="#">découvrir tous nos vins</a></div>#}
+                {#<div class="nico-btn-1"><a href="#">découvrir notre quide des millésimes</a></div>#}
+
+                {#</div><!-- EndlefLayer -->#}
+
+                {#<div class="rightLayer"></div>#}
+                {#</div> <!-- EndRightLayer -->#}
+                {#</div> <!-- End MegaDrop -->#}
+                {#</li>#}
+
+                {#<li class="ns-principalNav-item"><a href="#" class="ns-principalNav-link">cofferts</a>#}
+                {#<div class="megadrop">#}
+                {#<div class="container">#}
+                {#<div class="leftLayer">#}
+
+                {#<div class="layerMenu-bloc">#}
+                {#<p class="layerMenu-title">Type</p>#}
+                {#<ul class="layerMenu-list">#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Extra-brut</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Brut</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Demi-sec</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Millésimés</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Blanc de#}
+                {#blancs</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Blanc de#}
+                {#noirs</a></li>#}
+                {#</ul>#}
+                {#</div>#}
+
+                {#<div class="layerMenu-bloc">#}
+                {#<p class="layerMenu-title">Marque</p>#}
+                {#<ul class="layerMenu-list">#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Ruinart</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Laurent-Perrier</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Malard</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Louis#}
+                {#Roedererc</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Bollinger</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Moet &amp;#}
+                {#Chandon</a></li>#}
+                {#</ul>#}
+                {#</div>#}
+                {#<div class="layerMenu-bloc">#}
+                {#<p class="layerMenu-title">Par Couleur</p>#}
+                {#<ul class="layerMenu-list">#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Rosé</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Blanc</a></li>#}
+                {#</ul>#}
+                {#</div>#}
+                {#<div class="nico-btn-1"><a href="#">découvrir tous nos vins</a></div>#}
+                {#<div class="nico-btn-1"><a href="#">découvrir notre quide des millésimes</a></div>#}
+                {#</div><!-- EndlefLayer -->#}
+
+                {#<div class="rightLayer"></div>#}
+                {#</div> <!-- EndRightLayer -->#}
+                {#</div> <!-- End MegaDrop -->#}
+                {#</li>#}
+
+                {#<li class="ns-principalNav-item"><a href="#" class="ns-principalNav-link">notre sélection</a>#}
+                {#<div class="megadrop">#}
+                {#<div class="container">#}
+                {#<div class="leftLayer">#}
+
+                {#<div class="layerMenu-bloc">#}
+                {#<p class="layerMenu-title">By région</p>#}
+                {#<ul class="layerMenu-list">#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Bordeaux</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Bourgogne</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Rhône</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Languedoc</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Loire et#}
+                {#centre</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Alsace</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Beaujolais-Mâconnais</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Jura-Savoiz-Bugey</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Provence</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Sud-Ouest</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Corse</a></li>#}
+                {#</ul>#}
+                {#</div>#}
+
+                {#<div class="layerMenu-bloc">#}
+                {#<p class="layerMenu-title">Vins du monde</p>#}
+                {#<ul class="layerMenu-list">#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Afrique du#}
+                {#Sud</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Argentine</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Australie</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Chili</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Espagne</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Hongrie</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Italie</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Maroc</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Portugal</a>#}
+                {#</li>#}
+                {#</ul>#}
+                {#</div>#}
+                {#<div class="layerMenu-bloc">#}
+                {#<p class="layerMenu-title">Par Couleur</p>#}
+                {#<ul class="layerMenu-list">#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Rouge</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Rosé</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Blanc</a></li>#}
+                {#</ul>#}
+                {#<p class="layerMenu-title">Gammes nicolas</p>#}
+                {#<ul class="layerMenu-list">#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Les grumes</a>#}
+                {#</li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">les petites#}
+                {#Récoltes</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Cub#}
+                {#Collection</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Etienne#}
+                {#Nicolas</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">AOC</a></li>#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Vins Bio</a>#}
+                {#</li>#}
+                {#</ul>#}
+                {#<p class="layerMenu-title">Vins en primeur</p>#}
+                {#<ul class="layerMenu-list">#}
+                {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">primeurs#}
+                {#2015</a></li>#}
+
+                {#</ul>#}
+                {#</div>#}
+                {#<div class="nico-btn-1"><a href="#">découvrir tous nos vins</a></div>#}
+                {#<div class="nico-btn-1"><a href="#">découvrir notre quide des millésimes</a></div>#}
+                {#</div><!-- EndlefLayer -->#}
+
+                {#<div class="rightLayer"></div>#}
+                {#</div> <!-- EndRightLayer -->#}
+                {#</div> <!-- End MegaDrop -->#}
+                {#</li>#}
+                {#</ul>#}
+
+            </div>
+        </div>    <!-- End  Principal Navigation-->
+
+        <div class="secondaryNav">
+            <div class="container">
+                <ul class="ns-secondaryNav-list">
+                    <li class="ns-secondaryNav-item history">
+                        <a href="{{ path('_history') }}"><span class="nico-icon"></span> Notre histoire</a>
+                    </li>
+                    <li class="ns-secondaryNav-item service">
+                        <a href="{{ path('_services') }}"> <span class="nico-icon"></span> Nos services </a>
+                    </li>
+                    <li class="ns-secondaryNav-item alliances">
+                        <a href="{{ path('_mets_wine') }}"><span class="nico-icon"></span> Nos alliances mets &amp;
+                            vins</a>
+
+                    </li>
+                    <li class="ns-secondaryNav-item contact">
+                        <a href="{{ path('_contact') }}"><span class="nico-icon"></span> Contactez nous</a>
+                        {#<div class="sec-dropdownMenu">#}
+                            {#<ul class="sec-dropdownMenu-list">#}
+                                {#<li class="sec-dropdownMenu-item"><a href="#"#}
+                                                                     {#class="sec-dropdownMenu-link">Reclamation</a></li>#}
+                                {#<li class="sec-dropdownMenu-item"><a href="#"#}
+                                                                     {#class="sec-dropdownMenu-link">Recrutement</a></li>#}
+                            {#</ul>#}
+                        {#</div>#}
+                    </li>
+
+
+                    <li class="ns-secondaryNav-item alliances">
+                        <a href="{{ path('_recruitment') }}"><span class="nico-icon"></span> Suggéstion</a>
+
+                    </li>
+
+
+                </ul>
+            </div>
+        </div><!-- End Secondary Navigation -->
+    </nav><!-- End navigation -->
+
+</header> <!-- End header -->

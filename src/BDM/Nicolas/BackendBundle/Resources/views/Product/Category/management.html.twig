@@ -1,0 +1,82 @@
+{% extends 'BDMNicolasBackendBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+
+
+                {{ render(controller('BDMNicolasBackendBundle:Partials:flashbag')) }}
+
+                <div class="col-lg-12">
+                    <section class="panel">
+
+                        <header class="panel-heading">
+                            Gestion Des Categories Articles
+                        </header>
+                        <div class="panel-body">
+                            <section id="unseen">
+                                <div class="clearfix">
+                                    <div class="btn-group">
+                                        <button id="editable-sample_new" class="btn btn-primary" onclick="window.location='{{ url('_backend_product_category_add') }}'">
+                                            Ajouter <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <br />
+
+                                {{ render(controller('BDMNicolasBackendBundle:Partials:flashbag')) }}
+
+                                <br />
+                                {% if categories  %}
+                                    <table class="table table-bordered table-striped table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Titre</th>
+                                            <th>Code</th>
+                                            <th>Actif</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        {% for category in categories %}
+                                            <tr>
+                                                <td>{{ category.id }}</td>
+                                                <td>{{ category.label }}</td>
+                                                <td>{{ category.code }}</td>
+                                                <td>
+                                                    {% if category.isActive == 1 %}
+                                                        <span class="label label-success label-mini">Actif</span>
+                                                    {% else %}
+                                                        <span class="label label-warning label-mini">Inactif</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    <button onclick="window.location='{{ url('_backend_product_category_banner', {'id':category.id }) }}'"
+                                                            type="button" class="btn btn-infos btn-xs"><i
+                                                                class="fa fa-trash-o"></i> Banieres
+                                                    </button>
+                                                    <button onclick="window.location='{{ url('_backend_product_category_edit', {'id':category.id}) }}'" type="button" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Modifier</button>
+                                                    {% if category.isActive == 1 %}
+                                                        <button onclick="window.location='{{ url('_backend_product_category_state', {'id':category.id, 'state': 0}) }}'" type="button" class="btn btn-warning btn-xs"><i class="fa fa-minus-square"></i> Désactiver</button>
+                                                    {% else %}
+                                                        <button onclick="window.location='{{ url('_backend_product_category_state', {'id':category.id, 'state': 1}) }}'" type="button" class="btn btn-success btn-xs"><i class="fa fa-plus-square"></i> Activer</button>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                {% endif %}
+                            </section>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+{% endblock %}

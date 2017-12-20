@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    {% block meta %}
+    <meta name="description" content="">
+    <meta name="keywords" content="nicolas, manager, maroc">
+    {% endblock %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Achraf Soltani">
+    <link rel="shortcut icon" href="{{ asset('assets/frontend/images/favicon.ico') }}">
+
+    <title>Nicolas :: Backend :: {{ page_title }}</title>
+
+
+    <!--Core CSS -->
+    <link href="{{ asset('assets/backend/bs3/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/backend/css/bootstrap-reset.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/backend/font-awesome/css/font-awesome.css') }}" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('assets/backend/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/backend/css/style-responsive.css') }}" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/js/bootstrap-datepicker/css/datepicker.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/js/bootstrap-timepicker/css/timepicker.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/js/bootstrap-colorpicker/css/colorpicker.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/js/bootstrap-daterangepicker/daterangepicker-bs3.css') }}" />
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/js/bootstrap-fileupload/bootstrap-fileupload.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/js/bootstrap-fileupload/jasny-bootstrap.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/backend/js/bootstrap-datetimepicker/css/datetimepicker.css') }}" />
+    {% block css %}
+    {% endblock %}
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<section id="container" >
+    <!--header start-->
+    <header class="header fixed-top clearfix">
+        <!--logo start-->
+        <div class="brand">
+
+            <a href="{{ path('_backend_dashboard') }}" class="logo">
+                {#<img src="assets/backend/images/logo.png" alt="">#}
+                <strong style="color: white; font-size: 20px">Nicolas</strong> <strong style="font-size: 10px">ADMIN</strong>
+            </a>
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars"></div>
+            </div>
+        </div>
+        <!--logo end-->
+
+        <div class="nav notify-row" id="top_menu">
+            <!--  notification start -->
+            <ul class="nav top-menu">
+
+                {# {% include 'TNCBayerB2BBackendBundle:Partials:settings.html.twig' %} #}
+
+                {% include 'BDMNicolasBackendBundle:Partials:inbox.html.twig' %}
+
+              {#   {% include 'TNCBayerB2BBackendBundle:Partials:notification.html.twig' %} #}
+
+            </ul>
+            <!-- notification end -->
+        </div>
+
+        <div class="top-nav clearfix">
+            <!--search & user info start-->
+            <ul class="nav pull-right top-menu">
+                <li>
+                    <input type="text" class="form-control search" placeholder=" Search">
+                </li>
+                <!-- user login dropdown start-->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle icon-user" href="#">
+                        <!--<img alt="" src="images/avatar1_small.jpg">-->
+                        <i class="fa fa-user"></i>
+                        <span class="username">{{ app.user ? app.user.firstName ~ ' ' ~ app.user.lastName : 'Administrator' }}</span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu extended logout">
+                        {#<li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>#}
+                        <li><a target="_blank" href="{{ path('_home') }}"><i class="fa fa-external-link"></i> Voir le site</a></li>
+                        <li><a href="{{ path('_backend_logout') }}"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
+                    </ul>
+                </li>
+                <!-- user login dropdown end -->
+
+            </ul>
+            <!--search & user info end-->
+        </div>
+    </header>
+    <!--header end-->
+
+    {% include 'BDMNicolasBackendBundle:Partials:sidemenu.html.twig' %}
+
+    {% block content %}
+
+    {% endblock %}
+
+</section>
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<!--Core js-->
+<script src="{{ asset('assets/backend/js/jquery-3.1.1.min.js') }}"></script>
+<script src="{{ asset('assets/backend/bs3/js/bootstrap.min.js') }}"></script>
+<script class="include" type="text/javascript" src="{{ asset('assets/backend/js/jquery.dcjqaccordion.2.7.js') }}"></script>
+<script src="{{ asset('assets/backend/js/jquery.scrollTo.min.js') }}"></script>
+<script src="{{ asset('assets/backend/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.js') }}"></script>
+<!-- -->
+<script type="text/javascript" src="{{ asset('assets/backend/js/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/backend/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/backend/js/bootstrap-daterangepicker/moment.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/backend/js/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/backend/js/bootstrap-colorpicker/js/bootstrap-colorpicker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/backend/js/bootstrap-timepicker/js/bootstrap-timepicker.js') }}"></script>
+
+
+<script src="{{ asset('assets/backend/js/jquery.nicescroll.js') }}"></script>
+<!--Easy Pie Chart-->
+<script src="{{ asset('assets/backend/js/easypiechart/jquery.easypiechart.js') }}"></script>
+<!--Sparkline Chart-->
+<script src="{{ asset('assets/backend/js/sparkline/jquery.sparkline.js') }}"></script>
+<!--jQuery Flot Chart-->
+{#<script src="{{ asset('/assets/backend/js/flot-chart/jquery.flot.js') }}"></script>
+<script src="{{ asset('/assets/backend/js/flot-chart/jquery.flot.tooltip.min.js') }}"></script>
+<script src="{{ asset('/assets/backend/js/flot-chart/jquery.flot.resize.js') }}"></script>
+<script src="{{ asset('/assets/backend/js/flot-chart/jquery.flot.pie.resize.js') }}"></script>#}
+
+{% block js %}
+{% endblock %}
+<!--common script init for all pages-->
+<script src="{{ asset('assets/backend/js/scripts.js') }}"></script>
+
+</body>
+</html>

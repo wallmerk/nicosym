@@ -1,0 +1,125 @@
+/********************************************
+ * 				find  us page				*
+ ********************************************/
+
+
+
+.mapSection{
+	position: relative;
+	margin-bottom: 3em;
+
+	.searchPane {
+		position: absolute;
+		width: 100%;
+		top: 4em;
+		left: 0;
+		z-index: 100;
+
+		.searchPane-container {
+			width: 60%;
+			margin: 0 auto;
+			background-color: #fff;
+			padding: 2em;
+			padding-top: 0;
+
+			
+		}
+		
+		.quickSearch form {
+	    	display: inline-block;
+	    	min-width: 40%;
+	    	vertical-align: middle;
+    	}
+
+   		.quickSearch .storefinderForm {
+   			
+   			.search-bar {
+			width: 80%;
+   			}
+   		}
+   		.quickSearch .nearMeStorefinderForm {
+   			float: right;
+   			.nicoButton {
+   				width: 100%;
+   				padding: .6em;
+   			}
+   		}
+		
+	}
+
+	@media (max-width: $screen-sm-min) {
+
+		.searchPane .searchPane-container {
+			width: 100%;
+		}
+		.searchPane {
+			padding: 1em;
+		}
+	}
+
+}
+
+.tabsSection {
+
+	@media (max-width: $screen-sm-min) {
+		button.tabsNav-button { 
+			width: 100% !important;
+			border: 0 !important;
+			border-top: 1px solid #541617;
+		}
+		.tabsNav {
+			width: 100%;
+			padding: 0;
+		}
+	}
+
+	.tabsNav {
+		display: table;
+	}
+	.tab-intro {
+		width: 90%;
+	    margin: 0 auto;
+	    font-size: 1.1em;
+	    margin-bottom: 3em;
+	}
+	
+	.tabsContent-img {margin-bottom: 1em;}
+	button.tabsNav-button {
+	    width: 33%;
+	    padding: 1em 2em;
+	    margin: 0;
+	    display: inline-block;
+	    border: 0;
+	    background: #f7f4eb;
+	    color: #d1cec7;
+	    text-transform: uppercase;
+	    font-size: .95em;
+	    font-weight: 600;
+	    outline: none;
+	}
+
+	button.tabsNav-button:nth-child(2) {
+		border-left: 1px solid #888;
+    	border-right: 1px solid #888;
+	}
+
+	button.tabsNav-button-active {
+		color:#fff;
+		background:#541617;
+	}
+
+	.tabsContent-container {
+		background: #f7f4eb;
+    	border-top: 3px solid #541617;
+    	padding-bottom:  5em;
+	}
+	.tabsContent {
+		display:none;
+	}
+	.tabsContent:first-child {
+    	display: block;
+	}
+
+}
+
+

@@ -1,0 +1,50 @@
+
+// basic settings
+@import "utils/fonts";
+@import "utils/variables";
+@import "utils/ns-icon";
+
+
+// Bootstrap 
+@import "bootstrap";
+
+
+
+a:hover {
+	text-decoration: none !important;
+}
+
+
+// @import "nicolas/theme";
+// @import "nicolas/header";
+@import "nicolas/carousels";
+
+
+// Components
+@import "components/forms";
+@import "components/carousels";
+@import "components/articles";
+@import "components/product";
+@import "components/pagination";
+@import "components/breadcrumb";
+@import "components/buttons";
+
+
+// Sections
+@import "sections/sections_utils";
+@import "sections/header";
+@import "sections/footer";
+@import "sections/agreements";
+@import "sections/aboutUs";
+@import "sections/singleProduct";
+@import "sections/headband";
+@import "sections/navigation_mobile";
+
+
+// pages
+@import "pages/listingProducts";
+@import "pages/services";
+@import "pages/agreements";
+@import "pages/contactUs";
+@import "pages/findUs";
+

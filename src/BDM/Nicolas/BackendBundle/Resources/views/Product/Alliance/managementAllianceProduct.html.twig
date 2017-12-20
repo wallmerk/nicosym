@@ -1,0 +1,127 @@
+{% extends 'BDMNicolasBackendBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+
+
+                {{ render(controller('BDMNicolasBackendBundle:Partials:flashbag')) }}
+
+                <div class="col-lg-12">
+                    <section class="panel">
+
+                        <header class="panel-heading">
+                            Gestion Des alliances
+                        </header>
+                        <div class="panel-body">
+                            <section id="unseen">
+                                <div class="clearfix">
+                                    <div class="btn-group">
+                                        <button id="editable-sample_new" class="btn btn-primary"
+                                                onclick="window.location='{{ url('_backend_alliance_add') }}'">
+                                            Ajouter <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <br/>
+
+                                {{ render(controller('BDMNicolasBackendBundle:Partials:flashbag')) }}
+
+                                <br/>
+                                Alliance avec :
+                                {% if allianceProducts|length !=0 %}
+                                    <table class="table table-bordered table-striped table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nom</th>
+                                            <th>Prix Regulier</th>
+                                            <th>Prix Strike</th>
+                                            <th>Prix Loyality</th>
+                                            <th>Type</th>
+                                            <th>Marque</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        {% for product in allianceProducts %}
+                                            <tr>
+                                                <td>{{ product.id }}</td>
+                                                <td>{{ product.label }}</td>
+                                                <td>{{ product.regularPrice }} Dhs</td>
+                                                <td>{{ product.strikePrice }} Dhs</td>
+                                                <td>{{ product.loyalityPrice }} Dhs</td>
+                                                <td>{% if product.getType() is defined and product.getType().getLabel() is defined %}{{ product.getType().getLabel() }}{% else %}
+                                                        <span class="label label-danger label-mini">VIDE</span>{% endif %}
+                                                </td>
+                                                <td>{% if product.getBrand() is defined and product.getBrand().getLabel() is defined %}{{ product.getBrand().getLabel() }}{% else %}
+                                                        <span class="label label-danger label-mini">VIDE</span>{% endif %}
+                                                </td>
+                                                <td>
+                                                    <button onclick="window.location='{{ url('_backend_alliance_product_delete', {'idP':product.id , 'idA': alliance.id }) }}'"
+                                                            type="button" class="btn btn-danger btn-xs"><i
+                                                                class="fa fa-trash-o"></i> Supprimer
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                {% endif %}
+
+                                <br/>
+                                Tous les produits :
+                                {% if products %}
+                                    <table class="table table-bordered table-striped table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nom</th>
+                                            <th>Prix Regulier</th>
+                                            <th>Prix Strike</th>
+                                            <th>Prix Loyality</th>
+                                            <th>Type</th>
+                                            <th>Marque</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        {% for product in products %}
+                                            <tr>
+                                                <td>{{ product.id }}</td>
+                                                <td>{{ product.label }}</td>
+                                                <td>{{ product.regularPrice }} Dhs</td>
+                                                <td>{{ product.strikePrice }} Dhs</td>
+                                                <td>{{ product.loyalityPrice }} Dhs</td>
+                                                <td>{% if product.getType() is defined and product.getType().getLabel() is defined %}{{ product.getType().getLabel() }}{% else %}
+                                                        <span class="label label-danger label-mini">VIDE</span>{% endif %}
+                                                </td>
+                                                <td>{% if product.getBrand() is defined and product.getBrand().getLabel() is defined %}{{ product.getBrand().getLabel() }}{% else %}
+                                                        <span class="label label-danger label-mini">VIDE</span>{% endif %}
+                                                </td>
+
+                                                <td>
+                                                    <button onclick="window.location='{{ url('_backend_alliance_product_add', {'idP':product.id , 'idA': alliance.id }) }}'"
+                                                            type="button" class="btn btn-primary btn-xs"><i
+                                                                class="fa fa-trash-o"></i> Ajouter
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                {% endif %}
+                            </section>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+{% endblock %}

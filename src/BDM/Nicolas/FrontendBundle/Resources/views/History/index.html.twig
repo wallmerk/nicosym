@@ -1,0 +1,145 @@
+{% extends "@BDMNicolasFrontend/layout.html.twig" %}
+
+{% block content %}
+
+    <main>
+        <div class="container">
+
+            <div class="col-md-12 breadCrumb breadcrumb--border">
+                <ol class="breadCrumb-nav" role="navigation">
+                    <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Accueil</a></li>
+                    <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Notre histoire</a></li>
+                </ol>
+            </div> <!-- End pagination -->
+
+            <article class="col-md-12">
+
+    <div class="wrapper">
+
+                    <p class="nicolas-title text-center">
+                        {{ page.title|raw}}
+                        <i class="ns-TitleSection-icon"></i>
+                    </p>
+
+
+
+                    <div class="article">
+                        {{page.content|raw}}
+                    </div>
+
+                </div>
+
+
+                {# <div class="wrapper">
+
+                    <p class="nicolas-title text-center">
+                        Nicolas précurseur depuis plus de 190 ans
+                        <i class="ns-TitleSection-icon"></i>
+                    </p>
+
+                    <div class="article">
+
+                        <p class="article-content article-paragraph">
+                            L’histoire commence à l’époque où le vin se buvait sur place, dans les cabarets ou les boutiques à vins. Et si l’envie prenait d’en consommer chez soi, il fallait se rendre chez un marchand de vin ou directement chez le producteur pour acheter un fût ! C'est à partir de ce constat que Louis Nicolas inventa un nouveau concept de vente du vin qui allait révolutionner toutes les habitudes de consommation et de négoce: le vin en bouteille.
+                            <br> <br>
+                            Créée en 1822, la Maison Nicolas comptait à cette époque une boutique principale au 53, rue Sainte-Anne et  trois dépôts, dans Paris. L'idée de fournir une qualité supérieure et suivie, à un prix raisonnable fera la renommée de la Maison.
+                        </p>
+
+                        <img src="assets/frontend/images/timeline.jpg" alt="Nicolas since 1822" class="article-img article-img--center article-img--top">
+
+                        <br>
+
+                        <p class="article-paragraph article-paragraph--orange">
+                            <strong>Notre Mission :</strong> Faciliter l’accès au vin.<br> <br>
+                            <strong>Notre Vision : </strong>Vous promettre de trouver le vin qui vous convient.
+                        </p>
+
+                        <br>
+
+                        <p class="article-paragraph article-paragraph--burgundy">
+                            <strong>
+                                N°1 de la distribution de vin en France en centre-ville
+                            </strong>
+                        </p>
+
+                        <p class="article-content article-paragraph">
+                            <img src="assets/frontend/images/article_img1.jpg" alt="" class="article-img article-img--right">
+                            - Près de 500 boutiques en France<br>
+                            Plus de 1 500 références en vins, champagnes et spiritueux<br>
+                            - 20 corners et 2 Bars à vin
+                        </p>
+
+                        <br>
+
+                        <p class="article-paragraph article-paragraph--burgundy">
+                            <strong>
+                                Un savoir-faire au service du vin
+                            </strong>
+                        </p>
+
+                        <p class="article-content article-paragraph">
+                            Experts en qualité et conseil depuis 1822, les cavistes Nicolas sont de véritables professionnels du vin détenant une excellente connaissance des produits.
+                            <br> <br>
+                            En effet, chez Nicolas, vendre des vins ne se résume pas à un simple rôle d’intermédiaire entre le producteur et le consommateur. Pour assurer cette qualité de conseil, Nicolas apporte à tous ses cavistes une formation complète d’une durée de 5 semaines. Grâce à l’Ecole intégrée Nicolas (centre de formation agréé), chaque futur caviste découvre non seulement les produits mais s’initie au conseil et à la gestion optimale d’un magasin.
+                            <br> <br>
+                            Chez Nicolas, toutes les questions trouvent réponses, que ce soit sur le vin, son service ou sur l’art de l’harmoniser avec les plats ! Et qui de mieux placé que votre caviste pour délivrer des messages simples, clairs et positifs en matière de <a style="text-decoration:underline" target="_blank" href=""> bonnes pratiques de consommation</a> ?
+                        </p>
+
+                        <br>
+
+                        <p class="article-paragraph article-paragraph--burgundy">
+                            <strong>
+                                Culture forte de l’innovation
+                            </strong>
+                        </p>
+
+                        <img src="assets/frontend/images/article_img2.jpg" alt="Triporteurs Nicolas" class="article-img article-img--left">
+
+                        <p class="article-content article-paragraph">
+                            Premier à vendre du vin en bouteilles, Nicolas a toujours su s’affirmer comme précurseur en créant une gamme de services toujours plus innovants : la livraison à domicile en 1840, la disponibilité de vins au frais en 1988, le service glaçons en 2012…
+                            <br> <br>
+                            Et comme l’innovation passe aussi par l’offre, Nicolas fut le premier à proposer le Beaujolais Nouveau à grande échelle en 1966. En 1995, il met à l’honneur les Vins de Pays de France avec la gamme des Petites Récoltes, suivi des Grains de Cépage en 2003.
+                        </p>
+
+                        <br>
+                        <p class="article-paragraph article-paragraph--burgundy">
+                            <strong>
+                                Les tribulations de Nectar
+                            </strong>
+                        </p>
+
+                        <p class="article-content article-paragraph">
+                            La notoriété de NICOLAS s'est affirmée grâce à une communication publicitaire intense, tant au cinéma (premiers dessins animés publicitaires en 1921), que sur les murs avec l’apparition de Nectar en 1922. Né du crayon de Dransy et inspiré d'un livreur de la maison nommé Le Paven, le frêle livreur moustachu aux yeux en soucoupe, chargé de bouteilles dans chaque main, connu un succès populaire immédiat et indiscuté.
+                            <br> <br>
+                            En 2012, à l’occasion du 190ème anniversaire de Nicolas, le livreur emblématique de la maison s’est modernisé et nous a fait découvrir un nouveau visage.
+                            <br> <br>
+                            <img src="assets/frontend/images/article_img3.jpg" class="article-img article-img--right"> Aujourd’hui, le caviste est à l’honneur de la communication publicitaire de Nicolas.
+                        </p>
+                    </div>
+
+                </div>
+ #}            </article>
+
+
+        </div>
+    </main>
+
+{% endblock %}
+
+{% block front_end_css %}
+    <style>
+    .article-paragraph{
+            color: #333333;
+            font-family: "Raleway";
+             font-size: 15.4px;"
+        }
+
+       .article-paragraph img {
+        margin:.6em;
+       } </style>
+{% endblock %}
+
+{% block front_end_js %}
+    <script type="text/javascript">
+    </script>
+{% endblock %}

@@ -1,0 +1,480 @@
+@charset "UTF-8";
+.icon-base-pseudo,
+.ns-Icon--AGNEAU:before,
+.ns-Icon--AMBRE:before,
+.ns-Icon--BLANC:before,
+.ns-Icon--BOUQUETE_CORSE_ET_A_POINT:before,
+.ns-Icon--BOUQUETE_ET_A_LA_RESERVE:before,
+.ns-Icon--BOUQUETE_ET_SOUPLE:before,
+.ns-Icon--BRUN:before,
+.ns-Icon--BRUNE:before,
+.ns-Icon--CHARCUTERIES:before,
+.ns-Icon--CLAIRET:before,
+.ns-Icon--FOIE_GRAS:before,
+.ns-Icon--FROMAGES_CORSES:before,
+.ns-Icon--FROMAGES_DOUX:before,
+.ns-Icon--FRUITE_ET_NERVEUX:before,
+.ns-Icon--FRUITE_ET_PLEIN:before,
+.ns-Icon--FRUIT_DE_MER:before,
+.ns-Icon--FUITE_SOUPLE:before,
+.ns-Icon--GIBIER:before,
+.ns-Icon--GLACES_ET_SORBETS:before,
+.ns-Icon--JAUNE:before,
+.ns-Icon--PATISSERIES:before,
+.ns-Icon--POISSONS_EN_SAUCE:before,
+.ns-Icon--POISSONS_GRILLES:before,
+.ns-Icon--ROSE:before,
+.ns-Icon--ROUGE:before,
+.ns-Icon--ROUSSE:before,
+.ns-Icon--TARTES_AUX_FRUITS:before,
+.ns-Icon--VIANDES_BLANCHES:before,
+.ns-Icon--VIANDES_ROUGES:before,
+.ns-Icon--arrow:before,
+.ns-Icon--book:before,
+.ns-Icon--bottle2:before,
+.ns-Icon--bottle:before,
+.ns-Icon--bullet:before,
+.ns-Icon--bulletTitle:before,
+.ns-Icon--calendar:before,
+.ns-Icon--caracter:before,
+.ns-Icon--cart:before,
+.ns-Icon--chevron--bottom:before,
+.ns-Icon--chevron--left:before,
+.ns-Icon--chevron:before,
+.ns-Icon--chevronLarge:before,
+.ns-Icon--chevronLargeBottom:before,
+.ns-Icon--clickncollect:before,
+.ns-Icon--close:before,
+.ns-Icon--cross:before,
+.ns-Icon--deliveryStore:before,
+.ns-Icon--disabledAccess:before,
+.ns-Icon--download:before,
+.ns-Icon--facebook:before,
+.ns-Icon--freshWine:before,
+.ns-Icon--gastronomicAdvice:before,
+.ns-Icon--gift:before,
+.ns-Icon--google:before,
+.ns-Icon--hamburger:before,
+.ns-Icon--health:before,
+.ns-Icon--home:before,
+.ns-Icon--house:before,
+.ns-Icon--icecubeService:before,
+.ns-Icon--instagram:before,
+.ns-Icon--intervina:before,
+.ns-Icon--knurr:before,
+.ns-Icon--lock2:before,
+.ns-Icon--lock:before,
+.ns-Icon--loyaltyProgram:before,
+.ns-Icon--mail:before,
+.ns-Icon--nicolas:before,
+.ns-Icon--nicolasn:before,
+.ns-Icon--optimalService:before,
+.ns-Icon--pin2:before,
+.ns-Icon--pin:before,
+.ns-Icon--pinterest:before,
+.ns-Icon--profil:before,
+.ns-Icon--question:before,
+.ns-Icon--rating:before,
+.ns-Icon--ratingCheck:before,
+.ns-Icon--recipe:before,
+.ns-Icon--seasonalTasting:before,
+.ns-Icon--shell:before,
+.ns-Icon--shipping:before,
+.ns-Icon--stars:before,
+.ns-Icon--stoppeCork:before,
+.ns-Icon--tel2:before,
+.ns-Icon--tel:before,
+.ns-Icon--threehours:before,
+.ns-Icon--top:before,
+.ns-Icon--trash:before,
+.ns-Icon--twitter:before,
+.ns-Icon--untaxed:before,
+.ns-Icon--valid:before,
+.ns-Icon--wine:before,
+.ns-Icon--youtube:before,
+.ns-TitleSection-icon:before,
+.ns-TitleSuggest-icon:before {
+  font-family: icons;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.ns-Button,
+.ns-Button--logout,
+.ns-Title,
+.ns-TitleSection {
+  text-transform: uppercase;
+}
+
+.ns-Icon--AGNEAU:before {
+  content: "";
+}
+
+.ns-Icon--AMBRE:before {
+  content: "";
+}
+
+.ns-Icon--arrow:before {
+  content: "";
+}
+
+.ns-Icon--BLANC:before {
+  content: "";
+}
+
+.ns-Icon--book:before {
+  content: "";
+}
+
+.ns-Icon--bottle:before {
+  content: "";
+}
+
+.ns-Icon--bottle2:before {
+  content: "";
+}
+
+.ns-Icon--BOUQUETE_CORSE_ET_A_POINT:before {
+  content: "";
+}
+
+.ns-Icon--BOUQUETE_ET_A_LA_RESERVE:before {
+  content: "";
+}
+
+.ns-Icon--BOUQUETE_ET_SOUPLE:before {
+  content: "";
+}
+
+.ns-Icon--BRUN:before {
+  content: "";
+}
+
+.ns-Icon--BRUNE:before {
+  content: "";
+}
+
+.ns-Icon--bullet:before {
+  content: "";
+}
+
+.ns-Icon--bulletTitle:before {
+  content: "";
+}
+
+.ns-Icon--calendar:before {
+  content: "";
+}
+
+.ns-Icon--caracter:before {
+  content: "";
+}
+
+.ns-Icon--cart:before {
+  content: "";
+}
+
+.ns-Icon--CHARCUTERIES:before {
+  content: "";
+}
+
+.ns-Icon--chevron--bottom:before {
+  content: "";
+}
+
+.ns-Icon--chevron--left:before {
+  content: "";
+}
+
+.ns-Icon--chevron:before {
+  content: "";
+}
+
+.ns-Icon--chevronLarge:before {
+  content: "";
+}
+
+.ns-Icon--chevronLargeBottom:before {
+  content: "";
+}
+
+.ns-Icon--CLAIRET:before {
+  content: "";
+}
+
+.ns-Icon--clickncollect:before {
+  content: "";
+}
+
+.ns-Icon--close:before {
+  content: "";
+}
+
+.ns-Icon--cross:before {
+  content: "";
+}
+
+.ns-Icon--deliveryStore:before {
+  content: "";
+}
+
+.ns-Icon--disabledAccess:before {
+  content: "";
+}
+
+.ns-Icon--download:before {
+  content: "";
+}
+
+.ns-Icon--facebook:before {
+  content: "";
+}
+
+.ns-Icon--FOIE_GRAS:before {
+  content: "";
+}
+
+.ns-Icon--freshWine:before {
+  content: "";
+}
+
+.ns-Icon--FROMAGES_CORSES:before {
+  content: "";
+}
+
+.ns-Icon--FROMAGES_DOUX:before {
+  content: "";
+}
+
+.ns-Icon--FRUITE_ET_NERVEUX:before {
+  content: "";
+}
+
+.ns-Icon--FRUITE_ET_PLEIN:before {
+  content: "";
+}
+
+.ns-Icon--FRUIT_DE_MER:before {
+  content: "";
+}
+
+.ns-Icon--FUITE_SOUPLE:before {
+  content: "";
+}
+
+.ns-Icon--gastronomicAdvice:before {
+  content: "";
+}
+
+.ns-Icon--GIBIER:before {
+  content: "";
+}
+
+.ns-Icon--gift:before {
+  content: "";
+}
+
+.ns-Icon--GLACES_ET_SORBETS:before {
+  content: "";
+}
+
+.ns-Icon--google:before {
+  content: "";
+}
+
+.ns-Icon--hamburger:before {
+  content: "";
+}
+
+.ns-Icon--health:before {
+  content: "";
+}
+
+.ns-Icon--home:before {
+  content: "";
+}
+
+.ns-Icon--house:before {
+  content: "";
+}
+
+.ns-Icon--icecubeService:before {
+  content: "";
+}
+
+.ns-Icon--instagram:before {
+  content: "";
+}
+
+.ns-Icon--intervina:before {
+  content: "";
+}
+
+.ns-Icon--JAUNE:before {
+  content: "";
+}
+
+.ns-Icon--knurr:before {
+  content: "";
+}
+
+.ns-Icon--lock:before {
+  content: "";
+}
+
+.ns-Icon--lock2:before {
+  content: "";
+}
+
+.ns-Icon--loyaltyProgram:before {
+  content: "";
+}
+
+.ns-Icon--mail:before {
+  content: "";
+}
+
+.ns-Icon--nicolas:before {
+  content: "";
+}
+
+.ns-Icon--nicolasn:before {
+  content: "";
+}
+
+.ns-Icon--optimalService:before {
+  content: "";
+}
+
+.ns-Icon--PATISSERIES:before {
+  content: "";
+}
+
+.ns-Icon--pin:before {
+  content: "";
+}
+
+.ns-Icon--pin2:before {
+  content: "";
+}
+
+.ns-Icon--pinterest:before {
+  content: "";
+}
+
+.ns-Icon--POISSONS_EN_SAUCE:before {
+  content: "";
+}
+
+.ns-Icon--POISSONS_GRILLES:before {
+  content: "";
+}
+
+.ns-Icon--profil:before {
+  content: "";
+}
+
+.ns-Icon--question:before {
+  content: "";
+}
+
+.ns-Icon--rating:before {
+  content: "";
+}
+
+.ns-Icon--ratingCheck:before {
+  content: "";
+}
+
+.ns-Icon--recipe:before {
+  content: "";
+}
+
+.ns-Icon--ROSE:before {
+  content: "";
+}
+
+.ns-Icon--ROUGE:before {
+  content: "";
+}
+
+.ns-Icon--ROUSSE:before {
+  content: "";
+}
+
+.ns-Icon--seasonalTasting:before {
+  content: "";
+}
+
+.ns-Icon--shell:before {
+  content: "";
+}
+
+.ns-Icon--shipping:before {
+  content: "";
+}
+
+.ns-Icon--stars:before {
+  content: "";
+}
+
+.ns-Icon--stoppeCork:before {
+  content: "";
+}
+
+.ns-Icon--TARTES_AUX_FRUITS:before {
+  content: "";
+}
+
+.ns-Icon--tel:before {
+  content: "";
+}
+
+.ns-Icon--tel2:before {
+  content: "";
+}
+
+.ns-Icon--threehours:before {
+  content: "";
+}
+
+.ns-Icon--top:before {
+  content: "";
+}
+
+.ns-Icon--trash:before {
+  content: "";
+}
+
+.ns-Icon--twitter:before {
+  content: "";
+}
+
+.ns-Icon--untaxed:before {
+  content: "";
+}
+
+.ns-Icon--valid:before {
+  content: "";
+}
+
+.ns-Icon--VIANDES_BLANCHES:before {
+  content: "";
+}
+
+.ns-Icon--VIANDES_ROUGES:before {
+  content: "";
+}
+
+.ns-Icon--wine:before {
+  content: "";
+}
+
+.ns-Icon--youtube:before {
+  content: "";
+}

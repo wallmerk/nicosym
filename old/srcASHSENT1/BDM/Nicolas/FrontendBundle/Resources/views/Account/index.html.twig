@@ -1,0 +1,158 @@
+{% extends "@BDMNicolasFrontend/layout.html.twig" %}
+
+{% block content %}
+	<main>
+		 <div class="breadCrumb breadcrumb--border container">
+            <ol class="breadCrumb-nav" role="navigation">
+                <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Acceuil</a></li>
+                <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Mon compte</a></li>
+            </ol>
+        </div>
+
+        <div class="container myAccount">
+        	<div class="col-sm-6">
+        		<div class="myAccount-signup">
+        			<form action="/" method="post" class="nsForm" name="createAccount" id="signup_form">
+        				<p class="nsForm-title">
+                    		création de compte
+                    	</p>
+
+                    	<fieldset>
+
+	                        <p class="nsForm-elementContainer">
+	                            <input id="signup_email" class="nsForm-input" name="signup_email" type="email" placeholder="Votre email" required>
+	                        </p>
+	                        <p class="nsForm-elementContainer">
+	                            <input id="signup_password" class="nsForm-input" name="signup_password" type="password" placeholder="Votre mot de passe souhaité" required>
+	                        </p>
+	                        <p class="nsForm-elementContainer">
+	                            <input id="signup_confirm_password" class="nsForm-input" name="signup_confirm_password" type="password" placeholder="confirmez votre mot de passe" required>
+	                        </p>
+
+	                        <div class="nsForm-subSection">
+								<p class="nsForm-subtitle">
+	                        	mes informations personnelles
+		                        </p>
+
+		                        <p class="nsForm-elementContainer">
+		                            <input id="signup_firstName" class="nsForm-input" name="signup_firstName" type="text" placeholder="Nom*" required>
+		                        </p>
+		                        <p class="nsForm-elementContainer">
+		                            <input id="signup_lastName" class="nsForm-input" name="signup_lastName" type="text" placeholder="Prénom*" required>
+		                        </p>
+	                        	
+	                        	<p class="nsForm-elementContainer">
+		                        	<span class="nsForm-label">Né(e) le</span>
+		                        	<input id="signup_birthday" class="nsForm-input" name="signup_birthday" type="date">
+		                        </p>
+		                        <p class="nsForm-elementContainer">
+		                            <input id="signup_adress1" class="nsForm-input" name="signup_adress1" type="text" placeholder="Adresse 1*" required>
+		                        </p>
+		                        <p class="nsForm-elementContainer">
+		                            <input id="signup_adress2" class="nsForm-input" name="signup_adress2" type="text" placeholder="Adresse 2*" required>
+		                        </p>
+		                        <p class="nsForm-elementContainer">
+		                            <input id="signup_zipCode" class="nsForm-input" name="signup_zipCode" type="text" placeholder="Code Postal*" required>
+		                        </p>
+		                        <p class="nsForm-elementContainer">
+		                            <input id="signup_city" class="nsForm-input" name="signup_city" type="text" placeholder="Ville*" required>
+		                        </p>
+		                        <p class="nsForm-elementContainer">
+		                            <input id="signup_phone" class="nsForm-input" name="signup_phone" type="text" placeholder="Téléphone" >
+		                        </p>
+		                    </div>
+
+		                    <div class="nsForm-subSection">
+	                        	<p class="nsForm-subtitle">
+	                        	ma carte privilège
+		                        </p>
+		                         <p class="nsForm-elementContainer">
+		                            <input id="signup_cardId" class="nsForm-input" name="signup_cardId" type="text" placeholder="Numéro de votre carte">
+		                        </p>
+		                    </div>
+
+						</fieldset>
+						<p class="nsForm-elementContainer nsForm-info">
+                        	Les champs suivis d'une *  sont obligatoires
+                    	</p>
+
+						<button type="submit" class="nicoButton nicoButton-default nsForm-submit">
+	                        <span class="nicoButton-content">
+	                            <i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>
+	                            Valider
+	                        </span>
+	                    </button>
+        			</form>
+        			
+        		</div>
+        	</div>
+        
+        	<div class="col-sm-6">
+        		<div class="myAccount-login">
+        			<form action="#" method="post" class="nsForm js-nsForm" name="myAccount-login">
+        				<p class="nsForm-title">
+        				accéder à mon compte
+	        			</p>
+	        			<fieldset>
+	                        <div class="nsForm-elementContainer">
+	                            <input id="login_email" class="nsForm-input" name="login_email" type="email" placeholder="Saisissez votre email">
+	                        </div>
+	                        <div class="nsForm-elementContainer">
+	                            <input id="login_password" class="nsForm-input" name="login_password" type="password" placeholder="Saisissez votre code d'accès">
+	                        </div>
+		                </fieldset>
+		                <p class="nsForm-info">
+		                	<a class="nsForm-link" href="#">J'ai oublié mon mot de passe</a>
+		                </p>
+		                <button type="submit" class="nicoButton nicoButton-default nsForm-submit">
+                        <span class="nicoButton-content">
+                            <i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>
+                            Valider
+                        </span>
+                    </button>
+        			</form>
+        		</div>
+        		
+        	</div>
+        </div>
+
+	</main>
+
+{% endblock %}
+
+{% block front_end_css %}
+
+{% endblock %}
+
+{% block front_end_js %}
+	  <script type="text/javascript" src="assets/frontend/js/jquery.selectric.js"></script>
+	  <script type="text/javascript" src="{{ asset('assets/frontend/js/jquery.validate.min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+
+        	$('#signup_form').validate({
+        		rules: {
+        			signup_email: {
+        				required: true,
+        				email: true
+        			},
+        			signup_password: {
+        				required: true,
+        				minlength: 5
+        			},
+        			signup_confirm_password: {
+        				required: true,
+        				minlength: 5,
+        				equalTo: '#signup_password'
+        			},
+        			signup_birthday : {
+        				required: true,
+        				date: true
+        			}
+        		}
+        	})
+            
+
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% if blocks %}
+    <div class="row expertise">
+        {% for block in blocks %}
+            <div class="item col-xs-6 col-sm-3 text-center">
+                <img src="{{ asset('uploads/backend/content/footer/'~block.icon) }}" alt="">
+                <h3>{% if block.title %}{{ block.title }}{% endif %}</h3>
+                <span class="separator"></span>
+                <p>{% if block.text %}{{ block.text }}{% endif %}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="hidden-xs divider"></div>
+{% endif %}

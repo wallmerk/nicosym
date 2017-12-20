@@ -1,0 +1,73 @@
+/********************************************
+ *              Services                    *
+ ********************************************/
+
+.service-item {
+	height: 430px;
+    padding: 0 2em;
+    background-color: #f7f4eb;
+    z-index: 2;
+    a {
+    	color: inherit;
+    }
+    a:hover {
+    	text-decoration: underline;
+    }
+
+}
+.service-item--dark{
+	color: #fff;
+}
+
+.service-item--yellow{
+	background-color: #fcb714;
+}
+
+.service-item--gray{
+	background-color: #f7f4eb;
+}
+
+.service-item--burgundy{
+	background-color: #72142e;
+}
+.service-item--orange{
+	background-color: #ff7300;
+}
+.service-figure {
+	margin:0;
+}
+
+.service-desc {
+	font-size: .9em;
+}
+
+.service-name {
+    font-size: 1.2em;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+}
+
+.service-icon {
+	display: inline-block;
+    width: 150px;
+    height: 110px;
+    background: url(../images/sprite-services.png);
+    margin-bottom: 30px;
+}
+
+.service-icon--quality 			{background-position: -300px -440px; }
+.service-icon--shops 			{background-position: -150px -550px; }
+.service-icon--fidelity 		{background-position: 0 -550px; }
+.service-icon--grandCru 		{background-position: -150px 0;}
+.service-icon--shipping 		{background-position: -300px -550px;}
+.service-icon--expressShipping 	{background-position: -300px 0;}
+.service-icon--giftBox 			{background-position: 0 -220px;}
+.service-icon--alwaysFresh 		{background-position: 0 0;}
+.service-icon--readyToFest 		{background-position: -300px -110px;}
+.service-icon--giftCard 		{background-position: -300px -330px;}
+.service-icon--corkStoppers 	{background-position: -150px -220px;}
+.service-icon--clickCollect 	{background-position: 0 -330px;}
+.service-icon--privatisation 	{background-position: 0 -110px;}
+.service-icon--bottlePerso 		{background-position: -300px -220px;}
+.service-icon--optimum 			{background-position: -150px -440px;}

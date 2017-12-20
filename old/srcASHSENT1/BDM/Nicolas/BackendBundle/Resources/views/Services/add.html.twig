@@ -1,0 +1,204 @@
+{% extends 'BDMNicolasBackendBundle::layout.html.twig' %}
+
+{% block content %}
+    <!--main content start-->
+    <section id="main-content" class="">
+        <section class="wrapper">
+            <!-- page start-->
+            <!-- page start-->
+            <div class="row">
+                {{ render(controller('BDMNicolasBackendBundle:Partials:flashbag')) }}
+
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Gestion Des Services :: Ajout
+                        </header>
+                        <div class="panel-body">
+
+                            <div class="position-center">
+                                <form class="cmxform form-horizontal" id="userCreateForm" method="post"
+                                      enctype="multipart/form-data" action="{{ path('_backend_service_add') }}">
+
+                                    <div class="form-group ">
+                                        <label for="title" class="control-label col-md-2">Titre:</label>
+
+                                        <div class="col-md-10">
+                                            <input class=" form-control" id="title" name="title" type="text"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Description:</label>
+                                        <div class="col-md-10">
+                                            <textarea name="content" id="content" class="wysihtml5 form-control" rows="9"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-2">Position:</label>
+                                        <div class="col-md-5">
+                                            <div id="spinner1">
+                                                <div id="positionSpinner" class="input-group input-small">
+                                                    <input name="position" id="position" type="text" class="spinner-input form-control" maxlength="2">
+                                                    <div class="spinner-buttons input-group-btn btn-group-vertical">
+                                                        <button type="button" class="btn spinner-up btn-xs btn-default">
+                                                            <i class="fa fa-angle-up"></i>
+                                                        </button>
+                                                        <button type="button" class="btn spinner-down btn-xs btn-default">
+                                                            <i class="fa fa-angle-down"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-lg-2 col-sm-2 control-label">Background Color:</label>
+                                        <div class="col-lg-6">
+                                            <select class="form-control" name="backgroundColor" id="backgroundColor" style="width: 300px">
+                                                    <option value="yellow">yellow</option>
+                                                    <option value="gray">gray</option>
+                                                    <option value="burgundy">burgundy</option>
+                                                    <option value="orange">orange</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group last">
+                                        <label for="image" class="control-label col-md-2">image:</label>
+
+                                        <div class="col-lg-6">
+                                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                <div class="fileinput-new thumbnail"
+                                                     style="width: 200px; height: 150px;">
+                                                    <img src="http://placehold.it/200x150?text=1440x440"
+                                                         data-src="http://placehold.it/200x150?text=1440x440" alt="...">
+                                                </div>
+                                                <div class="fileinput-preview fileinput-exists thumbnail"
+                                                     style="max-width: 200px; max-height: 150px;"></div>
+                                                <div>
+                                                    <span class="btn btn-info btn-file"><span class="fileinput-new">Selection d'image</span><span
+                                                                class="fileinput-exists">Changer</span>
+                                                        <input type="file" id="image" name="image">
+                                                    </span>
+                                                    <a href="#" class="btn btn-danger fileinput-exists"
+                                                       data-dismiss="fileinput">Supprimer</a>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <span class="label label-danger">NOTE!</span>
+                                            <span>
+                                             Taille recommandée: 1440x440 pixels
+                                             </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-3 col-lg-6">
+                                            <button class="btn btn-primary" type="submit">Save</button>
+                                            <button onclick="window.location='{{ url('_backend_services') }}'"
+                                                    class="btn btn-default" type="button">Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+            <!-- page end-->
+        </section>
+    </section>
+{% endblock %}
+
+
+{% block css %}
+
+
+    <link rel="stylesheet" href="{{ asset('/assets/backend/css/bootstrap-switch.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('/assets/backend/js/bootstrap-fileupload/jasny-bootstrap.min.css') }}"/>
+
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('/assets/backend/js/jquery-multi-select/css/multi-select.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('/assets/backend/js/jquery-tags-input/jquery.tagsinput.css') }}"/>
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('/assets/backend/js/select2/select2.cs') }}"/>
+
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('/assets/backend/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('/assets/backend/css/style-responsive.css') }}" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('/assets/backend/js/bootstrap-wysihtml5/bootstrap-wysihtml5.css') }}"/>
+
+
+{% endblock %}
+
+{% block js %}
+    <script src="{{ asset('/assets/backend/js/fuelux/js/spinner.min.js') }}"></script>
+    <script src="{{ asset('/assets/backend/js/bootstrap-wysihtml5/wysihtml5-0.3.0.js') }}"></script>
+    <script src="{{ asset('/assets/backend/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js') }}"></script>
+
+    <script>
+        $('.wysihtml5').wysihtml5();
+        console.log("test2");
+        $('#positionSpinner').spinner('value',1);
+        console.log("test");
+
+    </script>
+    
+    {#<script src="/assets/backend/js/tinymce.js"></script>
+        <script>
+            $(function () {
+                tinymce.init({ selector:'textarea',
+                    plugins: ["textcolor","image","code"],
+                    toolbar: ["forecolor backcolor,image,code","undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link code mybutton"],
+                    textcolor_map: [
+                        "000000", "Black",
+                        "993300", "Burnt orange",
+                        "333300", "Dark olive",
+                        "003300", "Dark green",
+                        "003366", "Dark azure",
+                        "000080", "Navy Blue",
+                        "333399", "Indigo",
+                        "333333", "Very dark gray",
+                        "800000", "Maroon",
+                        "FF6600", "Orange",
+                        "808000", "Olive",
+                        "008000", "Green",
+                        "008080", "Teal",
+                        "0000FF", "Blue",
+                        "666699", "Grayish blue",
+                        "808080", "Gray",
+                        "FF0000", "Red",
+                        "FF9900", "Amber",
+                        "99CC00", "Yellow green",
+                        "339966", "Sea green",
+                        "33CCCC", "Turquoise",
+                        "3366FF", "Royal blue",
+                        "800080", "Purple",
+                        "999999", "Medium gray",
+                        "FF00FF", "Magenta",
+                        "FFCC00", "Gold",
+                        "FFFF00", "Yellow",
+                        "00FF00", "Lime",
+                        "00FFFF", "Aqua",
+                        "00CCFF", "Sky blue",
+                        "993366", "Red violet",
+                        "FFFFFF", "White",
+                        "FF99CC", "Pink",
+                        "FFCC99", "Peach",
+                        "FFFF99", "Light yellow",
+                        "CCFFCC", "Pale green",
+                        "CCFFFF", "Pale cyan",
+                        "8ccd37", "titre-green",
+                        "2b6bad", "titre-bleu",
+                        "797979", "bayer-text"
+                    ],
+                    image_prepend_url: "http://www.tinymce.com/images/"
+                }); 
+            });
+        </script>#}
+
+{% endblock %}

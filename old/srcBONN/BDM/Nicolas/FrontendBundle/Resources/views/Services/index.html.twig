@@ -1,0 +1,284 @@
+{% extends "@BDMNicolasFrontend/layout.html.twig" %}
+
+{% block content %}
+    <main style="padding-bottom: 5em;">
+        <div class="container">
+
+            <div class="breadCrumb breadcrumb--border col-md-12">
+                <ol class="breadCrumb-nav" role="navigation">
+                    <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Acceuil</a></li>
+                    <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Nos services</a></li>
+                </ol>
+            </div> <!-- End pagination -->
+
+            <article class="services col-md-12">
+
+                <p class="nicolas-title text-center">
+                    Nos services
+                    <i class="ns-TitleSection-icon"></i>
+                </p>
+
+                <div class="services-container">
+
+                    {% if services is defined %}
+
+                        {% for service in services %}
+                             <div class="col-sm-4 service-item
+                                          {% if service.backgroundColor == "yellow" %}
+                                            service-item--yellow
+                                          {% endif %}
+                                          text-center">
+
+                                <figure class="service-figure">
+                                    <i class="service-icon"
+                                       style="background-image: url({{ asset('/uploads/backend/services/' ~ service.image)}});"></i>
+                                    <figcaption class="service-name">{{ service.title }}</figcaption>
+                                </figure>
+
+                                <div class="service-desc">
+                                    {{ include(template_from_string(service.content)) }}
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    {% endif %}
+                    {# <div class="col-sm-4 service-item service-item--yellow text-center">
+                        <figure class="service-figure">
+                            <i class="service-icon service-icon--quality"></i>
+                            <figcaption class="service-name">Des produits de qualité</figcaption>
+                        </figure>
+
+                        <div class="service-desc">
+                            Chez Nicolas, pour les « petits » vins comme pour les grands crus, c’est toute la rigueur des méthodes de travail et de sélection mises en œuvre en amont de l’achat qui permet aux clients Nicolas de bénéficier d’une assurance de Qualité sans équivalent.Chez Nicolas, pour les « petits » vins comme pour les grands crus, c’est toute la rigueur des méthodes de travail et de sélection mises en œuvre en amont de l’achat qui permet aux clients Nicolas de bénéficier d’une assurance de Qualité sans équivalent.
+                            <br><br>
+                            <strong>Trois maîtres mots guident ce processus: sélection, contrôle qualité et traçabilité.</strong>
+                            <br> <br>
+                            <a href="#">&gt; Pour en savoir plus sur notre processus qualité</a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 service-item service-item--gray text-center">
+                        <figure class="service-figure">
+                            <i class="service-icon service-icon--shops"></i>
+                            <figcaption class="service-name">Des produits de qualité</figcaption>
+                        </figure>
+
+                        <div class="service-desc">
+                            La gastronomie et donc le vin, fait partie des charmes de la France que vous aurez peut-être envie de découvrir sur place ou de ramener en souvenir.
+                            <br><br>
+                            <strong>Dans certaines conditions, vous pouvez obtenir le remboursement de la taxe sur la valeur ajoutée (TVA) payée sur les produits que vous avez achetées durant votre séjour.</strong>
+                            <br> <br>
+                            <a href="#">&gt; Voir les conditions</a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 service-item service-item--burgundy service-item--dark text-center">
+                        <figure class="service-figure">
+                            <i class="service-icon service-icon--fidelity"></i>
+                            <figcaption class="service-name">Des produits de qualité</figcaption>
+                        </figure>
+
+                        <div class="service-desc">
+                            Chez Nicolas, pour les « petits » vins comme pour les grands crus, c’est toute la rigueur des méthodes de travail et de sélection mises en œuvre en amont de l’achat qui permet aux clients Nicolas de bénéficier d’une assurance de Qualité sans équivalent.
+                            <br><br>
+                            <strong>Trois maîtres mots guident ce processus: sélection, contrôle qualité et traçabilité.</strong>
+                            <br> <br>
+                            <a href="#">&gt; Pour en savoir plus sur notre processus qualité</a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 service-item service-item--gray text-center">
+                        <figure class="service-figure">
+                            <i class="service-icon service-icon--grandCru"></i>
+                            <figcaption class="service-name">Des produits de qualité</figcaption>
+                        </figure>
+
+                        <div class="service-desc">
+                            Chez Nicolas, pour les « petits » vins comme pour les grands crus, c’est toute la rigueur des méthodes de travail et de sélection mises en œuvre en amont de l’achat qui permet aux clients Nicolas de bénéficier d’une assurance de Qualité sans équivalent.
+                            <br><br>
+                            <strong>Trois maîtres mots guident ce processus: sélection, contrôle qualité et traçabilité.</strong>
+                            <br> <br>
+                            <a href="#">&gt; Pour en savoir plus sur notre processus qualité</a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 service-item service-item--orange text-center">
+                        <figure class="service-figure">
+                            <i class="service-icon service-icon--shipping"></i>
+                            <figcaption class="service-name">Des produits de qualité</figcaption>
+                        </figure>
+
+                        <div class="service-desc">
+                            Chez Nicolas, pour les « petits » vins comme pour les grands crus,
+                            <br><br>
+                            <strong>Trois maîtres mots guident ce processus: sélection, contrôle qualité et traçabilité.</strong>
+                            <br> <br>
+                            <a href="#">&gt; Pour en savoir plus sur notre processus qualité</a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 service-item service-item--yellow text-center">
+                        <figure class="service-figure">
+                            <i class="service-icon service-icon--expressShipping"></i>
+                            <figcaption class="service-name">Des produits de qualité</figcaption>
+                        </figure>
+
+                        <div class="service-desc">
+                            Chez Nicolas, pour les « petits » vins comme pour les grands crus, c’est toute la rigueur des méthodes de travail et de sélection mises en œuvre en amont de l’achat qui permet aux clients Nicolas de bénéficier d’une assurance de Qualité sans équivalent.
+                            <br><br>
+                            <strong>Trois maîtres mots guident ce processus: sélection, contrôle qualité et traçabilité.</strong>
+                            <br> <br>
+                            <a href="#">&gt; Pour en savoir plus sur notre processus qualité</a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 service-item service-item--burgundy service-item--dark text-center">
+                        <figure class="service-figure">
+                            <i class="service-icon service-icon--optimum"></i>
+                            <figcaption class="service-name">Des produits de qualité</figcaption>
+                        </figure>
+
+                        <div class="service-desc">
+                            Chez Nicolas, pour les « petits » vins comme pour les grands crus, c’est toute la rigueur des méthodes de travail et de sélection mises en œuvre en amont de l’achat qui permet aux clients Nicolas de bénéficier d’une assurance de Qualité sans équivalent.
+                            <br><br>
+                            <strong>Trois maîtres mots guident ce processus: sélection, contrôle qualité et traçabilité.</strong>
+                            <br> <br>
+                            <a href="#">&gt; Pour en savoir plus sur notre processus qualité</a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 service-item service-item--yellow text-center">
+                        <figure class="service-figure">
+                            <i class="service-icon service-icon--giftBox"></i>
+                            <figcaption class="service-name">Des produits de qualité</figcaption>
+                        </figure>
+
+                        <div class="service-desc">
+                            Chez Nicolas, pour les « petits » vins comme pour les grands crus, c’est toute la rigueur des méthodes de travail et de sélection mises en œuvre en amont de l’achat qui permet aux clients Nicolas de bénéficier d’une assurance de Qualité sans équivalent.
+                            <br><br>
+                            <strong>Trois maîtres mots guident ce processus: sélection, contrôle qualité et traçabilité.</strong>
+                            <br> <br>
+                            <a href="#">&gt; Pour en savoir plus sur notre processus qualité</a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 service-item service-item--gray text-center">
+                        <figure class="service-figure">
+                            <i class="service-icon service-icon--alwaysFresh"></i>
+                            <figcaption class="service-name">Des produits de qualité</figcaption>
+                        </figure>
+
+                        <div class="service-desc">
+                            Chez Nicolas, pour les « petits » vins comme pour les grands crus, c’est toute la rigueur des méthodes de travail et de sélection mises en œuvre en amont de l’achat qui permet aux clients Nicolas de bénéficier d’une assurance de Qualité sans équivalent.
+                            <br><br>
+                            <strong>Trois maîtres mots guident ce processus: sélection, contrôle qualité et traçabilité.</strong>
+                            <br> <br>
+                            <a href="#">&gt; Pour en savoir plus sur notre processus qualité</a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 service-item service-item--yellow text-center">
+                        <figure class="service-figure">
+                            <i class="service-icon service-icon--readyToFest"></i>
+                            <figcaption class="service-name">Des produits de qualité</figcaption>
+                        </figure>
+
+                        <div class="service-desc">
+                            Chez Nicolas, pour les « petits » vins comme pour les grands crus, c’est toute la rigueur des méthodes de travail et de sélection mises en œuvre en amont de l’achat qui permet aux clients Nicolas de bénéficier d’une assurance de Qualité sans équivalent.
+                            <br><br>
+                            <strong>Trois maîtres mots guident ce processus: sélection, contrôle qualité et traçabilité.</strong>
+                            <br> <br>
+                            <a href="#">&gt; Pour en savoir plus sur notre processus qualité</a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 service-item service-item--gray text-center">
+                        <figure class="service-figure">
+                            <i class="service-icon service-icon--giftCard"></i>
+                            <figcaption class="service-name">Des produits de qualité</figcaption>
+                        </figure>
+
+                        <div class="service-desc">
+                            Chez Nicolas, pour les « petits » vins comme pour les grands crus, c’est toute la rigueur des méthodes de travail et de sélection mises en œuvre en amont de l’achat qui permet aux clients Nicolas de bénéficier d’une assurance de Qualité sans équivalent.
+                            <br><br>
+                            <strong>Trois maîtres mots guident ce processus: sélection, contrôle qualité et traçabilité.</strong>
+                            <br> <br>
+                            <a href="#">&gt; Pour en savoir plus sur notre processus qualité</a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 service-item service-item--burgundy service-item--dark text-center">
+                        <figure class="service-figure">
+                            <i class="service-icon service-icon--corkStoppers"></i>
+                            <figcaption class="service-name">Des produits de qualité</figcaption>
+                        </figure>
+
+                        <div class="service-desc">
+                            Chez Nicolas, pour les « petits » vins comme pour les grands crus, c’est toute la rigueur des méthodes de travail et de sélection mises en œuvre en amont de l’achat qui permet aux clients Nicolas de bénéficier d’une assurance de Qualité sans équivalent.
+                            <br><br>
+                            <strong>Trois maîtres mots guident ce processus: sélection, contrôle qualité et traçabilité.</strong>
+                            <br> <br>
+                            <a href="#">&gt; Pour en savoir plus sur notre processus qualité</a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 service-item service-item--gray text-center">
+                        <figure class="service-figure">
+                            <i class="service-icon service-icon--clickCollect"></i>
+                            <figcaption class="service-name">Des produits de qualité</figcaption>
+                        </figure>
+
+                        <div class="service-desc">
+                            Chez Nicolas, pour les « petits » vins comme pour les grands crus, c’est toute la rigueur des méthodes de travail et de sélection mises en œuvre en amont de l’achat qui permet aux clients Nicolas de bénéficier d’une assurance de Qualité sans équivalent.
+                            <br><br>
+                            <strong>Trois maîtres mots guident ce processus: sélection, contrôle qualité et traçabilité.</strong>
+                            <br> <br>
+                            <a href="#">&gt; Pour en savoir plus sur notre processus qualité</a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 service-item service-item--orange text-center">
+                        <figure class="service-figure">
+                            <i class="service-icon service-icon--privatisation"></i>
+                            <figcaption class="service-name">Des produits de qualité</figcaption>
+                        </figure>
+
+                        <div class="service-desc">
+                            Chez Nicolas, pour les « petits » vins comme pour les grands crus, c’est toute la rigueur des méthodes de travail et de sélection mises en œuvre en amont de l’achat qui permet aux clients Nicolas de bénéficier d’une assurance de Qualité sans équivalent.
+                            <br><br>
+                            <strong>Trois maîtres mots guident ce processus: sélection, contrôle qualité et traçabilité.</strong>
+                            <br> <br>
+                            <a href="#">&gt; Pour en savoir plus sur notre processus qualité</a>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 service-item service-item--yellow text-center">
+                        <figure class="service-figure">
+                            <i class="service-icon service-icon--bottlePerso"></i>
+                            <figcaption class="service-name">Des produits de qualité</figcaption>
+                        </figure>
+
+                        <div class="service-desc">
+                            Chez Nicolas, pour les « petits » vins comme pour les grands crus, c’est toute la rigueur des méthodes de travail et de sélection mises en œuvre en amont de l’achat qui permet aux clients Nicolas de bénéficier d’une assurance de Qualité sans équivalent.
+                            <br><br>
+                            <strong>Trois maîtres mots guident ce processus: sélection, contrôle qualité et traçabilité.</strong>
+                            <br> <br>
+                            <a href="#">&gt; Pour en savoir plus sur notre processus qualité</a>
+                        </div>
+                    </div> #}
+
+
+                </div>
+            </article>
+
+        </div>
+    </main>
+{% endblock %}
+
+{% block front_end_css %}
+{% endblock %}
+
+{% block front_end_js %}
+    <script type="text/javascript">
+    </script>
+{% endblock %}

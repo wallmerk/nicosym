@@ -1,0 +1,68 @@
+{% extends 'BDMNicolasBackendBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+
+                        <header class="panel-heading">
+                            Gestion Des widgets
+                        </header>
+                        <div class="panel-body">
+                            <section id="unseen">
+                                <div class="clearfix">
+                                    {#{% if widgets|length < 2 %}#}
+                                        {#<div class="btn-group">#}
+                                            {#<button id="editable-sample_new" class="btn btn-primary"#}
+                                                    {#onclick="window.location='{{ url('_backend_content_home_widget_add') }}'">#}
+                                                {#Ajouter <i class="fa fa-plus"></i>#}
+                                            {#</button>#}
+                                        {#</div>#}
+                                    {#{% endif %}#}
+                                </div>
+                                <br/>
+
+                                {{ render(controller('BDMNicolasBackendBundle:Partials:flashbag')) }}
+
+                                <br/>
+                                {% if newsletters %}
+                                    <table class="table table-bordered table-striped table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Email</th>
+                                            <th>Date</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        {% for newsletter in newsletters %}
+                                            <tr>
+                                                <td>#{{ newsletter.id }}</td>
+                                                <td>{{ newsletter.email }}</td>
+                                                <td>{{ newsletter.subscriptionDate |date("H:i:s d-m-Y")}}</td>
+
+
+                                                {#<td>#}
+                                                    {#<button onclick="window.location='{{ url('_backend_content_home_widget_edit', {'id':widget.id}) }}'"#}
+                                                            {#type="button" class="btn btn-info btn-xs"><i#}
+                                                                {#class="fa fa-edit"></i> Modifier#}
+                                                    {#</button>#}
+                                                {#</td>#}
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                {% endif %}
+                            </section>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+{% endblock %}

@@ -1,0 +1,169 @@
+{% extends '@BDMNicolasFrontend/layout.html.twig' %}
+
+{% block content %}
+
+	<main>
+
+		<div class="breadCrumb breadcrumb--border container">
+            <ol class="breadCrumb-nav" role="navigation">
+                <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Acceuil</a></li>
+                <li class="breadCrumb-item"><a href="#" class="breadCrumb-link"> {{page_title}} </a></li>
+            </ol>
+        </div>
+
+        <div class="container account_header_section">
+        	<div class="col-sm-2">
+        		<a href="#" class="account_header_link">
+        			< retour
+        		</a>
+        	</div>
+        	<div class="col-sm-8 account_header_title">
+        		Mon historique d'achats
+        	</div>
+        	{# <div class="col-sm-2"  style=" text-align: right;">
+        		<a href="#" class="account_header_link">
+        			X se déconnecter
+        		</a>
+        	</div> #}
+        	<div class="col-sm-12 account_header_infos">
+        		<p>
+        			Détail de mes achats du <b>05/03/2016</b> - Origine de la commande : <b>Nicolas.com</b>
+        		</p>
+        	</div>
+        </div>
+
+		<section class="container nsSection nsSection-gray" style="padding:3em; margin-bottom: 5em;">
+
+			<div class="row">
+				<div class="col-sm-12"  style="margin-bottom: 2em;">
+					<table class="nsTable">
+						<thead class="border-bottom-dotted">
+							<tr>
+								<td>Référence</td>
+								<td>Nom du produit</td>
+								<td>Prix</td>
+								<td>Quantité</td>
+								<td>Total TTC</td>
+							</tr>
+						</thead>
+						<span class="dotted_divider"></span>
+						<tbody>
+							<tr>
+								<td>470520</td>
+								<td>Chateau Brane-Cantenac 2005</td>
+								<td>
+									<div class="product-priceContainer">
+										<span class="nicolas-price product-price ">
+											<span class="price-unityContainer">
+												<span class="price-unity">159,</span>
+												<sup class="price-currency">€</sup>
+											</span>
+											<span class="price-decimal">50</span>
+										</span>
+									</div>
+								</td>
+								<td>1</td>
+								<td>
+									<div class="product-priceContainer">
+										<span class="nicolas-price product-price ">
+											<span class="price-unityContainer">
+												<span class="price-unity">159,</span>
+												<sup class="price-currency">€</sup>
+											</span>
+											<span class="price-decimal">50</span>
+										</span>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="row">
+				
+				<div class="col-sm-offset-1 col-sm-5 col-sm-push-6">
+					<table class="nsTable nsTable_single_column">
+						<tbody>
+							<tr class="border-bottom-dotted">
+								<td class="nsTable_line_title">total marchandise</td>
+								<td>
+									<div class="product-priceContainer">
+										<span class="nicolas-price product-price ">
+											<span class="price-unityContainer">
+												<span class="price-unity">159,</span>
+												<sup class="price-currency">€</sup>
+											</span>
+											<span class="price-decimal">50</span>
+										</span>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="nsTable_line_title">total remise fidélité</td>
+								<td>
+									<div class="product-priceContainer">
+										<span class="nicolas-price product-price ">
+											<span class="price-unityContainer">
+												<span class="price-unity">5</span>
+												<sup class="price-currency">€</sup>
+											</span>
+											{# <span class="price-decimal">50</span> #}
+										</span>
+									</div>
+								</td>
+							</tr>
+							<tr class="nsTable_line_highlight">
+								<td class="nsTable_line_title">total facture</td>
+								<td>
+									<div class="product-priceContainer">
+										<span class="nicolas-price product-price ">
+											<span class="price-unityContainer">
+												<span class="price-unity">154,</span>
+												<sup class="price-currency">€</sup>
+											</span>
+											<span class="price-decimal">50</span>
+										</span>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="col-sm-6 col-sm-pull-6">
+					<div class="nsPanel-info">
+						<p class="nsPanel-text">Gârce a votre achat, vous avez cumulé</p>
+						<p class="nsPanel-text nsPanel-highlight">69 points sur votre carte privilège</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<a class="nicoButton nicoButton-default product-button" data-="" href="#">
+						<span class="nicoButton-content">
+							<i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>
+							Imprimez cette facture
+						</span>
+	                </a>
+	                <br>
+	                <a class="nicoButton nicoButton-default product-button" data-="" href="#">
+						<span class="nicoButton-content">
+							<i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>
+							contactez-nous par mail
+						</span>
+	                </a>
+				</div>
+			</div>
+		</section>
+	</main>
+
+{% endblock %}
+
+{% block front_end_css %}
+{% endblock %}
+
+{% block front_end_js %}
+
+{% endblock %}

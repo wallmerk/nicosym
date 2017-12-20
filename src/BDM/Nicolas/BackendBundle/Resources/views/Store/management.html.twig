@@ -1,0 +1,72 @@
+{% extends 'BDMNicolasBackendBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                {{ render(controller('BDMNicolasBackendBundle:Partials:flashbag')) }}
+
+                <div class="col-lg-12">
+                    <section class="panel">
+
+                        <header class="panel-heading">
+                            Gestion Des Magasins
+                        </header>
+                        <div class="panel-body">
+                            <section id="unseen">
+                                <div class="clearfix">
+                                    <div class="btn-group">
+                                        <button id="editable-sample_new" class="btn btn-primary"
+                                                onclick="window.location='{{ url('_backend_stores_add') }}'">
+                                            Ajouter <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <br/>
+
+                                <br/>
+
+
+                                {% if stores %}
+                                    <table id="article" class="table table-bordered table-striped table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <th><strong>#</strong></th>
+                                            <th>Nom</th>
+                                            <th>Adresse</th>
+                                            <th>Ville</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for store in stores %}
+                                            <tr>
+                                                <td>{{ store.id }}</td>
+                                                <td>{{ store.name }}</td>
+                                                <td>{{ store.address }}</td>
+                                                <td>{{ store.city }}</td>
+                                                <td>
+                                                    <button onclick="window.location='{{ url('_backend_stores_edit', {'id':store.id}) }}'"
+                                                            type="button" class="btn btn-info btn-xs"><i
+                                                                class="fa fa-edit"></i> Modifier
+                                                    </button>
+                                                    <button onclick="window.location='{{ url('_backend_stores_delete', {'id':store.id}) }}'"
+                                                            type="button" class="btn btn-danger btn-xs"><i
+                                                                class="fa fa-trash-o"></i> Supprimer
+                                                    </button>
+                                                </td>
+
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                {% endif %}
+                            </section>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+{% endblock %}

@@ -1,0 +1,75 @@
+
+//*******************************************
+//			Agreements page
+//*******************************************
+
+
+.featureSection{
+	height: 240px;
+	position: relative;
+	.featureSection-content {
+		position: absolute;
+		width:100%;
+		margin: 2em auto;
+		padding: 0;
+		top: 25%;
+	}
+	.featureSection-text {
+		font-size: 2em;
+		text-transform: uppercase;
+		color: #fff;
+		font-weight: 700;
+		display: block;
+		max-width: 60%;
+	    margin: 0 auto;
+	}
+}
+
+.recettesList {
+	.recettesList-item {
+		text-align: center;
+	    color: inherit;
+	    font-size: 1em;
+	    font-weight: 700;
+	    &:hover {
+	    	text-decoration: none;
+	    }
+
+	    @media (max-width: $screen-sm-min) {
+	    	margin-bottom: 1em;
+	    }
+
+
+	}
+	.recettesList-img {
+		display: block;
+	    width: 140px;
+	    height: 140px;
+	    border-radius: 140px;
+	    background-repeat: no-repeat;
+	    background-position: center;
+	    margin: 0 auto;
+	    margin-bottom: 10px;
+	}
+
+}
+.recettesSection-text {
+	    width: 70%;
+	    margin: 0 auto;
+	    margin-bottom: 3em;
+	    text-align: center;
+	    @media (max-width: $screen-sm-min) {
+	    	width: 100%;
+	    }
+}
+
+.agreementSection,
+.recettesSection {
+	padding: 2em 1em;
+}
+
+.recettesSection {
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+

@@ -1,0 +1,194 @@
+ /********************************************
+ * 				Product Details 			 *
+ *********************************************/
+
+ .pd-gallery {
+ 	width: 80px;
+ 	display: inline-block;
+ 	vertical-align: middle;
+ 	@media (max-width: $screen-sm-min) {
+		width: 100%;
+		display:block;
+		margin-bottom: 1em;
+		text-align:center;
+	}
+
+ 	.pd-gallery-item {
+ 		display: inline-block;
+ 		width:70px;
+ 		height: 100px;
+ 		margin: 5px auto;
+ 	}
+ }
+
+ .pd-imageZoom {
+ 	display: inline-block;
+ }
+
+.pd-principalImage {
+	margin-bottom: 2em;
+}
+
+.pd-infosLeft {
+	text-align: left;
+	.pd-nom {
+		font-weight: 800;
+	    text-transform: uppercase;
+	    font-size: 1.5em;
+	    margin-bottom: 0;
+	}
+
+	.pd-millesime {
+		font-size: 1.5em;
+	    font-weight: 700;
+	    margin-bottom: 0;
+	}
+
+	.pd-region {
+		font-weight: 700;
+	}
+}
+.pd-infosRight {
+	text-align: right;
+	.pd-etat {
+		font-weight: 800;
+		font-style: italic;
+	} 
+	.pd-typeBouteille {
+		margin: 0;
+	}
+	.pd-etat-enStock {
+			color: #2ab52a;
+	}
+}
+
+
+.pd-infosBordred {
+	border: 3px solid #fcb714;
+    padding: 1em;
+    margin: 2em auto;
+
+    .pd-infosBordred-title {
+    	font-size: 1.2em;
+		font-weight: 800;
+		text-transform: uppercase;
+    }
+	
+	.pd-infoBordred-item {
+		padding: 2px;
+	}
+	.pd-infoBordred-item:nth-child(2) {
+	    border: 1px dotted #000;
+	    border-top: 0;
+	    border-bottom: 0;
+	}
+	.pd-temperature {
+		font-size: 2em;
+		font-weight: 800;
+	}
+	.pd-garde {
+		// font-size: 1.5em;
+		// font-weight: 800;
+		// text-transform: uppercase;
+	} 
+}
+
+.pd-infosAliances {
+	 border-right: 1px dotted #000;
+	 @media (max-width: $screen-sm-min) {
+		border-right: 0;
+		margin-bottom: .7em;
+	}
+
+	.agreementList-item {
+		margin: 0;
+	}
+	.nicolas-title {
+		font-size: 1.3em;
+	}
+}
+
+.pd-infosRecettes {
+	.pd-infosRecettes-icon {
+		font-size: 5em;
+	}
+}
+
+.pd-socialMedia {
+
+	.pd-socialMedia-icon {
+		font-size: 1.1em;
+	    display: inline-block;
+	    border: 1px solid;
+	    height: 1.8em;
+	    width: 1.8em;
+	    border-radius: 1.7em;
+	    line-height: 1.7em;
+	    background: #fcb714;
+	    color: #fff;
+	    text-align: center;
+	}
+}
+
+.oenologueSection {
+
+	@media (min-width: $screen-sm-min) {
+		.tasting-top {
+			 width: 310px;
+		}
+
+		.tasting-bottom {
+			width: 310px;
+			height: 268px;
+		    display: inline-block;
+
+		}
+	}
+
+	.tasting-top {
+	    background: #72142e;
+	    margin-bottom: .5em;
+	    padding: 1.3em;
+	    color: #fff;
+	    display: inline-block;
+
+	}
+    .oenologuesLeft-icon {
+    	font-size: 2.5em;
+    }
+    .oenologuesLeft-title {
+    	font-size: 1.4em;
+    	text-transform: uppercase;
+    	font-weight: 700;
+    }
+	.tasting-bottom {
+		vertical-align: middle;
+		height: 268px;
+	    display: inline-block;
+	    position: relative;
+	    padding: 0;
+
+	    @media (max-width: $screen-sm-min) {
+		    background-repeat: no-repeat;
+    		background-size: cover;
+    		max-height: 5em;
+		}
+		.oenologuesLeft-content {
+			position: absolute;
+		    top: 40%;
+		    width: 100%;
+		}
+		.oenologuesLeft-title {
+			font-weight: 800;
+			font-size: 1.5em;
+		}
+
+	}
+}
+
+.slotContent {
+	.slotContent-item {
+		margin: 0.5em;
+    	display: inline-block;
+	}
+}

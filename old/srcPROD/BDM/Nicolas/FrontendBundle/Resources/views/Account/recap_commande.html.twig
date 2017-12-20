@@ -1,0 +1,133 @@
+{% extends '@BDMNicolasFrontend/layout.html.twig' %}
+
+{% block content %}
+
+	<main>
+
+		<div class="breadCrumb breadcrumb--border container">
+            <ol class="breadCrumb-nav" role="navigation">
+                <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Acceuil</a></li>
+                <li class="breadCrumb-item"><a href="#" class="breadCrumb-link"> {{page_title}} </a></li>
+            </ol>
+        </div>
+
+        <div class="container">
+        	<h1 class="nsTitle-h1">récapitulatif de ma commande</h1>
+        </div>
+
+        <div class="container recap_cmd_section">
+        	<div class="row row-eq-height">
+				
+				{# C #}
+        		<div class="col-sm-4 col-sm-push-8 col-xs-12">
+					<div class="recap_cmd_box recap_cmd_cmd">
+						<h2 class="nsTitle-h2">commande</h2>
+						<h2 class="nsTitle-h2">N°XXXXXXXXXX</h2>
+						<h2 class="nsTitle-h2">DU DD/MM/YYYY</h2>
+					</div>
+        		</div>
+
+        		<div class="col-sm-4 col-xs-6">
+        			<div class="recap_cmd_box">
+        				<div class="subBox">
+        					<h2 class="nsTitle-h2">mode de livraison</h2>
+        					<p class="subBox--desc">Standard <br> (48/72 heures)</p>
+        				</div>
+        				<span class="divider"></span>
+        				<div class="subBox">
+        					<h2 class="nsTitle-h2">mode de Paimenet</h2>
+        					<p class="subBox--desc">Carte Bancaire</p>
+        				</div>
+        			</div>
+        		</div>
+
+        		<div class="col-sm-4 col-sm-pull-8 col-xs-6">
+        			<div class="recap_cmd_box">
+        				<h2 class="nsTitle-h2">coordonnées</h2>
+        				<div class="subBox">
+        					<p class="subBox--title">livraison</p>
+        					<p class="subBox--important">Mme Nadine Lecoeur</p>
+        					<p class="subBox--desc">13 rue Eugène Eboué <br> 75010 Paris <br>France</p>
+        				</div>
+						<span class="divider"></span>
+        				<div class="subBox">
+        					<p class="subBox--title">facturation</p>
+        					<p class="subBox--important">Mme Nadine Lecoeur</p>
+        					<p class="subBox--desc">13 rue Eugène Eboué <br> 75010 Paris <br>France</p>
+        				</div>
+        			</div>
+	        	</div>
+
+        	</div>
+
+        	<div class="row">
+        		<div class="col-sm-6">
+					<div class="recap_cmd_box">
+						<h2 class="nsTitle-h2">Carte message</h2>
+						<h3 class="nsTitle-h3">"bon anniversaire"</h3>
+						<div class="subBox">
+							<p>Votre message d'accompagnement</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris placerat tincidunt dui, nec lobortis massa ornare vel. Vivamus et leo eget quam gravida malesuada. Donec efficitur cursus dictum.</p>
+							<p>Nom Prénom</p>
+						</div>
+					</div>
+        		</div>
+        		<div class="col-sm-6">
+        			<div class="recap_cmd_box recap_cmd_box--orange">
+        				<h2 class="nsTitle-h2">récapitulatif de la commande</h2>
+
+        				<div class="cmd_items">
+        					<div class="cmd_item border-bottom-dotted">
+        						<div class="cmd_item_col1">
+        							<p class="cmd_item--name">chateau brane-cantenac 2011</p>
+        							<p class="cmd_item_qte">qté 1</p>
+        						</div>
+        						<div class="cmd_item_col2">
+        							<div class="product-priceContainer">
+										<span class="nicolas-price product-price ">
+											<span class="price-unityContainer">
+												<span class="price-unity">159,</span>
+												<sup class="price-currency">€</sup>
+											</span>
+											<span class="price-decimal">50</span>
+										</span>
+									</div>
+        						</div>
+        					</div>
+        				</div>
+        				<div class="cmd_items">
+        					<div class="cmd_item border-bottom-dotted">
+        						<div class="cmd_item_col1">
+        							<p class="cmd_item--name">chateau brane-cantenac 2011</p>
+        							<p class="cmd_item_qte">qté 1</p>
+        						</div>
+        						<div class="cmd_item_col2">
+        							<div class="product-priceContainer">
+										<span class="nicolas-price product-price ">
+											<span class="price-unityContainer">
+												<span class="price-unity">159,</span>
+												<sup class="price-currency">€</sup>
+											</span>
+											<span class="price-decimal">50</span>
+										</span>
+									</div>
+        						</div>
+        					</div>
+        				</div>
+        			
+        			</div>
+        		</div>
+        	</div>
+        </div>
+
+		
+	</main>
+
+{% endblock %}
+
+{% block front_end_css %}
+{% endblock %}
+	
+{% block front_end_js %}
+
+{% endblock %}

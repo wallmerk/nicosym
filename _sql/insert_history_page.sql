@@ -1,0 +1,30 @@
+INSERT INTO `page` (`id`, `title`, `content`, `display`, `name`) VALUES ('1', 'NICOLAS PR&Eacute;CURSEUR DEPUIS PLUS DE 190 ANS', '<p class="article-paragraph">L&rsquo;histoire commence &agrave; l&rsquo;&eacute;poque o&ugrave; le vin se buvait sur place, dans les cabarets ou les boutiques &agrave; vins. Et si l&rsquo;envie prenait d&rsquo;en consommer chez soi, il fallait se rendre chez un marchand de vin ou directement chez le producteur pour acheter un f&ucirc;t ! C\'est &agrave; partir de ce constat que Louis Nicolas inventa un nouveau concept de vente du vin qui allait r&eacute;volutionner toutes les habitudes de consommation et de n&eacute;goce: le vin en bouteille.&nbsp;</p>
+<p class="article-paragraph">Cr&eacute;&eacute;e en 1822, la Maison Nicolas comptait &agrave; cette &eacute;poque une boutique principale au 53, rue Sainte-Anne et trois d&eacute;p&ocirc;ts, dans Paris. L\'id&eacute;e de fournir une qualit&eacute; sup&eacute;rieure et suivie, &agrave; un prix raisonnable fera la renomm&eacute;e de la Maison.</p>
+<p class="article-paragraph"><img style="display: block; margin-left: auto; margin-right: auto;" src="http://nicolas.achrafsoltani.com/assets/frontend/images/timeline.jpg" alt="" width="864" height="198" /></p>
+<p class="article-paragraph"><span style="color: #ff6600;"><strong>Notre Mission :</strong> Faciliter l&rsquo;acc&egrave;s au vin.</span></p>
+<p class="article-paragraph"><span style="color: #ff6600;"><strong>Notre Vision :</strong> Vous promettre de trouver le vin qui vous convient.</span></p>
+<p class="article-paragraph">&nbsp;</p>
+<p class="article-paragraph"><span style="color: #993366;"><strong>N&deg;1 de la distribution de vin en France en centre-ville</strong></span></p>
+<p class="article-paragraph">- Pr&egrave;s de 500 boutiques en France</p>
+<p class="article-paragraph">Plus de 1 500 r&eacute;f&eacute;rences en vins, champagnes et spiritueux</p>
+<p class="article-paragraph">- 20 corners et 2 Bars &agrave; vin</p>
+<p class="article-paragraph">&nbsp;</p>
+<p class="article-paragraph">&nbsp;</p>
+<p class="article-paragraph"><span style="color: #993366;"><strong>Un savoir-faire au service du vin<br /></strong></span></p>
+<p class="article-paragraph">Experts en qualit&eacute; et conseil depuis 1822, les cavistes Nicolas sont de v&eacute;ritables <img style="float: right;" src="http://nicolas.achrafsoltani.com/assets/frontend/images/article_img1.jpg" alt="" width="412" height="266" />professionnels du vin d&eacute;tenant une excellente connaissance des produits.&nbsp;</p>
+<p class="article-paragraph">En effet, chez Nicolas, vendre des vins ne se r&eacute;sume pas &agrave; un simple r&ocirc;le d&rsquo;interm&eacute;diaire entre le producteur et le consommateur. Pour assurer cette qualit&eacute; de conseil, Nicolas apporte &agrave; tous ses cavistes une formation compl&egrave;te d&rsquo;une dur&eacute;e de 5 semaines. Gr&acirc;ce &agrave; l&rsquo;Ecole int&eacute;gr&eacute;e Nicolas (centre de formation agr&eacute;&eacute;), chaque futur caviste d&eacute;couvre non seulement les produits mais s&rsquo;initie au conseil et &agrave; la gestion optimale d&rsquo;un magasin.&nbsp;</p>
+<p class="article-paragraph">Chez Nicolas, toutes les questions trouvent r&eacute;ponses, que ce soit sur le vin, son service ou sur l&rsquo;art de l&rsquo;harmoniser avec les plats ! Et qui de mieux plac&eacute; que votre caviste pour d&eacute;livrer des messages simples, clairs et positifs en mati&egrave;re de bonnes pratiques de consommation ?</p>
+<p class="article-paragraph">&nbsp;</p>
+<p class="article-paragraph"><span style="color: #993366;"><strong>Culture forte de l&rsquo;innovation</strong></span></p>
+<p class="article-paragraph"><img style="float: left;" src="http://nicolas.achrafsoltani.com/assets/frontend/images/article_img2.jpg" alt="" width="414" height="271" />Triporteurs Nicolas</p>
+<p class="article-paragraph">Premier &agrave; vendre du vin en bouteilles, Nicolas a toujours su s&rsquo;affirmer comme pr&eacute;curseur en cr&eacute;ant une gamme de services toujours plus innovants : la livraison &agrave; domicile en 1840, la disponibilit&eacute; de vins au frais en 1988, le service gla&ccedil;ons en 2012&hellip;&nbsp;</p>
+<p class="article-paragraph">Et comme l&rsquo;innovation passe aussi par l&rsquo;offre, Nicolas fut le premier &agrave; proposer le Beaujolais Nouveau &agrave; grande &eacute;chelle en 1966. En 1995, il met &agrave; l&rsquo;honneur les Vins de Pays de France avec la gamme des Petites R&eacute;coltes, suivi des Grains de C&eacute;page en 2003.</p>
+<p class="article-paragraph">&nbsp;</p>
+<p class="article-paragraph">&nbsp;</p>
+<p class="article-paragraph">&nbsp;</p>
+<p class="article-paragraph">&nbsp;</p>
+<p class="article-paragraph"><span style="color: #993366;"><strong>Les tribulations de Nectar</strong></span></p>
+<p class="article-paragraph">La notori&eacute;t&eacute; de NICOLAS s\'est affirm&eacute;e gr&acirc;ce &agrave; une communication publicitaire intense, tant au cin&eacute;ma (premiers dessins anim&eacute;s publicitaires en 1921), que sur les murs avec l&rsquo;apparition de Nectar en 1922. N&eacute; du crayon de Dransy et inspir&eacute; d\'un livreur de la maison nomm&eacute; Le Paven, le fr&ecirc;le livreur moustachu aux yeux en soucoupe, charg&eacute; de bouteilles dans chaque main, connu un succ&egrave;s populaire imm&eacute;diat et indiscut&eacute;.&nbsp;</p>
+<p class="article-paragraph">En 2012, &agrave; l&rsquo;occasion du 190&egrave;me anniversaire de Nicolas, le livreur embl&eacute;matique de la maison s&rsquo;est modernis&eacute; et nous a fait d&eacute;couvrir un nouveau visage.&nbsp;<img style="float: right;" src="http://nicolas.achrafsoltani.com/assets/frontend/images/article_img3.jpg" alt="" width="440" height="210" /></p>
+<p class="article-paragraph">Aujourd&rsquo;hui, le caviste est &agrave; l&rsquo;honneur de la communication publicitaire de Nicolas.</p>
+<p class="article-paragraph">&nbsp;</p>', '1', 'histoire');

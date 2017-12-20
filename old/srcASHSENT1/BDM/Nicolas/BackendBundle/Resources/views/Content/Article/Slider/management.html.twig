@@ -1,0 +1,232 @@
+{% extends 'BDMNicolasBackendBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <!-- page start-->
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Gestionnaire du slider home
+                        </header>
+                        <div class="panel-body">
+
+
+
+                            {#<ul id="filters" class="media-filter">
+                                <li><a href="#" data-filter="*"> All</a></li>
+                                <li><a href="#" data-filter=".images">Images</a></li>
+                                <li><a href="#" data-filter=".audio">Audio</a></li>
+                                <li><a href="#" data-filter=".video">Video</a></li>
+                                <li><a href="#" data-filter=".documents">Documents</a></li>
+                            </ul>#}
+
+                            {#<div class="btn-group pull-right">
+                                <button type="button" class="btn btn-white btn-sm"><i class="fa fa-check-square-o"></i> Select all</button>
+                                <button type="button" class="btn btn-white btn-sm"><i class="fa fa-folder-open"></i> Add New</button>
+                                <button type="button" class="btn btn-white btn-sm"><i class="fa fa-trash-o"></i> Delete</button>
+                            </div>#}
+                            {#<a href="#" type="button" class="btn pull-right btn-sm"><i class="fa fa-upload"></i> Upload New File</a>#}
+
+                            <div class="clearfix">
+                                <div class="btn-group">
+                                    <button id="editable-sample_new" class="btn btn-primary" onclick="window.location='{{ url('_backend_content_article_slider_add') }}'">
+                                        Ajouter <i class="fa fa-upload"></i>
+                                    </button>
+                                </div>
+                            </div><br>
+                            {{ render(controller('BDMNicolasBackendBundle:Partials:flashbag')) }}
+
+                            <div id="gallery" class="media-gal">
+
+                                {% for slide in slides %}
+                                <div class="images item" style="height: 200px;">
+                                    <a href="#myModal{{ slide.id }}" data-toggle="modal">
+                                        <img src="{{ asset('/uploads/backend/content/article/slider/' ~ slide.background) }}" alt="{{ slide.title }}" style="height:auto;" />
+                                    </a>
+                                    <p class="pull-down">{{ slide.title }} </p>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+
+                            {#<div class="col-md-12 text-center clearfix">
+                                <ul class="pagination">
+                                    <li><a href="#">«</a></li>
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li><a href="#">»</a></li>
+                                </ul>
+                            </div>#}
+
+                            {% for slide in slides %}
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal{{ slide.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title">{{ slide.title }}</h4>
+                                        </div>
+
+                                        <div class="modal-body row">
+
+                                            <div class="col-md-12 img-modal">
+                                                <img src="{{ asset('/uploads/backend/content/article/slider/' ~ slide.background) }}" alt="">
+                                            </div>
+
+                                            <form method="post" action="{{ path('_backend_content_article_slider_edit', {'id':slide.id}) }}" enctype="multipart/form-data">
+
+                                            <div class="col-md-6 img-modal">
+                                                <div class="form-group">
+                                                    <label for="small_title"> Titre</label>
+                                                    <input id="small_title" name="title" value="{{ slide.title }}" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="button_label"> Lien</label>
+                                                    <input id="button_label" name="link" value="{{ slide.link }}" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+
+                                                <div class="form-group">
+                                                    <label for="isPrivate" > Privé:</label>
+                                                    <input  type="checkbox" style="width: 20px" class="form-control" id="isPrivate" name="isPrivate" {% if slide.isPrivate %}checked{% endif %} />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label> Nouvelle Image (Optionnel)</label>
+                                                    <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                                        <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
+                                                    <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Selection</span><span class="fileinput-exists">Changer</span>
+                                                        <input type="file" name="background">
+                                                    </span>
+                                                        <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Supprimer</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="pull-right">
+                                                    <button class="btn btn-danger" onclick="window.location='{{ url('_backend_content_article_slider_delete', {id : slide.id}) }}'" type="button">Supprimer</button>
+                                                    <button class="btn btn-primary" type="submit">Appliquer</button>
+                                                </div>
+                                            </div>
+                                            </form>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- modal -->
+                            {% endfor %}
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+{% endblock %}
+
+{% block css %}
+    {{ parent() }}
+
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/bootstrap-fileupload/jasny-bootstrap.min.css" />
+    <link href="/assets/backend/bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/backend/css/bootstrap-reset.css" rel="stylesheet">
+    <link href="/assets/backend/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/assets/backend/css/bootstrap-switch.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/bootstrap-fileupload/jasny-bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
+
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/bootstrap-datepicker/css/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/bootstrap-timepicker/css/timepicker.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/bootstrap-colorpicker/css/colorpicker.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/bootstrap-datetimepicker/css/datetimepicker.css" />
+
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/jquery-multi-select/css/multi-select.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/jquery-tags-input/jquery.tagsinput.css" />
+
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/select2/select2.css" />
+
+    <!-- Custom styles for this template -->
+    <link href="/assets/backend/css/style.css" rel="stylesheet">
+    <link href="/assets/backend/css/style-responsive.css" rel="stylesheet" />
+{% endblock %}
+
+{% block js %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-fileupload/jasny-bootstrap.min.js"></script>
+    <!--Core js-->
+    <script src="/assets/backend/js/jquery.js"></script>
+    <script src="/assets/backend/js/jquery-1.10.2.min.js"></script>
+    <script src="/assets/backend/bs3/js/bootstrap.min.js"></script>
+    <script src="/assets/backend/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script class="include" type="text/javascript" src="/assets/backend/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="/assets/backend/js/jquery.scrollTo.min.js"></script>
+    <script src="/assets/backend/js/easypiechart/jquery.easypiechart.js"></script>
+    <script src="/assets/backend/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
+    <script src="/assets/backend/js/jquery.nicescroll.js"></script>
+    <script src="/assets/backend/js/jquery.nicescroll.js"></script>
+
+    <script src="/assets/backend/js/bootstrap-switch.js"></script>
+
+    <script type="text/javascript" src="/assets/backend/js/fuelux/js/spinner.min.js"></script>
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-fileupload/jasny-bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-daterangepicker/moment.min.js"></script>
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+
+    <script type="text/javascript" src="/assets/backend/js/jquery-multi-select/js/jquery.multi-select.js"></script>
+    <script type="text/javascript" src="/assets/backend/js/jquery-multi-select/js/jquery.quicksearch.js"></script>
+
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+
+    <script src="/assets/backend/js/jquery-tags-input/jquery.tagsinput.js"></script>
+
+    <script src="/assets/backend/js/select2/select2.js"></script>
+    <script src="/assets/backend/js/select-init.js"></script>
+
+
+    <!--common script init for all pages-->
+    <script src="/assets/backend/js/scripts.js"></script>
+
+    <script src="/assets/backend/js/toggle-init.js"></script>
+
+    <script src="/assets/backend/js/advanced-form.js"></script>
+    <!--Easy Pie Chart-->
+    <script src="/assets/backend/js/easypiechart/jquery.easypiechart.js"></script>
+    <!--Sparkline Chart-->
+    <script src="/assets/backend/js/sparkline/jquery.sparkline.js"></script>
+    <!--jQuery Flot Chart-->
+    {#<script src="/assets/backend/js/flot-chart/jquery.flot.js"></script>
+    <script src="/assets/backend/js/flot-chart/jquery.flot.tooltip.min.js"></script>
+    <script src="/assets/backend/js/flot-chart/jquery.flot.resize.js"></script>
+    <script src="/assets/backend/js/flot-chart/jquery.flot.pie.resize.js"></script>#}
+
+    {#<script>
+        $('.pull-down').each(function() {
+            $(this).css('margin-top', $(this).parent().height()-90)
+        });
+    </script>#}
+{% endblock %}

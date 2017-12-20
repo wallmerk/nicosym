@@ -1,0 +1,67 @@
+{#
+/**
+ * @file
+ * Twitter Bootstrap v3 Sliding pagination control implementation.
+ *
+ * View that can be used with the pagination module
+ * from the Twitter Bootstrap CSS Toolkit
+ * http://getbootstrap.com/components/#pagination
+ *
+ * @author Pablo Díez <pablodip@gmail.com>
+ * @author Jan Sorgalla <jsorgalla@gmail.com>
+ * @author Artem Ponomarenko <imenem@inbox.ru>
+ * @author Artem Zabelin <artjomzabelin@gmail.com>
+ */
+#}
+
+
+{% if pageCount > 1 %}
+
+    {% if previous is defined %}
+        <a class="pagination-prev" rel="prev"
+           href="{{ path(route, query|merge({(pageParameterName): previous})) }}"><</a>
+    {% else %}
+    {% endif %}
+
+    {% if startPage > 1 %}
+        <a class="pagination-link" href="{{ path(route, query|merge({(pageParameterName): 1})) }}">1</a>
+        <span class="pagination-sep">-</span>
+        {% if startPage == 3 %}
+            <a class="pagination-link" href="{{ path(route, query|merge({(pageParameterName): 2})) }}">2</a>
+            <span class="pagination-sep">-</span>
+        {% elseif startPage != 2 %}
+            <span>&hellip;</span>
+        {% endif %}
+    {% endif %}
+
+    {% for page in pagesInRange %}
+        {% if page != current %}
+            <a class="pagination-link" href="{{ path(route, query|merge({(pageParameterName): page})) }}">{{ page }}</a>
+            <span class="pagination-sep">-</span>
+        {% else %}
+            <span class="pagination-link pagination-link-active">{{ page }}</span>
+            <span class="pagination-sep">-</span>
+        {% endif %}
+
+    {% endfor %}
+
+    {% if pageCount > endPage %}
+        {% if pageCount > (endPage + 1) %}
+            {% if pageCount > (endPage + 2) %}
+                {#<span>&hellip;</span>#}
+            {% else %}
+                <a class="pagination-link"
+                   href="{{ path(route, query|merge({(pageParameterName): (pageCount - 1)})) }}">{{ pageCount -1 }}</a>
+            {% endif %}
+        {% endif %}
+        <a class="pagination-link"
+           href="{{ path(route, query|merge({(pageParameterName): pageCount})) }}">{{ pageCount }}</a>
+    {% endif %}
+
+    {% if next is defined %}
+        <a class="pagination-link" rel="next" href="{{ path(route, query|merge({(pageParameterName): next})) }}">
+            >
+        </a>
+    {% else %}
+    {% endif %}
+{% endif %}

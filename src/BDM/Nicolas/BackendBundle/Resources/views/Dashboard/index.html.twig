@@ -1,0 +1,45 @@
+{% extends 'BDMNicolasBackendBundle::layout.html.twig' %}
+
+{% block content %}
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <!-- page start-->
+
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <!--mini statistics start-->
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="mini-stat clearfix">
+                                <span class="mini-stat-icon tar"><i class="fa fa-archive"></i></span>
+                                <div class="mini-stat-info">
+                                    <span>{% if product_count is defined %}{{ product_count }}{% endif %}</span>
+                                    Produits
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--mini statistics end-->
+
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Bienvenue sur la console d'administration du site Nicolas Maroc.
+                        <span class="tools pull-right">
+                            <a href="javascript:;" class="fa fa-chevron-down"></a>
+                            <a href="javascript:;" class="fa fa-cog"></a>
+                            <a href="javascript:;" class="fa fa-times"></a>
+                         </span>
+                        </header>
+                        <div class="panel-body">
+                            Veuillez séléctionner l'outil à afficher sur le listing de gauche.
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+{% endblock %}

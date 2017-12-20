@@ -1,0 +1,124 @@
+{% extends 'BDMNicolasBackendBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                {{ render(controller('BDMNicolasBackendBundle:Partials:flashbag')) }}
+
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Media Manager
+                            {#<span class="tools pull-right">#}
+                            {#<a href="javascript:;" class="fa fa-chevron-down"></a>#}
+                            {#<a href="javascript:;" class="fa fa-cog"></a>#}
+                            {#<a href="javascript:;" class="fa fa-times"></a>#}
+
+                         </span>
+                        </header>
+                        <div class="panel-body">
+                            <div class="btn-group">
+                                <button id="editable-sample_new" class="btn btn-primary" onclick="window.location='{{ url('_backend_product_image_add',{'id':product.id}) }}'">
+                                    Ajouter <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                            {#<ul id="filters" class="media-filter">#}
+                            {#<li><a href="#" data-filter="*"> All</a></li>#}
+                            {#<li><a href="#" data-filter=".images">Images</a></li>#}
+                            {#<li><a href="#" data-filter=".audio">Audio</a></li>#}
+                            {#<li><a href="#" data-filter=".video">Video</a></li>#}
+                            {#<li><a href="#" data-filter=".documents">Documents</a></li>#}
+                            {#</ul>#}
+
+                            <div class="btn-group pull-right">
+                                {#<button type="button" class="btn btn-white btn-sm"><i class="fa fa-check-square-o"></i>#}
+                                    {#Select all#}
+                                {#</button>#}
+                                <button onclick="window.location='{{ url('_backend_product_image_add', {'id':product.id}) }}'" type="button" class="btn btn-white btn-sm"><i class="fa fa-folder-open"></i> Add
+                                    New
+                                </button>
+                                {#<button type="button" class="btn btn-white btn-sm"><i class="fa fa-trash-o"></i> Delete#}
+                                {#</button>#}
+                            </div>
+                            {#<a href="#" type="button" class="btn pull-right btn-sm"><i class="fa fa-upload"></i> Upload#}
+                                {#New File</a>#}
+
+
+                            <div id="gallery" class="media-gal">
+
+                                {% if images|length!=0 %}
+                                    {% for image in images %}
+                                        <div class=" audio item ">
+                                            <a href="#myModal{{ image.id }}" data-toggle="modal">
+                                                <img src="{{ asset('/uploads/backend/product/image/' ~ image.file) }}"
+                                                     alt=""/>
+                                            </a>
+                                            {#<p>img02.jpg </p>#}
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+
+
+                            </div>
+                            <!-- Modal -->
+                            {% if images|length!=0 %}
+                                {% for image in images %}
+
+                                    <div class="modal fade" id="myModal{{ image.id }}" tabindex="-1" role="dialog"
+                                         aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-hidden="true">&times;</button>
+                                                    <h4 class="modal-title">Edit Image</h4>
+                                                </div>
+
+                                                <div class="modal-body row">
+
+                                                    <div class="col-md-5 img-modal">
+                                                        <img src="{{ asset('/uploads/backend/product/image/' ~ image.file) }}" alt="">
+                                                    </div>
+                                                    <div class="col-md-7">
+                                                        <div class="form-group ">
+                                                            <label for="isMain"
+                                                                   class="control-label col-md-3">Principale:</label>
+                                                            <div class="col-md-6">
+                                                                <input type="checkbox" style="width: 20px"
+                                                                       class="switch-small form-control"
+                                                                       id="isMain" name="isMain"
+                                                                       {% if image.isMain is defined and image.isMain %}checked{% endif %} />
+                                                            </div>
+                                                        </div>
+                                                        <div class="pull-right">
+                                                            <button onclick="window.location='{{ url('_backend_product_image_edit', {'id_product':product.id,'id_image':image.id}) }}'" class="btn btn-infos" type="button">Edit</button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            <!-- modal -->
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+{% endblock %}
+{% block js %}
+    <script>
+        $(document).ready(function () {
+
+        });
+    </script>
+{% endblock %}

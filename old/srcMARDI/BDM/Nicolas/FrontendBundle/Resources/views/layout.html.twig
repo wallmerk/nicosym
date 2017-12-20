@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{% if page_title is defined and page_title %}{{ page_title }}{% endif %} - NICOLAS</title>
+    <link rel="shortcut icon" href="{{ asset('assets/frontend/images/favicon.ico') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/owl.theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/owl.transitions.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/selectric.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/ns-icon.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/frontend/css/mon_compte.css') }}">
+
+    {% block front_end_css %}
+    {% endblock %}
+
+    <script type="text/javascript" src="{{ asset('assets/frontend/js/jquery-3.1.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/frontend/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/frontend/js/owl.carousel.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/frontend/js/jquery.selectric.js') }}"></script>
+    
+
+</head>
+<body>
+
+{% include "@BDMNicolasFrontend/Partials/header.html.twig" %}
+
+{% block content %}
+{% endblock %}
+
+{% include "@BDMNicolasFrontend/Partials/footer.html.twig" %}
+
+</body>
+
+<script type="text/javascript" src="{{ asset('assets/frontend/js/script.js') }}"></script>
+
+{% block front_end_js %}
+{% endblock %}
+
+
+</html>

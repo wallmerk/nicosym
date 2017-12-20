@@ -1,0 +1,409 @@
+{% extends "@BDMNicolasFrontend/layout.html.twig" %}
+
+{% block content %}
+
+    <section class="mainSlider">
+        <div class="wrapper" style="position:relative;">
+
+            <div id="mainSlider" class="mainSlider owl-carousel owl-theme">
+                {% for slider in sliders %}
+                    <div class="item">
+
+                        <div class="content">
+                            {#<img src="assets/frontend/images/bot_slide1.png" alt="" class="bot">#}
+                            {#<div class="infos nicolas-product">#}
+                            {#<div class="text-center">#}
+                            {#<h3 class="product-title">château d'arche</h3>#}
+
+                            {#<span class="product-district">Rhône</span>#}
+                            {#<span class="product-domain">Beaumes de Venise</span>#}
+
+                            {#<div class="product-priceContainer">#}
+                            {#<span class="nicolas-price product-price ">#}
+                            {#<span class="price-unityContainer">#}
+                            {#<span class="price-unity">10,</span>#}
+                            {#<sup class="price-currency">DH</sup>#}
+                            {#</span>#}
+                            {#<span class="price-decimal">75</span>#}
+                            {#</span>#}
+                            {#</div>#}
+
+                            {#<span class="product-bottle">Bouteille de 75 cl</span>#}
+
+                            {#<a class="nicoButton nicoButton-default product-button">#}
+                            {#<span class="nicoButton-content">#}
+                            {#<i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>#}
+                            {#Découvrir#}
+                            {#</span>#}
+                            {#</a>#}
+                            {#</div>#}
+                            {#</div>#}
+                        </div>
+                        <a href="{{ slider.link }}">
+                            <img class="img-responsive bg_slide"
+                                 src="{{ asset('/uploads/backend/content/home/slider/' ~ slider.background) }}" alt="">
+                        </a>
+                    </div>
+                {% endfor %}
+                {#<div class="item">#}
+                {#<div class="content">#}
+                {#<img src="assets/frontend/images/bot_slide1.png" alt="" class="bot">#}
+                {#<div class="infos nicolas-product">#}
+                {#<div class="text-center">#}
+                {#<h3 class="product-title">château d'arche</h3>#}
+
+                {#<span class="product-district">Rhône</span>#}
+                {#<span class="product-domain">Beaumes de Venise</span>#}
+
+                {#<div class="product-priceContainer">#}
+                {#<span class="nicolas-price product-price ">#}
+                {#<span class="price-unityContainer">#}
+                {#<span class="price-unity">10,</span>#}
+                {#<sup class="price-currency">DH</sup>#}
+                {#</span>#}
+                {#<span class="price-decimal">75</span>#}
+                {#</span>#}
+                {#</div>#}
+
+                {#<span class="product-bottle">Bouteille de 75 cl</span>#}
+
+                {#<a class="nicoButton nicoButton-default product-button">#}
+                {#<span class="nicoButton-content">#}
+                {#<i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>#}
+                {#Découvrir#}
+                {#</span>#}
+                {#</a>#}
+                {#</div>#}
+                {#</div>#}
+                {#</div>#}
+                {#<img class="img-responsive bg_slide" src="assets/frontend/images/bg_slide1.jpg" alt="">#}
+                {#</div>#}
+                {#<div class="item">#}
+                {#<div class="content">#}
+                {#<img src="assets/frontend/images/bot_slide1.png" alt="" class="bot">#}
+                {#<div class="infos nicolas-product">#}
+                {#<div class="text-center">#}
+                {#<h3 class="product-title">château d'arche</h3>#}
+
+                {#<span class="product-district">Rhône</span>#}
+                {#<span class="product-domain">Beaumes de Venise</span>#}
+
+                {#<div class="product-priceContainer">#}
+                {#<span class="nicolas-price product-price ">#}
+                {#<span class="price-unityContainer">#}
+                {#<span class="price-unity">10,</span>#}
+                {#<sup class="price-currency">DH</sup>#}
+                {#</span>#}
+                {#<span class="price-decimal">75</span>#}
+                {#</span>#}
+                {#</div>#}
+
+                {#<span class="product-bottle">Bouteille de 75 cl</span>#}
+
+                {#<a class="nicoButton nicoButton-default product-button">#}
+                {#<span class="nicoButton-content">#}
+                {#<i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>#}
+                {#Découvrir#}
+                {#</span>#}
+                {#</a>#}
+                {#</div>#}
+                {#</div>#}
+                {#</div>#}
+                {#<img class="img-responsive bg_slide" src="assets/frontend/images/bg_slide1.jpg" alt="">#}
+                {#</div>#}
+
+            </div>
+
+            <!-- nous trouver -->
+            <div class="searchStore text-center">
+                <div class="titlecontainer">
+                    <i class="ns-Icon ns-Icon--nicolas searchStore-titleIcon"></i>
+                    <h3 class="title"><span class="small">où nous</span><br>trouver</h3>
+                </div>
+                <div class="content">
+                    {#<p class="highlight">#}
+                        {#+ de 500 caviste#}
+                    {#</p>#}
+                    <p class="find-me-link">
+                        <a href="#">Trouvez-moi!</a>
+                    </p>
+                    <p>
+                        ou renseignez votre localité
+                    </p>
+                </div>
+                <div class="searchStore-form">
+                    <form method="post" action="{{ path('_find_us') }}" class="quickSearch-form">
+                        <input class="quickSearch-input" type="text" name="search" placeholder="Exemple: Casablanca">
+                        <button type="submit" class="quickSearch-submit">
+                            <i class="ns-Icon ns-Icon--knurr quickSearch-icon"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section> <!-- End main slider -->
+
+    {% if brands|length!=0 %}
+        <section class="nsSection brandsSlider">
+            <div class="container" style="position:relative;">
+                <div class="wrapper">
+                    <div id="brands-slider" class="owl-carousel">
+
+                        
+                        <div class="item"><img src="/uploads/backend/product/brand/6bfd3e20425dcd53c92a5f6657b5d4z2.png" alt=""></div>
+                        <div class="item"><img src="/uploads/backend/product/brand/6bfd3e20425dcd53c92a5f6657b5d4z3.png" alt=""></div>
+                        <div class="item"><img src="/uploads/backend/product/brand/6bfd3e20425dcd53c92a5f6657b5d4z4.png" alt=""></div>
+                        <div class="item"><img src="/uploads/backend/product/brand/6bfd3e20425dcd53c92a5f6657b5d4z5.png" alt=""></div>
+                        <div class="item"><img src="/uploads/backend/product/brand/6bfd3e20425dcd53c92a5f6657b5d4z6.png" alt=""></div>
+                        <div class="item"><img src="/uploads/backend/product/brand/6bfd3e20425dcd53c92a5f6657b5d4z1.png" alt=""></div>
+
+
+                    </div>
+                </div>
+                <div class="owl-controls clickable">
+                    <div class="owl-buttons">
+                        <div class="owl-prev"></div>
+                        <div class="owl-next"></div>
+                    </div>
+                </div>
+            </div>
+        </section> <!-- End brands slider -->
+    {% endif %}
+    {% if products|length!=0 %}
+        <section class="nsSection nsSection-gray selectionSlider">
+            <div class="container" style="position:relative;">
+                <p class="nicolas-title nicolas-title--yellow text-center">
+                    la sélection de votre caviste
+                    <i class="ns-TitleSection-icon"></i>
+                </p>
+
+                <div class="wrapper">
+                    <div id="selectionSlider" class="owl-carousel">
+                        {% for product in products %}
+                            <div class="item nicolas-product">
+                                <a href="{{ path('_single_product',{'id':product.id,'slug':product.slug}) }}"
+                                   title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">
+                                    <figure class="product-figure">
+                                        <img class="product-img "
+                                             src="{% if product.getImages() %}{{ asset('/uploads/backend/product/image/' ~ product.getImages()[0].getFile())| imagine_filter('listing_product') }}{% endif %}"
+                                             title="Buzet Costes De Beyrac 2015">
+                                        <figcaption
+                                                class="product-title">{% if product.label %}{{ product.label }}{% endif %}</figcaption>
+                                    </figure>
+                                </a>
+                                {#<div class="product-sticker">#}
+                                {#<img src="assets/frontend/images/productSticker2.png" alt="">#}
+                                {#</div>#}
+
+                                {% if product.isNew == 1 %}
+                                    <div class="product-sticker">
+                                        <img src="{{ asset('assets/frontend/images/productSticker3.png') }}" alt="">
+                                    </div>
+                                {% endif %}
+
+                                {% if product.getRegion() %}<span
+                                        class="product-district">{{ product.getRegion().getLabel() }}</span>{% endif %}
+                                <span class="product-domain">{% if product.appelation %}{{ product.appelation }}{% endif %}</span>
+                                {% set price = product.regularPrice %}
+                                {% set round_part = product.regularPrice|round %}
+                                {% set decimal = 1 - round_part + price %}
+                                <div class="product-priceContainer">
+						<span class="nicolas-price product-price ">
+							<span class="price-unityContainer">
+								<span class="price-unity">{% if product.regularPrice and price!=round_part %}{{ round_part - 1 }}{% else %}{{ price }}{% endif %},</span>
+								<sup class="price-currency">DH</sup>
+							</span>
+							<span class="price-decimal">{% if product.regularPrice and decimal != 1 %}{{ decimal|number_format(2)|replace({'0.':''}) }}{% else %}00{% endif %}</span>
+						</span>
+                                </div>
+
+                                <span class="product-bottle">Bouteille de {% if product.volume %}{{ product.volume }}{% endif %}
+                                    cl</span>
+
+                                <a class="nicoButton nicoButton-default product-button"
+                                   href="{{ path('_single_product',{'id':product.id,'slug':product.slug}) }}"
+                                   title="Buzet Costes De Beyrac 2015">
+						<span class="nicoButton-content">
+							<i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>
+							Découvrir
+						</span>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                {% if products|length>4 %}
+                    <div class="owl-controls clickable">
+                        <div class="owl-buttons">
+                            <div class="owl-prev"></div>
+                            <div class="owl-next"></div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </section><!-- End Selection slider -->
+
+    {% endif %}
+    {% if product is defined and product and recettes|length!=0 %}
+        <section class="nsSection agreementSection">
+            <div class="container">
+
+                <p class="nicolas-title nicolas-title--orange text-center">
+                    les accords de nicolas
+                    <i class="ns-TitleSection-icon"></i>
+                </p>
+
+                <div class="col-sm-12 " style="margin-bottom: 60px;">
+                    <div class="col-sm-7">
+                        {% if articleSliders is defined and articleSliders %}
+                            <div id="agreementsSlider" class="owl-carousel owl-theme">
+                                {% for slider in articleSliders %}
+                                    <div class="item">
+                                        <div class="agreementSlider-desc">
+                                            <p class="agreementSlider-title">
+                                                {% if slider.title %}{{ slider.title }}{% endif %}
+                                            </p>
+                                            <a href="{{ slider.link }}"
+                                               class="nicoButton nicoButton-default agreementSlider-link"
+                                               target="_blank">
+								<span class="nicoButton-content">
+									<i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>
+									Découvrir
+								</span>
+                                            </a>
+                                        </div>
+                                        <img src="{{ asset('/uploads/backend/content/article/slider/'~slider.background) | imagine_filter('recette_home_thumb') }}"
+                                             alt=""
+                                             class="img-responsive">
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% if product %}
+                    <div class="hidden-xs col-sm-4">
+                        <div class="nicolas-product nicolas-product-suggestion ">
+                            <a href="{{ path('_single_product',{'id':product.id,'slug':product.slug}) }}"
+                               title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">
+                                <figure class="product-figure">
+                                    <img class="product-img "
+                                         src="{{ asset('/uploads/backend/product/image/' ~ product.getImages()[0].getFile())| imagine_filter('listing_product') }}">
+                                    <figcaption
+                                            class="product-title">{% if product.label %}{{ product.label }}{% endif %}  {% if product.vintage %}{{ product.vintage }}{% endif %}</figcaption>
+                                </figure>
+                            </a>
+
+                            <span class="suggestion-title">
+						La suggestion du caviste
+						<i class="ns-TitleSection-icon"></i>
+					</span>
+
+                            {% if product.getRegion() %}<span
+                                    class="product-district">{{ product.getRegion().getLabel() }}</span>{% endif %}
+                            <span class="product-domain">{% if product.appelation %}{{ product.appelation }}{% endif %}</span>
+                            <a class="nicoButton nicoButton-default product-button">
+						<span class="nicoButton-content">
+							<i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>
+							Découvrir
+						</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                <section class="agreementList text-center">
+                    <p class="article-paragraph">
+                        Retrouvez tous les accords met-vins de Nicolas en cliquant sur les pictos proposés
+                    </p>
+                    {% for alliance in  alliances %}
+                        <a href="{{ path('_products_by_alliance',{'alliance':alliance.slug }) }}"
+                           class="agreementList-item">
+                            <img src="{{ asset('/uploads/backend/product/alliance/'~alliance.badge) }}">
+                            <span class="agreementList-desc">{% if alliance.label %}{{ alliance.label }}{% endif %}</span>
+                        </a>
+                    {% endfor %}
+                </section>
+
+            </div>
+        </section>
+    {% endif %}
+
+    <section class="nsSection nsSection-gray aboutUsSection">
+        <div class="container">
+            {% for widget in widgets %}
+                {% if widget.order == 1 %}
+                    <div class="col-sm-6 aboutUsWidget ">
+                        <div class="whoAreWe">
+                            <img class="whoAreWe-icon"
+                                 src="{{ asset('uploads/backend/content/home/widget/icon/'~widget.icon) }}"
+                                 alt="qui sommes-nous?">
+                            <p class="whoAreWe-title">
+                                {% if widget.title %}{{ widget.title }}{% endif %}
+                            </p>
+                            <p class="whoAreWe-desc">
+            <span class="highlight">
+            {% if widget.subTitle %}{{ widget.subTitle }}{% endif %}
+                </span>
+                                <br>
+                                {% if widget.text %}{{ widget.text }}{% endif %}
+                            </p>
+                            <a href="{{ widget.link }}" class="nicoButton nicoButton-default">
+					<span class="nicoButton-content">
+						<i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>
+						Découvrir
+					</span>
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            <div class="col-sm-6 aboutUsWidget didYouKnow">
+                {% for widget in widgets %}
+                    {% if widget.order == 2 %}
+                        <div class="col-sm-6 text-center">
+                            <div class="didYouKnow-left">
+                                <img class="didYouKnow-icon"
+                                     src="{{ asset('uploads/backend/content/home/widget/icon/'~widget.icon) }}" alt="">
+                                <p class="didYouKnow-title">
+                                    {% if widget.title %}{{ widget.title }}{% endif %}
+                                </p>
+                                <p class="didYouKnow-desc">
+                                    {% if widget.text %}{{ widget.text }}{% endif %}
+                                </p>
+                                <p class="didYouKnow-footnote">
+                                    {% if widget.notice %}{{ widget.notice }}{% endif %}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="hidden-xs col-sm-6 text-center">
+                            <div class="didYouKnow-right">
+                                <img src="{{ asset('uploads/backend/content/home/widget/picture/'~widget.picture) }}"
+                                     class="img-responsive" alt="">
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <!-- <div class="first-col col-sm-6 text-center">
+
+                    <h1>le saviez-vous?</h1>
+                    <p>
+                        Peu importe l’occasion, sachez
+                        <span class="highlight">qu’il y a toujours des bouteilles au frais chez Nicolas.</span> <br>
+                        C’est tellement plus agréable d’offrir une bouteille et de
+                        pouvoir la déboucher sans
+                        plus tarder.
+                    </p>
+
+                </div>
+                <div class="second-col col-xs-6"></div> -->
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,142 @@
+{% extends "@BDMNicolasFrontend/layout.html.twig" %}
+
+{% block content %}
+
+    <main>
+        <section class="mapSection">
+            <div class="searchPane">
+                <div class="searchPane-container">
+                    <div class="breadCrumb">
+                        <ol class="breadCrumb-nav" role="navigation">
+                            <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Acceuil</a></li>
+                            <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Trouvez un magasin</a></li>
+                        </ol>
+                    </div>
+                    <p class="nicolas-title" style="padding-bottom:0; color: #fcb714; padding-bottom: 1em;">
+                        nicolas près de chez vous
+                        <i class="ns-TitleSection-icon"></i>
+                    </p>
+                    <div class="quickSearch">
+                        <form method="post" action="{{ path('_find_us') }}" class="quickSearch-form">
+                            <input class="quickSearch-input" type="text" name="search"
+                                   placeholder="Tapez ici votre recherche">
+                            <button type="submit" class="quickSearch-submit">
+                                <i class="ns-Icon ns-Icon--knurr quickSearch-icon"></i>
+                            </button>
+                        </form>
+                        <form action="{{ path('_find_us') }}" method="post" class="nearMeStorefinderForm">
+                            <button type="submit" class="nicoButton nicoButton-default">
+	       						<span class="nicoButton-content">
+									<i class="nicoButton-icon ns-Icon ns-Icon--pin"></i>
+									trouvez-moi
+								</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="nicolasMap" style="width:100%; height: 35em; overflow: hidden;"></div>
+        </section>
+
+        <section class="tabsSection">
+            
+           
+            <!--  
+            <div class="tabsNav container">
+                <button class="tabsNav-button tabsNav-button-active" data-target="#wine-pubs">wine bars</button>
+                <button class="tabsNav-button" data-target="#corners">our corners</button>
+                <button class="tabsNav-button" data-target="#nicolas-in-word">nicolas wordwide</button>
+            </div>
+            -->
+
+            <div class="tabsContent-container">
+                <div id="wine-pubs" class="tabsContent container">
+                    <p class="nicolas-title">
+                        Nicolas au Maroc
+                        <i class="ns-TitleSection-icon"></i>
+                    </p>
+                    <div class="tab-intro">
+                        <p>
+                            Partager un moment jovial entre amis ou en tête à tête autour d'un repas raffiné dans une
+                            ambiance chaleureuse et moderne.Laissez-vous tenter par l'un de ces deux écrins de
+                            convivialité dédiés à l'oenologie où la cuisine soignéese mêle volontiers aux arômes du vin.
+                        </p>
+                        <p>
+                            Nos bars à vin Nicolas La Madeleine et Bercy vous accueillent au sein de leur établissement
+                            pour vous faire découvrir les meilleures alliances mets-vins...
+                        </p>
+                    </div>
+                    <div class="col-sm-6  text-center">
+                        <img class="img-responsive tabsContent-img" src="assets/frontend/images/store1.jpg" alt="">
+                    </div>
+                    <div class="col-sm-6 e text-center">
+                        <img class="img-responsive tabsContent-img" src="assets/frontend/images/store2.jpg" alt="">
+                    </div>
+                </div>
+                
+                <!-- 
+                <div id="corners" class="tabsContent container">
+                    <p class="nicolas-title" style="padding-bottom:0;">
+                        Chez Nicolas2
+                        <i class="ns-TitleSection-icon"></i>
+                    </p>
+                    <p class="tab-intro">
+                        Partager un moment jovial entre amis ou en tête à tête autour d'un repas raffiné dans une
+                        ambiance chaleureuse et moderne.<br> Laissez-vous tenter par l'un de ces deux écrins de
+                        convivialité dédiés à l'oenologie où la cuisine soignée <br> se mêle volontiers aux arômes du
+                        vin.<br> <br> Nos bars à vin Nicolas La Madeleine et Bercy vous accueillent au sein de leur
+                        établissement pour vous faire découvrir <br> les meilleures alliances mets-vins...
+                    </p>
+                </div>
+                <div id="nicolas-in-word" class="tabsContent container">
+                    <p class="nicolas-title" style="padding-bottom:0;">
+                        Chez Nicolas3
+                        <i class="ns-TitleSection-icon"></i>
+                    </p>
+                    <p class="tab-intro">
+                        Partager un moment jovial entre amis ou en tête à tête autour d'un repas raffiné dans une
+                        ambiance chaleureuse et moderne.<br> Laissez-vous tenter par l'un de ces deux écrins de
+                        convivialité dédiés à l'oenologie où la cuisine soignée <br> se mêle volontiers aux arômes du
+                        vin.<br> <br> Nos bars à vin Nicolas La Madeleine et Bercy vous accueillent au sein de leur
+                        établissement pour vous faire découvrir <br> les meilleures alliances mets-vins...
+                    </p>
+                </div>
+                -->
+                
+            </div>
+        </section>
+
+
+    </main>
+{% endblock %}
+
+{% block front_end_css %}
+{% endblock %}
+
+{% block front_end_js %}
+
+
+    <script type="text/javascript">
+        //Load Google map
+        var map;
+        function nicolasMap() {
+            var uluru = {lat: 33.5731104, lng: -7.5898434};
+            map = new google.maps.Map(document.getElementById("nicolasMap"), {
+                center: uluru,
+                zoom: 13,
+                scrollwheel: false
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJ_3g3J9orbjnFevIem3UAen_XJ6OIFMI&callback=nicolasMap">
+    </script>
+
+{% endblock %}

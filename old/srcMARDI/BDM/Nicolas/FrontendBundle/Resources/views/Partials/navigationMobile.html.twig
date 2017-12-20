@@ -1,0 +1,15 @@
+<nav id="navigation-mobile" class="navigation-mobile visible-xs-12">
+    <div class="container">
+        <ul class="navMobile-items">
+            {# 			{% for category in categories %}
+                            <li class="navMobile-item"><a href="{{ path('_products_by_category',{'id_category':category.id,'slug_category':category.slug}) }}"
+                                class="ns-principalNav-link">{{ category.label }}</a></li>
+                        {% endfor %} #}
+            {% for category in categories %}
+                <li class="navMobile-item"><a
+                            href="{{ path('_products_by_category',{'id_category':category.id,'slug_category':category.slug}) }}"
+                            class="navMobile-link">{{ category.label }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</nav>

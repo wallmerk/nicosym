@@ -1,0 +1,241 @@
+{% extends "@BDMNicolasFrontend/layout.html.twig" %}
+
+{% block content %}
+
+    <main >
+
+
+        <div class="container">
+            <div class="breadCrumb col-md-12">
+                <ol class="breadCrumb-nav" role="navigation">
+                    <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Acceuil</a></li>
+                    <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Magasins</a></li>
+                    <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Fiche magasin</a></li>
+                </ol>
+            </div> <!-- End pagination -->
+        </div>
+
+        <div class="container storeDetails">
+
+            <div class="col-sm-5 storeDetails-left">
+                <figure>
+                    <img src="{{asset('uploads/backend/store/' ~ magasin.image )}}" alt="" class="storeDetails-img img-responsive">
+                </figure>
+
+                <div class="storeDetails-infos">
+                    <address class="storeDetails-address">
+                        {{magasin.address}}<br>
+                        Telephone : {{magasin.phone}}<br>
+                        
+                    </address>
+                    <span class="storeDetails-status storeDetails-status--open">
+                        Actuallement ouvert
+                    </span>
+                    {#<span class="storeDetails-status storeDetails-status--close">#}
+                        {#Actuallement fermé#}
+                    {#</span>#}
+                        
+                </div>
+
+                <div class="storeDetails-openings text-center">
+                    <div class="storeDetails-openingsDay">
+                        <span class="openingsDay-details">Lundi</span>
+                        <span class="openingsDay-details">Mardi</span>
+                        <span class="openingsDay-details">Mercredi</span>
+                        <span class="openingsDay-details">Jeudi</span>
+                        <span class="openingsDay-details">Vendredi</span>
+                        <span class="openingsDay-details">Samedi</span>
+                        <span class="openingsDay-details">Dimanche</span>
+                    </div>
+                    <div class="storeDetails-openingTimes">
+                        <span class="openingsTimes-details">
+                            <span class="openingsTimes-details--AM">
+                                09h45 <br> 13h00
+                            </span>
+                            <span class="sep"></span>
+                            <span class="openingsTimes-details--PM">
+                                14h00 <br>20h00
+                            </span>
+
+                        </span>
+                        <span class="openingsTimes-details">
+                            <span class="openingsTimes-details--AM">
+                                09h45 <br> 13h00
+                            </span>
+                            <span class="sep"></span>
+                            <span class="openingsTimes-details--PM">
+                                14h00 <br>20h00
+                            </span>
+                        </span>
+                        <span class="openingsTimes-details">
+                            <span class="openingsTimes-details--AM">
+                                09h45 <br> 13h00
+                            </span>
+                            <span class="sep"></span>
+                            <span class="openingsTimes-details--PM">
+                                14h00 <br>20h00
+                            </span>
+                        </span>
+                        <span class="openingsTimes-details">
+                            <span class="openingsTimes-details--AM">
+                                09h45 <br> 13h00
+                            </span>
+                            <span class="sep"></span>
+                            <span class="openingsTimes-details--PM">
+                                14h00 <br>20h00
+                            </span>
+                        </span>
+                        <span class="openingsTimes-details">
+                            <span class="openingsTimes-details--AM">
+                                09h45 <br> 13h00
+                            </span>
+                            <span class="sep"></span>
+                            <span class="openingsTimes-details--PM">
+                                14h00 <br>20h00
+                            </span>
+                        </span>
+                        <span class="openingsTimes-details">
+                            <span class="openingsTimes-details--AM">
+                                09h45 <br> 13h00
+                            </span>
+                            <span class="sep"></span>
+                            <span class="openingsTimes-details--PM">
+                                14h00 <br>20h00
+                            </span>
+                        </span>
+                        <span class="openingsTimes-details">
+                            <span class="openingsTimes-closed">
+                                Fermé
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-sm-6 col-smstoreDetails-right">
+                <p class="storeDetails-name">
+                    {{magasin.name}}
+                </p>
+                <p class="storeDetails-date">
+                    Ouvert depuis -------
+                </p>
+                <p class="storeDetails-description ">
+                    {{magasin.description}}
+                </p>
+            </div>
+        </div>
+        
+
+        <section class="nsSection nsSection-gray">
+            <div class="container">
+                <p class="nicolas-title nicolas-title--orange text-center">
+                    Services du caviste
+                    <i class="ns-TitleSection-icon"></i>
+                </p>
+
+                <div class="servicesCaviste-list">
+                    <div class="col-sm-4 servicesCaviste-col">
+                        <span class="serviceCaviste--item">
+                            <i class="ns-Icon ns-Icon--seasonalTasting"></i>
+                            Dégustation saisonnière
+                        </span>
+                        <span class="serviceCaviste--item">
+                            <i class="ns-Icon ns-Icon--disabledAccess"></i>
+                            Accés handicapé
+                        </span>
+                        <span class="serviceCaviste--item">
+                            <i class="ns-Icon ns-Icon--gastronomicAdvice"></i>
+                            Conseils gastronomiques
+                        </span>
+                        <span class="serviceCaviste--item">
+                            <i class="ns-Icon ns-Icon--loyaltyProgram"></i>
+                            Programme de fidèlité
+                        </span>
+                    </div>
+                    <div class="col-sm-4 servicesCaviste-col">
+                        <span class="serviceCaviste--item">
+                            <i class="ns-Icon ns-Icon--seasonalTasting"></i>
+                            Dégustation saisonnière
+                        </span>
+                        <span class="serviceCaviste--item">
+                            <i class="ns-Icon ns-Icon--disabledAccess"></i>
+                            Accés handicapé
+                        </span>
+                        <span class="serviceCaviste--item">
+                            <i class="ns-Icon ns-Icon--gastronomicAdvice"></i>
+                            Conseils gastronomiques
+                        </span>
+                        <span class="serviceCaviste--item">
+                            <i class="ns-Icon ns-Icon--loyaltyProgram"></i>
+                            Programme de fidèlité
+                        </span>
+                        
+                    </div>
+                    <div class="col-sm-4 servicesCaviste-col">
+                        <span class="serviceCaviste--item">
+                            <i class="ns-Icon ns-Icon--seasonalTasting"></i>
+                            Dégustation saisonnière
+                        </span>
+                        <span class="serviceCaviste--item">
+                            <i class="ns-Icon ns-Icon--disabledAccess"></i>
+                            Accés handicapé
+                        </span>
+                        <span class="serviceCaviste--item">
+                            <i class="ns-Icon ns-Icon--gastronomicAdvice"></i>
+                            Conseils gastronomiques
+                        </span>
+                        <span class="serviceCaviste--item">
+                            <i class="ns-Icon ns-Icon--loyaltyProgram"></i>
+                            Programme de fidèlité
+                        </span>
+                        
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+
+        <section class="">
+            <div class="container">
+                <p class="nicolas-title nicolas-title--yellow text-center">
+                    S'y rendre
+                    <i class="ns-TitleSection-icon"></i>
+                </p>
+            </div>
+        </section>
+
+
+    </main>
+{% endblock %}
+
+{% block front_end_css %}
+{% endblock %}
+
+{% block front_end_js %}
+
+
+    <script type="text/javascript">
+        //Load Google map
+        // var map;
+        // function nicolasMap() {
+        //     var uluru = {lat: 33.5731104, lng: -7.5898434};
+        //     map = new google.maps.Map(document.getElementById("nicolasMap"), {
+        //         center: uluru,
+        //         zoom: 13,
+        //         scrollwheel: false
+        //     });
+        //     var marker = new google.maps.Marker({
+        //         position: uluru,
+        //         map: map
+        //     });
+        // }
+
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJ_3g3J9orbjnFevIem3UAen_XJ6OIFMI&callback=nicolasMap">
+    </script>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+@charset "UTF-8";
+/*
+ * jQuery File Upload Plugin CSS Example 8.8.2
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2013, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+
+body {
+  padding-top: 60px;
+}
+
+.nicolas-product .product-domain {
+    min-height: 1.286em;
+
+}
+
+.nsFooterSection .expertise .item h3 {
+    min-height: 2.143em;
+
+}

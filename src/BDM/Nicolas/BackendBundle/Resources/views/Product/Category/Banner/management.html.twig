@@ -1,0 +1,82 @@
+{% extends 'BDMNicolasBackendBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                {{ render(controller('BDMNicolasBackendBundle:Partials:flashbag')) }}
+
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Media Manager
+                            {#<span class="tools pull-right">#}
+                            {#<a href="javascript:;" class="fa fa-chevron-down"></a>#}
+                            {#<a href="javascript:;" class="fa fa-cog"></a>#}
+                            {#<a href="javascript:;" class="fa fa-times"></a>#}
+
+                         </span>
+                        </header>
+                        <div class="panel-body">
+                            <div class="btn-group">
+                                <button id="editable-sample_new" class="btn btn-primary" onclick="window.location='{{ url('_backend_product_category_banner_add',{'id':category.id}) }}'">
+                                    Ajouter <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                            {#<ul id="filters" class="media-filter">#}
+                            {#<li><a href="#" data-filter="*"> All</a></li>#}
+                            {#<li><a href="#" data-filter=".banners">banners</a></li>#}
+                            {#<li><a href="#" data-filter=".audio">Audio</a></li>#}
+                            {#<li><a href="#" data-filter=".video">Video</a></li>#}
+                            {#<li><a href="#" data-filter=".documents">Documents</a></li>#}
+                            {#</ul>#}
+
+                            <div class="btn-group pull-right">
+                                {#<button type="button" class="btn btn-white btn-sm"><i class="fa fa-check-square-o"></i>#}
+                                    {#Select all#}
+                                {#</button>#}
+                                <button onclick="window.location='{{ url('_backend_product_category_banner_add', {'id':category.id}) }}'" type="button" class="btn btn-white btn-sm"><i class="fa fa-folder-open"></i> Add
+                                    New
+                                </button>
+                                {#<button type="button" class="btn btn-white btn-sm"><i class="fa fa-trash-o"></i> Delete#}
+                                {#</button>#}
+                            </div>
+                            {#<a href="#" type="button" class="btn pull-right btn-sm"><i class="fa fa-upload"></i> Upload#}
+                                {#New File</a>#}
+
+
+                            <div id="gallery" class="media-gal">
+
+                                {% if banners|length!=0 %}
+                                    {% for banner in banners %}
+                                        <div class=" audio item ">
+                                            <a href="{{ path('_backend_product_category_banner_edit',{'id_category':category.id,'id_banner':banner.id}) }}" data-toggle="modal">
+                                                <img src="{{ asset('/uploads/backend/product/category/banner/' ~ banner.banner) }}"
+                                                     alt=""/>
+                                            </a>
+                                            <br>
+                                            <button onclick="window.location='{{ url('_backend_product_category_banner_delete', {'id_category':category.id,'id_banner':banner.id}) }}'" type="button" class="btn btn-danger btn-md" style="margin-top: 5px;"><i class="fa fa-plus-trash"></i> Supprimer</button>
+
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+
+
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+{% endblock %}
+{% block js %}
+    <script>
+        $(document).ready(function () {
+
+        });
+    </script>
+{% endblock %}

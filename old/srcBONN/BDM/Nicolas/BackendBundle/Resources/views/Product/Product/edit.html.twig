@@ -1,0 +1,530 @@
+{% extends 'BDMNicolasBackendBundle::layout.html.twig' %}
+
+{% block content %}
+    <!--main content start-->
+    <section id="main-content" class="">
+        <section class="wrapper">
+            <!-- page start-->
+            <!-- page start-->
+            <div class="row">
+
+                {{ render(controller('BDMNicolasBackendBundle:Partials:flashbag')) }}
+
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Gestion Des produit :: Modif
+                        </header>
+                        <div class="panel-body">
+                            <div class="position-center">
+                                <form role="form" class="form-horizontal" method="post" enctype="multipart/form-data"
+                                      action="{{ path('_backend_product_edit',{'id':product.id}) }}">
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3" for="label">Nom:</label>
+
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" id="label" name="label"
+                                                   value="{% if product.label is defined %}{{ product.label }}{% endif %}"
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3" for="ref">Ref:</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" id="ref" name="ref"
+                                                   value="{% if product.ref is defined %}{{ product.ref }}{% endif %}"
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3" for="careLevel">Niveau de garde:</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" id="careLevel" name="careLevel"
+                                                   value="{% if product.careLevel is defined %}{{ product.careLevel }}{% endif %}"
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3" for="serviceTemperature">Service de
+                                            températeur:</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" id="serviceTemperature"
+                                                   name="serviceTemperature"
+                                                   value="{% if product.serviceTemperature is defined %}{{ product.serviceTemperature }}{% endif %}"
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3" for="corps">Œnologue corps:</label>
+
+                                        <div class="col-md-9">
+                                            <select id="corps" name="corps" class="form-control">
+                                                <option value="">Œnologue corps</option>
+
+                                                {% for i in 1..10 %}
+                                                    <option {% if product.corps == i %}selected{% endif %}
+                                                            value="{{ i }}">{{ i }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3" for="fraicheur">Œnologue
+                                            fraicheur:</label>
+
+                                        <div class="col-md-9">
+                                            <select id="fraicheur" name="fraicheur" class="form-control">
+                                                <option value="">Œnologue fraicheur</option>
+                                                {% for i in 1..10 %}
+                                                    <option {% if product.fraicheur == i %}selected{% endif %}
+                                                            value="{{ i }}">{{ i }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3" for="evolution">Œnologue
+                                            evolution:</label>
+
+                                        <div class="col-md-9">
+                                            <select id="evolution" name="evolution" class="form-control">
+                                                <option value="">Œnologue evolution</option>
+                                                {% for i in 1..10 %}
+                                                    <option {% if product.evolution == i %}selected{% endif %}
+                                                            value="{{ i }}">{{ i }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3" for="style">Œnologue style:</label>
+
+                                        <div class="col-md-9">
+                                            <select id="style" name="style" class="form-control">
+                                                <option value="">Œnologue style</option>
+                                                {% for i in 1..10 %}
+                                                    <option {% if product.style == i %}selected{% endif %}
+                                                            value="{{ i }}">{{ i }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="price" class="control-label col-md-3">Prix régulier:</label>
+
+                                        <div class="col-md-9">
+                                            <input class=" form-control" id="price" name="price" type="text"
+                                                   value="{% if product.regularPrice is defined %}{{ product.regularPrice }}{% endif %}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="strikePrice" class="control-label col-md-3">Prix strike:</label>
+
+                                        <div class="col-md-9">
+                                            <input class=" form-control" id="strikePrice" name="strikePrice"
+                                                   type="text"
+                                                   value="{% if product.strikePrice is defined %}{{ product.strikePrice }}{% endif %}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="loyalityPrice" class="control-label col-md-3">Prix
+                                            loyality:</label>
+
+                                        <div class="col-md-9">
+                                            <input class="form-control" id="loyalityPrice" name="loyalityPrice"
+                                                   type="text"
+                                                   value="{% if product.loyalityPrice is defined %}{{ product.loyalityPrice }}{% endif %}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="volume" class="control-label col-md-3">Volume:</label>
+
+                                        <div class="col-md-9">
+                                            <input class=" form-control" id="volume" name="volume" type="text"
+                                                   value="{% if product.volume is defined %}{{ product.volume }}{% endif %}"/>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group ">
+                                        <label for="cepage" class="control-label col-md-3">Cépage:</label>
+
+                                        <div class="col-md-9">
+                                            <input class=" form-control" id="cepage" name="cepage" type="text"
+                                                   value="{% if product.cepage is defined %}{{ product.cepage }}{% endif %}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="appelation" class="control-label col-md-3">Appelation:</label>
+
+                                        <div class="col-md-9">
+                                            <input class=" form-control" id="appelation" name="appelation" type="text"
+                                                   value="{% if product.appelation is defined %}{{ product.appelation }}{% endif %}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="vintage" class="control-label col-md-3">Millésime:</label>
+
+                                        <div class="col-md-9">
+                                            <input class=" form-control" id="vintage" name="vintage" type="text"
+                                                   value="{% if product.vintage is defined %}{{ product.vintage }}{% endif %}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="description" class="control-label col-md-3">Description</label>
+
+                                        <div class="col-md-9">
+                                            <textarea class="form-control" name="description" id="description"
+                                                      rows="6">{% if product.description is defined %}{{ product.description }}{% endif %}</textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="characteristics1" class="control-label col-md-3">Caractèrisique
+                                            1:</label>
+
+                                        <div class="col-md-9">
+                                            <input class=" form-control" id="characteristics1" name="characteristics1"
+                                                   type="text"
+                                                   value="{% if product.characteristics1 is defined %}{{ product.characteristics1 }}{% endif %}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="characteristicsDetails" class="control-label col-md-3">Caractèrisique
+                                            1 détail</label>
+
+                                        <div class="col-md-9">
+                                            <textarea class="form-control" name="characteristicsDetails"
+                                                      id="characteristicsDetails"
+                                                      rows="6">{% if product.characteristicsDetails is defined %}{{ product.characteristicsDetails }}{% endif %}</textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="characteristics2" class="control-label col-md-3">Caractèrisique
+                                            2:</label>
+
+                                        <div class="col-md-9">
+                                            <input class=" form-control" id="characteristics2" name="characteristics2"
+                                                   type="text"
+                                                   value="{% if product.characteristics2 is defined %}{{ product.characteristics2 }}{% endif %}"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3"
+                                               for="brand">Marque:</label>
+
+                                        <div class="col-md-9">
+                                            <select id="brand" name="brand" class="form-control">
+                                                <option value="">Marques</option>
+                                                {% for brand in brands %}
+                                                    <option {% if product.getBrand() %}{% if product.getBrand().getId()==brand.id %}selected{% endif %}{% endif %}
+                                                            value="{{ brand.id }}">{{ brand.label }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3"
+                                               for="sub_category">Sous Categorie:</label>
+
+                                        <div class="col-md-9">
+                                            <select id="sub_category" name="sub_category" class="form-control">
+                                                <option value="">Sous Categorie</option>
+                                                {% for sub_category in sub_categories %}
+                                                    <option {% if product.getSubCategory() %}{% if product.getSubCategory().getId()==sub_category.id %}selected{% endif %}{% endif %}
+                                                            value="{{ sub_category.id }}">{{ sub_category.label }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3"
+                                               for="region">Region:</label>
+
+                                        <div class="col-md-9">
+                                            <select id="region" name="region" class="form-control">
+                                                <option value="">Regions</option>
+                                                {% for region in regions %}
+                                                    <option {% if product.getRegion() %}{% if product.getRegion().getId()==region.id %}selected{% endif %}{% endif %}
+                                                            value="{{ region.id }}">{{ region.label }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3"
+                                               for="region">Pays:</label>
+
+                                        <div class="col-md-9">
+                                            <select id="country" name="country" class="form-control">
+                                                <option value="">Pays</option>
+                                                {% for country in countries %}
+                                                    <option {% if product.getCountry() %}{% if product.getCountry().getId()==country.id %}selected{% endif %}{% endif %}
+                                                            value="{{ country.id }}">{{ country.label }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3"
+                                               for="color">Couleurs:</label>
+
+                                        <div class="col-md-9">
+                                            <select id="color" name="color" class="form-control">
+                                                <option value="">Couleurs</option>
+                                                {% for color in colors %}
+                                                    <option {% if product.getColor() %}{% if product.getColor().getId()==color.id %}selected{% endif %}{% endif %}
+                                                            value="{{ color.id }}">{{ color.label }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3"
+                                               for="taste">Goûts:</label>
+
+                                        <div class="col-md-9">
+                                            <select id="taste" name="taste" class="form-control m-bot15">
+                                                <option value="">Goûts</option>
+                                                {% for taste in tastes %}
+                                                    <option {% if product.getTaste() %}{% if product.getTaste().getId()==taste.id %}selected{% endif %}{% endif %}
+                                                            value="{{ taste.id }}">{{ taste.label }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="my_multi_select1" class="control-label col-md-3">Alliances:</label>
+
+                                        <div class="col-md-9">
+                                            <select multiple="multiple" class="my_multi_select" id="my_multi_select1"
+                                                    name="my_multi_select1[]">
+
+                                                {% for alliance in alliances %}
+
+                                                    <option {% if alliance in prodAlliances %} selected {% endif %}
+                                                            value="{{ alliance.id }}">{% if alliance.label %}{{ alliance.label }}{% endif %}</option>
+                                                {% endfor %}
+
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="recette" class="control-label col-md-3">Recettes:</label>
+
+                                        <div class="col-md-9">
+                                            <select id="recette" name="recette" class="form-control">
+                                                <option value="">Recettes</option>
+                                                {% for article in articles %}
+                                                    <option {% if article in prodArticles %} selected {% endif %}
+                                                            value="{{ article.id }}">{{ article.title }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="isNew" class="control-label col-md-3">Nouveau:</label>
+                                        <div class="col-md-6">
+                                            <input type="checkbox" style="width: 20px" class="switch-small form-control"
+                                                   id="isNew" name="isNew"
+                                                   {% if product.isNew is defined and product.isNew %}checked{% endif %} />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="state" class="control-label col-md-3">En stock:</label>
+
+                                        <div class="col-md-9">
+                                            <input type="checkbox" style="width: 20px" class="switch-small form-control"
+                                                   id="state" name="state"
+                                                   {% if product.state is defined and product.state %}checked{% endif %}/>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-3 col-lg-6">
+                                            <button class="btn btn-primary" type="submit">Save</button>
+                                            <button onclick="window.location='{{ url('_backend_product') }}'"
+                                                    class="btn btn-default" type="button">Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+            <!-- page end-->
+        </section>
+    </section>
+{% endblock %}
+
+
+{% block css %}
+    <link href="/assets/backend/bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/backend/css/bootstrap-reset.css" rel="stylesheet">
+    <link href="/assets/backend/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="/assets/backend/css/bootstrap-switch.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/bootstrap-fileupload/jasny-bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/bootstrap-wysihtml5/bootstrap-wysihtml5.css"/>
+
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/bootstrap-datepicker/css/datepicker.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/bootstrap-timepicker/css/timepicker.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/bootstrap-colorpicker/css/colorpicker.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/bootstrap-daterangepicker/daterangepicker-bs3.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/bootstrap-datetimepicker/css/datetimepicker.css"/>
+
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/jquery-multi-select/css/multi-select.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/jquery-tags-input/jquery.tagsinput.css"/>
+
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/select2/select2.css"/>
+
+    <!-- Custom styles for this template -->
+    <link href="/assets/backend/css/style.css" rel="stylesheet">
+    <link href="/assets/backend/css/style-responsive.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block js %}
+    <!--Core js-->
+    <script src="/assets/backend/js/jquery.js"></script>
+    <script src="/assets/backend/js/jquery-1.10.2.min.js"></script>
+    <script src="/assets/backend/bs3/js/bootstrap.min.js"></script>
+    <script src="/assets/backend/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script class="include" type="text/javascript" src="/assets/backend/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="/assets/backend/js/jquery.scrollTo.min.js"></script>
+    <script src="/assets/backend/js/easypiechart/jquery.easypiechart.js"></script>
+    <script src="/assets/backend/js/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
+    <script src="/assets/backend/js/jquery.nicescroll.js"></script>
+
+    <script src="/assets/backend/js/bootstrap-switch.js"></script>
+
+    <script type="text/javascript" src="/assets/backend/js/fuelux/js/spinner.min.js"></script>
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-fileupload/jasny-bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript"
+            src="/assets/backend/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-daterangepicker/moment.min.js"></script>
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+
+    <script type="text/javascript" src="/assets/backend/js/jquery-multi-select/js/jquery.multi-select.js"></script>
+    <script type="text/javascript" src="/assets/backend/js/jquery-multi-select/js/jquery.quicksearch.js"></script>
+
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+
+    <script src="/assets/backend/js/jquery-tags-input/jquery.tagsinput.js"></script>
+
+    <script src="/assets/backend/js/select2/select2.js"></script>
+    <script src="/assets/backend/js/select-init.js"></script>
+
+    <script src="/assets/backend/js/iCheck/jquery.icheck.js"></script>
+
+    <script type="text/javascript" src="/assets/backend/js/ckeditor/ckeditor.js"></script>
+
+
+    <!--common script init for all pages-->
+    <script src="/assets/backend/js/scripts.js"></script>
+
+    <script src="/assets/backend/js/toggle-init.js"></script>
+
+    <script src="/assets/backend/js/advanced-form.js"></script>
+    <!--Easy Pie Chart-->
+    <script src="/assets/backend/js/easypiechart/jquery.easypiechart.js"></script>
+    <!--Sparkline Chart-->
+    <script src="/assets/backend/js/sparkline/jquery.sparkline.js"></script>
+    <!--jQuery Flot Chart-->
+    <script src="/assets/backend/js/tinymce.js"></script>
+    <script>
+        $(function () {
+            $('.my_multi_select').multiSelect({});
+//            tinymce.init({
+//                selector: 'textarea',
+//                plugins: ["textcolor", "image", "code"],
+//                toolbar: ["forecolor backcolor,image,code", "undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link code mybutton"],
+//                textcolor_map: [
+//                    "000000", "Black",
+//                    "993300", "Burnt orange",
+//                    "333300", "Dark olive",
+//                    "003300", "Dark green",
+//                    "003366", "Dark azure",
+//                    "000080", "Navy Blue",
+//                    "333399", "Indigo",
+//                    "333333", "Very dark gray",
+//                    "800000", "Maroon",
+//                    "FF6600", "Orange",
+//                    "808000", "Olive",
+//                    "008000", "Green",
+//                    "008080", "Teal",
+//                    "0000FF", "Blue",
+//                    "666699", "Grayish blue",
+//                    "808080", "Gray",
+//                    "FF0000", "Red",
+//                    "FF9900", "Amber",
+//                    "99CC00", "Yellow green",
+//                    "339966", "Sea green",
+//                    "33CCCC", "Turquoise",
+//                    "3366FF", "Royal blue",
+//                    "800080", "Purple",
+//                    "999999", "Medium gray",
+//                    "FF00FF", "Magenta",
+//                    "FFCC00", "Gold",
+//                    "FFFF00", "Yellow",
+//                    "00FF00", "Lime",
+//                    "00FFFF", "Aqua",
+//                    "00CCFF", "Sky blue",
+//                    "993366", "Red violet",
+//                    "FFFFFF", "White",
+//                    "FF99CC", "Pink",
+//                    "FFCC99", "Peach",
+//                    "FFFF99", "Light yellow",
+//                    "CCFFCC", "Pale green",
+//                    "CCFFFF", "Pale cyan",
+//                    "8ccd37", "titre-green",
+//                    "2b6bad", "titre-bleu",
+//                    "797979", "bayer-text"
+//                ],
+//                image_prepend_url: "http://www.tinymce.com/images/"
+//            });
+        });
+    </script>
+    {#<script src="/assets/backend/js/flot-chart/jquery.flot.js"></script>
+    <script src="/assets/backend/js/flot-chart/jquery.flot.tooltip.min.js"></script>
+    <script src="/assets/backend/js/flot-chart/jquery.flot.resize.js"></script>
+    <script src="/assets/backend/js/flot-chart/jquery.flot.pie.resize.js"></script>#}
+{% endblock %}

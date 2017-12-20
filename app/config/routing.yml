@@ -1,0 +1,21 @@
+util:
+    resource: "@UtilBundle/Resources/config/routing.yml"
+    prefix:   /
+
+bdm_nicolas_backend:
+    resource: "@BDMNicolasBackendBundle/Controller/"
+    type:     annotation
+    prefix:   /backend
+
+bdm_nicolas_frontend:
+    resource: "@BDMNicolasFrontendBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

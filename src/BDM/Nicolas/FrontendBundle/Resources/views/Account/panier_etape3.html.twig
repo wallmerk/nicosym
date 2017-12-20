@@ -1,0 +1,258 @@
+{% extends '@BDMNicolasFrontend/layout.html.twig' %}
+
+{% block content %}
+
+	<main>
+
+		<div class="breadCrumb container">
+            <ol class="breadCrumb-nav" role="navigation">
+                <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Acceuil</a></li>
+                <li class="breadCrumb-item"><a href="#" class="breadCrumb-link"> {{page_title}} </a></li>
+            </ol>
+        </div>
+
+        <div class="container">
+        	<div class="progressBar-container">
+                <div class="progressBar"></div>
+                <div class="progressBar-item progressBar--item1">
+                    <p class="progressBar-title">Panier</p>
+                    <span class="progressBar-dot"></span>
+                </div>
+                <div class="progressBar-item progressBar--item2">
+                    <p class="progressBar-title">Identification</p>
+                    <span class="progressBar-dot"></span>
+                </div>
+                <div class="progressBar-item progressBar--item3 progressBar-item-active">
+                    <p class="progressBar-title">livraison & panier</p>
+                    <span class="progressBar-dot"></span>
+                </div>   
+            </div>
+        </div>
+
+        <div class="container basket-step3">
+        	<div class="col-sm-6 basket-step3-left">
+                <div class="recap_cmd_box">
+                    <h2 class="nsTitle-h2">mode livraison</h2>
+                    <div class="paiement_form-group">
+                        <div class="paiement_form_radio">
+                            <input type="radio" name="mode_livraison" value="domicile" id="domicile">
+                            <label for="domicile">Nicolas@domicile: 3 </label>
+                        </div>
+                        <div class="paiement_form_radio">
+                             <input type="radio" name="mode_livraison" value="standard" id="standard">
+                            <label for="standard">Standard (48/72 heures): 14</label>
+                        </div>
+                            <div class="paiement_form_radio">
+                            <input type="radio" name="mode_livraison" value="express" id="express">
+                            <label for="express">Express (24 heures): 22</label>
+                        </div>
+                    </div>                  
+                </div>
+                <div class="recap_cmd_box">
+                     <h2 class="nsTitle-h2">mode de paiement</h2>
+                      <div class="paiement_form-group">
+                        <div class="paiement_form_radio">
+                            <input type="radio" name="mode_paiement" value="carte_bancaire" id="carte_bancaire">
+                            <label for="domicile">
+                                <img src="assets/frontend/images/paiement_cards.png" alt="">
+                            </label>
+                        </div>
+                        <div class="paiement_form_radio">
+                            <input type="radio" name="mode_paiement" value="paypal" id="paypal">
+                            <label for="standard">
+                                <img src="assets/frontend/images/paiement_paypal.png" alt="">
+                            </label>
+                        </div>
+                            <div class="paiement_form_radio">
+                            <input type="radio" name="mode_paiement" value="virement" id="virement">
+                            <label for="express">
+                                <img src="assets/frontend/images/paiement_virement.png" alt="">
+                            </label>
+                        </div>
+                    </div>   
+
+                </div>
+                <div class="recap_cmd_box">
+                     <h2 class="nsTitle-h2">Ajouter une carte  message à mon colis</h2>
+
+                     <div class="paiement_form-group">
+                         <p>Choisissez le thème de la carte</p>
+                          <div class="nsForm-elementContainer" style="text-align: left; margin-bottom:15px;">
+                            <select id="theme_carte" name="theme_carte" class="nsForm-customSelect" required>
+                                <option value="bon_anniversaire">Bon anniversaire</option>
+                                <option value="bon_anniversaire">Bon anniversaire</option>
+                                <option value="bon_anniversaire">Bon anniversaire</option>
+                                <option value="bon_anniversaire">Bon anniversaire</option>                                
+                            </select>
+                        </div>
+                     </div>
+
+                     <div class="paiement_form-group">
+                        <p>
+                            Votre message d'accompagnement <br>
+                            (maximum 60 caractères)
+                        </p>
+                        <div class="nsForm-elementContainer">
+                          <textarea style="min-width:100%;max-width:100%; padding:10px; border-radius: 10px;" name="message_carte" id="message_carte" rows="12" class="nsForm-textarea" placeholder="message*"required></textarea>
+                      </div>
+                     </div>
+                </div>
+                
+            </div>
+            <div class="col-sm-6 basket-step-right">
+                <div class="recap_cmd_box">
+                    <h2 class="nsTitle-h2">coordonées</h2> 
+                    <div class="paiement_form-group left">
+                        <h3 class="nsTitle-h3">Livraison</h3>
+                        <div class="paiement_form_radio">
+                            <input type="radio" name="adresse_livraison" id="adresse_livraison_defaut" value="Mme Nadine Lecoueur..">
+                            <label for="adresse_livraison_defaut">
+                                <b>Meme Nadine Lecoueur </b><br>
+                                13 Rue Eugène Eboué <br>
+                                75010 Paris <br>
+                                France
+                            </label>
+                        </div>
+                         <div class="" style="max-width: 400px;margin: 0 auto; margin-bottom:15px; ">
+                            <a class="nicoButton nicoButton-default product-button" data-="" href="#">
+                                <span class="nicoButton-content">
+                                    <i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>
+                                    Modifier
+                                </span>
+                            </a>
+                        </div>
+                        
+                        <div class="paiement_form_radio">
+                            <input type="radio" name="adresse_livraison" id="adresse_livraison_other" value="adresse différente">
+                            <label for="adresse_facturation_other">Choisir une adresse différente</label>
+
+                        </div>
+                        <div class="nsForm-elementContainer" style="text-align: left; margin-bottom:15px;">
+                            <select id="adresse_livraison_differente" name="adresse_livraison_differente" class="nsForm-customSelect" required>
+                                <option value="bon_anniversaire">Bon anniversaire</option>
+                                <option value="bon_anniversaire">Bon anniversaire</option>
+                                <option value="bon_anniversaire">Bon anniversaire</option>
+                                <option value="bon_anniversaire">Bon anniversaire</option>                                
+                            </select>
+                        </div>
+                        <a class="nouvelle_adrs" href="#">Créer une nouvelle adresse</a>
+                    </div>
+                    <div class="paiement_form-group right">
+                        <h3 class="nsTitle-h3">Facturation</h3>
+                        
+                        <div class="paiement_form_radio">
+                             <input type="radio" name="adresse_facturation" id="adresse_facturation_defaut" value="Mme Nadine Lecoueur..">
+                            <label for="adresse_facturation_defaut">
+                                <b>Meme Nadine Lecoueur </b><br>
+                                13 Rue Eugène Eboué <br>
+                                75010 Paris <br>
+                                France
+                            </label>   
+                        </div>
+
+                        <div class="" style="max-width: 400px;margin-bottom:15px; ">
+                            <a class="nicoButton nicoButton-default product-button" style="text-align:center" data-="" href="#">
+                                <span class="nicoButton-content">
+                                    <i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>
+                                    Modifier
+                                </span>
+                            </a>
+                        </div>
+
+                        <div class="paiement_form_radio">
+                            <input type="radio" name="adresse_facturation" id="adresse_facturation_other" value="adresse différente">
+                            <label for="adresse_facturation_other">Choisir une adresse différente</label>
+                        </div>
+
+                        <div class="nsForm-elementContainer" style="text-align: left; margin-bottom:15px;">
+                            <select id="adresse_facturation_differente" name="adresse_facturation_differente" class="nsForm-customSelect" required>
+                                <option value="bon_anniversaire">Bon anniversaire</option>
+                                <option value="bon_anniversaire">Bon anniversaire</option>
+                                <option value="bon_anniversaire">Bon anniversaire</option>
+                                <option value="bon_anniversaire">Bon anniversaire</option>                                
+                            </select>
+                        </div>
+
+
+                        <a class="nouvelle_adrs" href="#">Créer une nouvelle adresse</a>
+
+                        
+                    </div>                   
+                </div>  
+
+                <div class="recap_cmd_box recap_cmd_box--orange">
+                    <h2 class="nsTitle-h2">récapitulatif de la commande</h2>
+
+                    <div class="cmd_items">
+                        <div class="cmd_item border-bottom-dotted">
+                            <div class="cmd_item_col1">
+                                <p class="cmd_item--name">chateau brane-cantenac 2011</p>
+                                <p class="cmd_item_qte">qté 1</p>
+                            </div>
+                            <div class="cmd_item_col2">
+                                <div class="product-priceContainer">
+                                    <span class="nicolas-price product-price ">
+                                        <span class="price-unityContainer">
+                                            <span class="price-unity">159,</span>
+                                            <sup class="price-currency">€</sup>
+                                        </span>
+                                        <span class="price-decimal">50</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cmd_items">
+                        <div class="cmd_item border-bottom-dotted">
+                            <div class="cmd_item_col1">
+                                <p class="cmd_item--name">chateau brane-cantenac 2011</p>
+                                <p class="cmd_item_qte">qté 1</p>
+                            </div>
+                            <div class="cmd_item_col2">
+                                <div class="product-priceContainer">
+                                    <span class="nicolas-price product-price ">
+                                        <span class="price-unityContainer">
+                                            <span class="price-unity">159,</span>
+                                            <sup class="price-currency">€</sup>
+                                        </span>
+                                        <span class="price-decimal">50</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payer">
+                    <div>
+                        <input type="checkbox" id="conditions" name="conditions">
+                        <label for="condition">J'accepte les conditions générales de vente</label>
+                    </div>
+                    <div class="" style="max-width: 100%;">
+                        <a class="nicoButton nicoButton-default product-button" style="text-align:center;" data-="" href="#">
+                            <span class="nicoButton-content">
+                                <i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>
+                                payer
+                            </span>
+                        </a>
+                    </div>
+                    <p style="margin-top:15px;">
+                        En passant commande sur le site et en acceptant les conditions générales de vente.
+                        Je certifie être en âge de contracter.
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+
+		
+	</main>
+
+{% endblock %}
+
+{% block front_end_css %}
+{% endblock %}
+	
+{% block front_end_js %}
+
+{% endblock %}

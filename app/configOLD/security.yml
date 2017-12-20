@@ -1,0 +1,65 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+    encoders:
+            BDM\Nicolas\BackendBundle\Entity\User:
+                algorithm: bcrypt
+
+    role_hierarchy:
+            ROLE_USER:        ROLE_NEWS, ROLE_ARTICLE, ROLE_TRAINING
+            ROLE_ADMIN:       [ROLE_USER, ROLE_USERS, ROLE_CATALOGUE]
+            ROLE_SUPERADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+
+
+
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+            in_memory:
+                memory:
+                    users:
+                        administrator: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+
+            user_provider:
+                        entity:
+                            class: BDMNicolasBackendBundle:User
+                            property: username
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        backend_bundle:
+                    pattern: ^/backend/
+                    provider: user_provider
+                    anonymous: ~
+                    form_login:
+                        check_path: /backend/login_check
+                        login_path: /backend/login
+                        default_target_path: /backend/dashboard
+                    logout:
+                        path:   /backend/logout
+                        target: /backend/login
+
+        main:
+            anonymous: ~
+            # activate different ways to authenticate
+
+    access_control:
+            #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+
+            # backend
+            - { path: ^/backend/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/backend/dashboard, roles: ROLE_USER }
+            - { path: ^/backend/*, roles: ROLE_USER }
+            - { path: ^/backend/products, roles: ROLE_ADMIN }
+
+            # http_basic: ~
+            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: ~
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html

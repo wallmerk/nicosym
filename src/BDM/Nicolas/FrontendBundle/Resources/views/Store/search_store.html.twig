@@ -1,0 +1,212 @@
+{% extends "@BDMNicolasFrontend/layout.html.twig" %}
+
+{% block content %}
+
+    <main>
+
+        <div class="container searchPane">
+            <div class="searchPane-container">
+                <div class="breadCrumb">
+                    <ol class="breadCrumb-nav" role="navigation">
+                        <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Acceuil</a></li>
+                        <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Trouvez un magasin</a></li>
+                        {% if search is defined and search !=''%}
+                            <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">{{ search }}</a></li>
+                        {% else %}
+                            <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Tous nos magasins</a></li>
+                        {% endif %}
+                    </ol>
+                </div>
+                <p class="nicolas-title" style="padding-bottom:0; color: #fcb714; padding-bottom: 1em;">
+                    nicolas près de chez vous
+                    <i class="ns-TitleSection-icon"></i>
+                </p>
+
+                <div class="quickSearch text-center">
+                    <div class="col-sm-6">
+                        <form method="post" action="{{ path('_find_us') }}" class="quickSearch-form">
+                            <input class="quickSearch-input" type="text" name="search"
+                                   placeholder="Tapez ici votre recherche">
+                            <button type="submit" class="quickSearch-submit">
+                                <i class="ns-Icon ns-Icon--knurr quickSearch-icon"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="col-sm-6">
+                        <form action="{{ path('_find_us') }}" method="post" class="nearMeStorefinderForm">
+                            <button type="submit" class="nicoButton nicoButton-default">
+                                    <span class="nicoButton-content">
+                                        <i class="nicoButton-icon ns-Icon ns-Icon--pin"></i>
+                                        trouvez-moi
+                                    </span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="mapSection">
+            {% if stores is defined and stores|length != 0 %}
+                <div id="nicolasMap" style="width:100%; height: 35em; overflow: hidden;"></div>
+            {% else %}
+                <div class="container">
+                    <div class="search-erro text-center" style="font-size: 2em; font-weight: 600; margin-top: 2em;">
+                        Aucun magasin trouvé.
+                    </div>
+                </div>
+            {% endif %}
+        </section>
+
+        <section>
+            {% if stores is defined and stores|length != 0 %}
+                {% for store in stores %}
+
+                    <div class="storeInformation"
+                         id="{{ store.id }}"
+                         data-type='storeInformation'
+                         data-latitude='{{ store.latitude }}'
+                         data-longitude='{{ store.longitude }}'
+                         data-name="{{ store.name }}"
+                         data-address="{{ store.address }}"
+                         style="background-color:
+                         {% if loop.index0 % 2 %}
+                                 #f7f4eb;
+                         {% else %}
+                                 #fff;
+                             {% endif %}"
+
+                    >
+
+                        <div class="container">
+                            <div class="col-xs-4 col-sm-3">
+                                <img src="{{ asset('/uploads/backend/store/') ~ store.image }}" alt=""
+                                     class="img-responsive">
+                            </div>
+                            <div class="col-sm-offset-1 col-xs-8 col-sm-5">
+                                <p class="storeInfo-name">{{ store.name }}</p>
+                                <p class="storeInfo-description">{{ store.description }}</p>
+                                <p class="storeInfo-adresse">{{ store.address }}</p>
+                                <p class="storeInfo-phone">{{ store.phone }}</p>
+
+                                <a class="nicoButton nicoButton-default product-button" style="max-width: 80%;"data-=""
+                                   href="{{ path('_details_store',{'id':store.id}) }}" id="">
+                                   <span class="nicoButton-content">
+                                       <i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>
+                                       Consulter la fiche du magasin
+                                    </span>
+                                </a>
+        
+                            </div>
+                        </div>
+                    </div>
+
+
+                {% endfor %}
+            {% endif %}
+
+
+        </section>
+
+    </main>
+{% endblock %}
+
+{% block front_end_css %}
+    <style>
+
+        .storeInformation .container {
+            padding: 2em;
+        }
+
+        .storeInformation .storeInfo-name {
+            font-size: 1.5em;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+    </style>
+{% endblock %}
+
+{% block front_end_js %}
+
+
+    <script type="text/javascript">
+        //Load Google map
+        var map;
+        var markers = [];
+
+
+        function addMarkers(to_this_map) {
+            var stores = document.getElementsByClassName('storeInformation');
+            var infowindow = new google.maps.InfoWindow();
+            var bounds = new google.maps.LatLngBounds();
+            var img_marker = "/assets/frontend/images/marker.png";
+            var infoWindows = [];
+            var markers = [];
+
+            for (var i = 0; i < stores.length; i++) {
+                var pos = {
+                    lat: parseFloat(stores[i].dataset.latitude),
+                    lng: parseFloat(stores[i].dataset.longitude)
+                };
+
+
+                markers[i] = new google.maps.Marker({
+                    position: pos,
+                    map: to_this_map,
+                    icon: img_marker
+                });
+
+                infoWindows[i] = new google.maps.InfoWindow({
+                    content: "content",
+                    maxWidth: 320
+                });
+
+                bounds.extend(markers[i].position);
+            }
+
+            infoWindows.forEach(function (element, index, infoWindows) {
+
+                var content = '<p style="text-transform:uppercase;font-weight:700;">' + stores[index].dataset.name + '</p>';
+                content += '<p>' + stores[index].dataset.address + '</p>'
+
+                google.maps.event.addListener(markers[index], 'click', function () {
+                    element.close();
+                    element.setContent(content);
+                    element.open(map, markers[index]);
+                });
+
+
+            });
+
+
+            map.fitBounds(bounds);
+
+
+            var listener = google.maps.event.addListener(map, "idle", function () {
+                google.maps.event.removeListener(listener);
+            });
+
+        }
+
+
+        function nicolasMap() {
+            var uluru = {lat: 33.5731104, lng: -7.5898434};
+
+            map = new google.maps.Map(document.getElementById("nicolasMap"), {
+                center: uluru,
+                zoom: 15,
+                scrollwheel: false
+                // scrollwheel: false
+            });
+
+            addMarkers(map);
+
+        }
+
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJ_3g3J9orbjnFevIem3UAen_XJ6OIFMI&callback=nicolasMap">
+    </script>
+
+{% endblock %}
+

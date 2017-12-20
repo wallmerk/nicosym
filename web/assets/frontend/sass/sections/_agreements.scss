@@ -1,0 +1,38 @@
+/********************************************
+ * 				Agreements				*
+ ********************************************/
+
+ .agreementList {
+	
+	max-width: 80%;
+	margin: 0 auto;
+
+	@media (max-width: $screen-sm-min) {
+		max-width: 100%;
+	}
+	
+}
+
+.agreementList-item {
+	display: inline-block;
+	min-width: 85px;
+	margin: 0 1em 1em;
+	vertical-align: top;
+	text-align: center;
+
+	text-decoration: none;
+}
+
+.agreementList-icon {
+	display: block;
+    vertical-align: middle;
+    color: #d41c28;
+    line-height: 1em;
+    font-size: 4em;
+}
+.agreementList-desc {
+	display: block;
+	font-size: 1em;
+	color: #000;
+	
+}

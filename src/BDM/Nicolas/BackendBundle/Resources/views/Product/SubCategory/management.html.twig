@@ -1,0 +1,81 @@
+{% extends 'BDMNicolasBackendBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                {{ render(controller('BDMNicolasBackendBundle:Partials:flashbag')) }}
+
+
+
+                <div class="col-lg-12">
+                    <section class="panel">
+
+                        <header class="panel-heading">
+                            Gestion Des Sous Categories Produits
+                        </header>
+                        <div class="panel-body">
+                            <section id="unseen">
+                                <div class="clearfix">
+                                    <div class="btn-group">
+                                        <button id="editable-sample_new" class="btn btn-primary" onclick="window.location='{{ url('_backend_product_sub_category_add') }}'">
+                                            Ajouter <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <br />
+
+                                {{ render(controller('BDMNicolasBackendBundle:Partials:flashbag')) }}
+
+                                <br />
+                                {% if sub_categories  %}
+                                    <table class="table table-bordered table-striped table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Titre</th>
+                                            <th>Code</th>
+                                            <th>Categorie</th>
+                                            <th>Actif</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        {% for sub_category in sub_categories %}
+                                            <tr>
+                                                <td>{{ sub_category.id }}</td>
+                                                <td>{{ sub_category.label }}</td>
+                                                <td>{{ sub_category.code }}</td>
+                                                <td>{{ sub_category.getCategory().getLabel() }}</td>
+
+                                                <td>
+                                                    {% if sub_category.isActive == 1 %}
+                                                        <span class="label label-success label-mini">Actif</span>
+                                                    {% else %}
+                                                        <span class="label label-warning label-mini">Inactif</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    <button onclick="window.location='{{ url('_backend_product_sub_category_edit', {'id':sub_category.id}) }}'" type="button" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Modifier</button>
+                                                    {% if sub_category.isActive == 1 %}
+                                                        <button onclick="window.location='{{ url('_backend_product_sub_category_state', {'id':sub_category.id, 'state': 0}) }}'" type="button" class="btn btn-warning btn-xs"><i class="fa fa-minus-square"></i> Désactiver</button>
+                                                    {% else %}
+                                                        <button onclick="window.location='{{ url('_backend_product_sub_category_state', {'id':sub_category.id, 'state': 1}) }}'" type="button" class="btn btn-success btn-xs"><i class="fa fa-plus-square"></i> Activer</button>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                {% endif %}
+                            </section>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+{% endblock %}

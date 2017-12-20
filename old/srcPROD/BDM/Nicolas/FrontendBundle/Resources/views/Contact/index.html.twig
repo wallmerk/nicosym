@@ -1,0 +1,121 @@
+{% extends "@BDMNicolasFrontend/layout.html.twig" %}
+{% block content %}
+    <main >
+        <div class="container">
+            <div class="breadCrumb">
+                <ol class="breadCrumb-nav" role="navigation">
+                    <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Acceuil</a></li>
+                    <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Contactez nous</a></li>
+                </ol>
+            </div>
+
+        </div>
+
+        <section class="contactSection container">
+            <div class="col-sm-6 contactBloc">
+                <div class="contactBloc-container">
+                    <p class="contactBloc-title">
+                        contactez-nous
+                    </p>
+                    <form action="{{ path('_contact') }}" method="post" class="nsForm js-nsForm contactBloc-form" name="contact_us" id="conctat_us_form">
+                    
+                    {% if contact_alert is defined %}
+                        <p class="alert alert-success" role="alert">
+                            {{contact_alert}}
+                        </p>
+                    {% endif %}
+                    
+                    <fieldset>
+
+                        <div class="nsForm-elementContainer">
+                            <input id="contact.company" class="nsForm-input" name="company" type="text" placeholder="Société">
+                        </div>
+                        <div class="nsForm-elementContainer">
+                            <input id="contact.surname" class="nsForm-input" name="firstName" type="text" placeholder="Prénom*" required>
+                        </div>
+                        <div class="nsForm-elementContainer">
+                            <input id="contact.company" class="nsForm-input" name="lastName" type="text" placeholder="Nom*" required>
+                        </div>
+                        <div class="nsForm-elementContainer">
+                            <input id="contact.email" class="nsForm-input"  name="email" type="text" placeholder="Email*" required>
+                        </div>
+                        <div class="nsForm-elementContainer">
+                            <input id="contact.phone" class="nsForm-input"  name="phone" type="text" placeholder="Téléphone">
+                        </div>
+                        <div class="nsForm-elementContainer" style="text-align: left;">
+                            <select id="contact.subject" name="subject" class="nsForm-customSelect" required>
+                                <option value="title" disabled selected>Sujet*</option>
+                                <option value="MODIFIED_ORDER">Suggéstions</option>
+                                <option value="SUIVI_ORDER">Suivi de commande (SAV)</option>
+                                <option value="SEARCH_WINE">Vous recherchez un vin précis</option>
+                                <option value="FIDELITE">Fidélité</option>
+                                <option value="OTHER">Autres demandes</option>
+                                <option value="FREE_QUOTE">Demandez un devis</option>
+                            </select>
+                        </div>
+                        <div class="nsForm-elementContainer">
+                            <textarea name="message" id="contact.message" rows="12" class="nsForm-textarea" placeholder="message*"required></textarea>
+                        </div>
+
+                    </fieldset>
+
+                    <p class="nsForm-elementContainer nsForm-info">
+                        Les champs suivis d'une *  sont obligatoires
+                    </p>
+                    <button type="submit" class="nicoButton nicoButton-default nsForm-submit">
+                        <span class="nicoButton-content">
+                            <i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>
+                            Valider
+                        </span>
+                    </button>
+                </form>
+                </div>
+            </div>
+
+            <div class="col-sm-6 text-center">
+
+                <a href="tel:0800802020" class="contactTel-link">
+                    <i class="ns-Icon ns-Icon--tel contactTel-icon"></i>
+                    <span class="contactTel-label">Contactez-nous </span>
+                </a>
+                <p class="contactTel-opening">
+                    Du Lundi au Dimanche de 11h à 19h45
+                </p>
+
+                    <img class="img-responsive article-img--center" src="assets/frontend/images/contact_magasin_casa.png" alt="nouvelle_adrs">
+            </div>
+        </section>
+
+
+    </main>
+
+{% endblock %}
+{% block front_end_css %}
+    <link rel="stylesheet" href="assets/frontend/css/selectric.css">
+    <link rel="stylesheet" href="assets/frontend/css/ns-icon.css">
+
+{% endblock %}
+{% block front_end_js %}
+    <script type="text/javascript" src="assets/frontend/js/jquery.selectric.js"></script>
+    <script type="text/javascript" src="{{ asset('assets/frontend/js/jquery.validate.min.js') }}"></script>
+
+    <script>
+        $(document).ready(function(){
+
+            $('select.nsForm-customSelect').selectric();
+            $('#conctat_us_form').validate({
+                rules: {
+
+                    
+
+                    email: {
+                        email: true,
+                        required: true
+                    }
+                }
+            })
+
+
+        });
+    </script>
+{% endblock %}

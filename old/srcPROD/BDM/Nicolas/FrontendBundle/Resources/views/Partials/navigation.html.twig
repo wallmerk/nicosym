@@ -1,0 +1,350 @@
+<ul class="ns-principalNav-bar">
+    <li class="ns-principalNav-item ns-principalNav-item-home">
+        <a class="ns-principalNav-link" href="{{ path('_home') }}"><img
+                    src="{{ asset('assets/frontend/images/home.png') }}"
+                    alt="home"></a>
+    </li>
+
+    {#<li class="ns-principalNav-item"><a href="#" class="ns-principalNav-link">vins</a>#}
+    {#<div class="megadrop">#}
+    {#<div class="container">#}
+    {#<div class="leftLayer">#}
+
+    {#<div class="layerMenu-bloc">#}
+    {#<p class="layerMenu-title">By région</p>#}
+    {#<ul class="layerMenu-list">#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Bordeaux</a>#}
+    {#</li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Bourgogne</a>#}
+    {#</li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Rhône</a></li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Languedoc</a>#}
+    {#</li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Loire et#}
+    {#centre</a></li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Alsace</a>#}
+    {#</li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Beaujolais-Mâconnais</a>#}
+    {#</li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Jura-Savoiz-Bugey</a>#}
+    {#</li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Provence</a>#}
+    {#</li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Sud-Ouest</a>#}
+    {#</li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Corse</a></li>#}
+    {#</ul>#}
+    {#</div>#}
+
+    {#<div class="layerMenu-bloc">#}
+    {#<p class="layerMenu-title">Vins du monde</p>#}
+    {#<ul class="layerMenu-list">#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Afrique du#}
+    {#Sud</a></li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Argentine</a>#}
+    {#</li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Australie</a>#}
+    {#</li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Chili</a></li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Espagne</a>#}
+    {#</li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Hongrie</a>#}
+    {#</li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Italie</a>#}
+    {#</li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Maroc</a></li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Portugal</a>#}
+    {#</li>#}
+    {#</ul>#}
+    {#</div>#}
+    {#<div class="layerMenu-bloc">#}
+    {#<p class="layerMenu-title">Par Couleur</p>#}
+    {#<ul class="layerMenu-list">#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Rouge</a></li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Rosé</a></li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Blanc</a></li>#}
+    {#</ul>#}
+    {#<p class="layerMenu-title">Gammes nicolas</p>#}
+    {#<ul class="layerMenu-list">#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Les grumes</a>#}
+    {#</li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">les petites#}
+    {#Récoltes</a></li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Cub#}
+    {#Collection</a></li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Etienne#}
+    {#Nicolas</a></li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">AOC</a></li>#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Vins Bio</a>#}
+    {#</li>#}
+    {#</ul>#}
+    {#<p class="layerMenu-title">Vins en primeur</p>#}
+    {#<ul class="layerMenu-list">#}
+    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">primeurs#}
+    {#2015</a></li>#}
+
+    {#</ul>#}
+    {#</div>#}
+    {#<div class="nico-btn-1"><a href="#">découvrir tous nos vins</a></div>#}
+    {#<div class="nico-btn-1"><a href="#">découvrir notre quide des millésimes</a></div>#}
+
+    {#</div><!-- EndlefLayer -->#}
+
+    {#<div class="rightLayer"></div>#}
+    {#</div> <!-- EndRightLayer -->#}
+    {#</div> <!-- End MegaDrop -->#}
+    {#</li>#}
+    {% for item in data %}
+        {% set category = item['category'] %}
+        {% set regions = item['regions'] %}
+        {% set countries = item['countries'] %}
+        {% set colors = item['colors'] %}
+        {% set sub_categories = item['sub_categories'] %}
+        {% set brands = item['brands'] %}
+
+        <li class="ns-principalNav-item"><a
+                    href="{{ path('_products_by_category',{'id_category':category.id,'slug_category':category.slug}) }}"
+                    class="ns-principalNav-link">{{ category.label }}</a>
+            {% if category.code=='vins' %}
+                <div class="megadrop">
+                    <div class="container">
+                        <div class="leftLayer">
+
+                            {% if  regions|length!=0 %}
+                                <div class="layerMenu-bloc">
+                                    <p class="layerMenu-title">Par région</p>
+                                    <ul class="layerMenu-list">
+                                        {% for region in regions %}
+                                            <li class="layerMenu-item"><a
+                                                        href="{{ path('_products_by_category_by_region',{'id_category':category.id,'slug_category':category.slug,'region':region.slug}) }}"
+                                                        class="layerMenu-link">{% if region.label %}{{ region.label }}{% endif %}</a>
+                                            </li>
+
+
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                            {% if countries|length!=0 %}
+                                <div class="layerMenu-bloc">
+                                    <p class="layerMenu-title">Vins du monde</p>
+                                    <ul class="layerMenu-list">
+                                        {% for country in countries %}
+                                            <li class="layerMenu-item"><a
+                                                        href="{{ path('_products_by_category_by_country',{'id_category':category.id,'slug_category':category.slug,'country':country.slug}) }}"
+                                                        class="layerMenu-link">{% if country.label %}{{ country.label }}{% endif %}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                            {% if colors|length!=0 %}
+                                <div class="layerMenu-bloc">
+                                    <p class="layerMenu-title">Par Couleur</p>
+                                    <ul class="layerMenu-list">
+                                        {% for color in colors %}
+                                            <li class="layerMenu-item"><a
+                                                        href="{{ path('_products_by_category_by_color',{'id_category':category.id,'slug_category':category.slug,'color':color.slug}) }}"
+                                                        class="layerMenu-link">{% if color.label %}{{ color.label }}{% endif %}</a>
+                                            </li>
+                                        {% endfor %}
+                                        {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Rosé</a></li>#}
+                                        {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Blanc</a></li>#}
+                                    </ul>
+                                    {#<p class="layerMenu-title">Gammes nicolas</p>#}
+                                    {#<ul class="layerMenu-list">#}
+                                    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Les grumes</a></li>#}
+                                    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">les petites Récoltes</a></li>#}
+                                    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Cub Collection</a></li>#}
+                                    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Etienne Nicolas</a></li>#}
+                                    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">AOC</a></li>#}
+                                    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Vins Bio</a></li>#}
+                                    {#</ul>#}
+                                    {#<p class="layerMenu-title">Vins en primeur</p>#}
+                                    {#<ul class="layerMenu-list">#}
+                                    {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">primeurs 2015</a></li>#}
+
+                                    {#</ul>#}
+                                </div>
+                            {% endif %}
+                            <div class="nico-btn-1"><a class="nicoButton nicoButton-default" style="transition:none;"
+                                                       href="{{ path('_products_by_category',{'id_category':category.id,'slug_category':category.slug}) }}">
+                                    <span class="nicoButton-content">
+                                            <i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>
+                                        découvrir tous nos vins</span></a></div>
+                            {#<div class="nico-btn-1"><a href="#">découvrir notre quide des millésimes</a></div>#}
+                        </div><!-- EndlefLayer -->
+
+                        <div class="rightLayer">
+                            {% for banner in category.getBanners() %}
+                                <a
+                                        href="{% if banner.link %}{{ banner.link }}{% endif %}"
+                                        class="ns-Layer-bannerLink"><img
+                                            src="{{ asset('uploads/backend/product/category/banner/'~banner.banner) }}"
+                                            class="ns-Layer-banner" alt="Petits prix"/></a>
+                            {% endfor %}
+                        </div>
+                    </div> <!-- EndRightLayer -->
+                </div> <!-- End MegaDrop -->
+
+            {% elseif category.code=='champagnes' %}
+                <div class="megadrop">
+                    <div class="container">
+                        <div class="leftLayer">
+                            {% if  regions|length!=0 %}
+                                <div class="layerMenu-bloc">
+                                    <p class="layerMenu-title">Par région</p>
+                                    <ul class="layerMenu-list">
+                                        {% for region in regions %}
+                                            <li class="layerMenu-item"><a
+                                                        href="{{ path('_products_by_category_by_region',{'id_category':category.id,'slug_category':category.slug,'region':region.slug}) }}"
+                                                        class="layerMenu-link">{% if region.label %}{{ region.label }}{% endif %}</a>
+                                            </li>
+
+
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                            {% set cepages = item['cepages'] %}
+
+                            {% if cepages|length!=0 %}
+                                <div class="layerMenu-bloc">
+                                    <p class="layerMenu-title">Cépages</p>
+                                    <ul class="layerMenu-list">
+                                        {% for  cepage in cepages %}
+                                            <li class="layerMenu-item"><a
+                                                        href="{{ path('_products_by_cepage',{'cepage':cepage.cepage}) }}"
+                                                        class="layerMenu-link">{% if cepage.cepage %}{{ cepage.cepage }}{% endif %}</a>
+                                            </li>
+                                        {% endfor %}
+
+                                    </ul>
+                                </div>
+                            {% endif %}
+                            <div class="nico-btn-1"><a class="nicoButton nicoButton-default" style="transition:none;"
+                                                       href="{{ path('_products_by_category',{'id_category':category.id,'slug_category':category.slug}) }}">
+                                    <span class="nicoButton-content">
+                                            <i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>
+                                        découvrir tous nos champagnes</span></a></div>
+                        </div>
+                    </div>
+                </div>
+            {% elseif category.code=='spiritueux' %}
+                <div class="megadrop">
+                    <div class="container">
+                        <div class="leftLayer">
+                            {% if sub_categories|length!=0 %}
+                                <div class="layerMenu-bloc">
+                                    <p class="layerMenu-title">Familles</p>
+                                    <ul class="layerMenu-list">
+                                        {% for  sub_category in sub_categories %}
+                                            <li class="layerMenu-item"><a
+                                                        href="{{ path('_products_by_category',{'id_category':category.id,'slug_category':category.slug,'id_sub_category':sub_category.id,'slug_sub_category':sub_category.slug}) }}"
+                                                        class="layerMenu-link">{% if sub_category.label %}{{ sub_category.label }}{% endif %}</a>
+                                            </li>
+                                        {% endfor %}
+
+                                    </ul>
+                                </div>
+                            {% endif %}
+                            <div class="nico-btn-1"><a class="nicoButton nicoButton-default" style="transition:none;"
+                                                       href="{{ path('_products_by_category',{'id_category':category.id,'slug_category':category.slug}) }}">
+                                    <span class="nicoButton-content">
+                                            <i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>
+                                        découvrir tous nos spiritueux</span></a></div>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                {% if sub_categories|length!=0 or brands|length!=0 or colors|length!=0 %}
+                    <div class="megadrop">
+                        <div class="container">
+                            <div class="leftLayer">
+                                {% if sub_categories|length!=0 %}
+                                    <div class="layerMenu-bloc">
+                                        <p class="layerMenu-title">Type</p>
+                                        <ul class="layerMenu-list">
+                                            {% for  sub_category in sub_categories %}
+                                                <li class="layerMenu-item"><a
+                                                            href="{{ path('_products_by_category',{'id_category':category.id,'slug_category':category.slug,'id_sub_category':sub_category.id,'slug_sub_category':sub_category.slug}) }}"
+                                                            class="layerMenu-link">{% if sub_category.label %}{{ sub_category.label }}{% endif %}</a>
+                                                </li>
+                                            {% endfor %}
+                                            {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Brut</a></li>#}
+                                            {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Demi-sec</a>#}
+                                            {#</li>#}
+                                            {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Millésimés</a>#}
+                                            {#</li>#}
+                                            {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Blanc de#}
+                                            {#blancs</a></li>#}
+                                            {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Blanc de#}
+                                            {#noirs</a></li>#}
+                                        </ul>
+                                    </div>
+                                {% endif %}
+                                {% if brands|length!=0 %}
+                                    <div class="layerMenu-bloc">
+                                        <p class="layerMenu-title">Marque</p>
+                                        <ul class="layerMenu-list">
+                                            {% for brand in brands %}
+                                                <li class="layerMenu-item"><a
+                                                            href="{{ path('_products_by_category_by_brand',{'id_category':category.id,'slug_category':category.slug,'brand':brand.slug}) }}"
+                                                            class="layerMenu-link">{% if brand.label %}{{ brand.label }}{% endif %}</a>
+                                                </li>
+                                            {% endfor %}
+                                            {#<li class="layerMenu-item"><a href="#"#}
+                                            {#class="layerMenu-link">Laurent-Perrier</a>#}
+                                            {#</li>#}
+                                            {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Malard</a>#}
+                                            {#</li>#}
+                                            {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Louis#}
+                                            {#Roedererc</a></li>#}
+                                            {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Bollinger</a>#}
+                                            {#</li>#}
+                                            {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Moet &amp;#}
+                                            {#Chandon</a></li>#}
+                                        </ul>
+                                    </div>
+                                {% endif %}
+                                {% if colors|length!=0 %}
+                                    <div class="layerMenu-bloc">
+                                        <p class="layerMenu-title">Par Couleur</p>
+                                        <ul class="layerMenu-list">
+                                            {% for color in colors %}
+                                                <li class="layerMenu-item"><a
+                                                            href="{{ path('_products_by_category_by_color',{'id_category':category.id,'slug_category':category.slug,'color':color.slug}) }}"
+                                                            class="layerMenu-link">{% if color.label %}{{ color.label }}{% endif %}</a>
+                                                </li>
+                                            {% endfor %}
+                                            {#<li class="layerMenu-item"><a href="#" class="layerMenu-link">Blanc</a></li>#}
+                                        </ul>
+                                    </div>
+                                {% endif %}
+                                <div class="">
+                                    <a class="nicoButton nicoButton-default" style="transition:none;"
+                                       href="{{ path('_products_by_category',{'id_category':category.id,'slug_category':category.slug}) }}">
+                                        <span class="nicoButton-content">
+                                            <i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>
+                                            découvrir tous nos {% if category.label %}{{ category.label }}{% endif %}
+                                        </span>
+                                    </a>
+                                </div>
+                            </div><!-- EndlefLayer -->
+
+                            <div class="rightLayer">
+                                {% for banner in category.getBanners() %}
+                                    <a
+                                            href="{% if banner.link %}{{ banner.link }}{% endif %}"
+                                            class="ns-Layer-bannerLink"><img
+                                                src="{{ asset('uploads/backend/product/category/banner/'~banner.banner) }}"
+                                                class="ns-Layer-banner" alt="Petits prix"/></a>
+                                {% endfor %}
+                            </div>
+                        </div> <!-- EndRightLayer -->
+                    </div> <!-- End MegaDrop -->
+                {% endif %}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

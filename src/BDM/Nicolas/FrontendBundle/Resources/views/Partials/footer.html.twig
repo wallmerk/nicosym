@@ -1,0 +1,56 @@
+<footer class="nsFooterSection">
+    <div class="container">
+
+
+        {{ render(controller('BDMNicolasFrontendBundle:Partials:expertise')) }}
+
+
+
+        <div class="row footer">
+            <div class="hidden-xs col-sm-2">
+                <img src="{{ asset('assets/frontend/images/footer_logo.png') }}" alt="">
+            </div>
+            <div class="hidden-xs col-sm-3 extra-links">
+                <ul>
+                    <li><a href="{{ path('_history') }}">Notre histoire</a></li>
+                    <li><a href="{{ path('_recruitment') }}">Espace recrutement</a></li>
+                    <li><a href="{{ path('_contact') }}">Nous contacter</a></li>
+                    <li><a href="{{ path('_find_us') }}">Trouver un magasin</a></li>
+                    {#<li><a href="#">Bar à Vins Nicolas</a></li>#}
+                    {#<li><a href="#">Nos corners</a></li>#}
+                    <li><a href="{{ path('_services') }}">Nos services</a></li>
+                </ul>
+            </div>
+            <div class="hidden-xs col-sm-3 extra-links">
+                <ul>
+                    {#<li><a href="#">FAQ</a></li>#}
+                    {#<li><a href="#">Conditions Générales de vente</a></li>#}
+                    {#<li><a href="#">Plan du site</a></li>#}
+                </ul>
+            </div>
+            <div class="col-sm-4 newsletter">
+                <form method="POST" action="{{ path('_subscription') }}">
+                    <h2>recevoir la newsletter</h2>
+                    <div>
+                        <input type="email" name="email" required placeholder="Votre Email">
+                    </div>
+                    <div>
+                        <button>valider</button>
+                    </div>
+                </form>
+                <p class="download">
+                    <a href="http://datas.nicolas.com/na/" target="_blank">
+                        <span class="icon-download"></span>
+                        télécharger notre catalogue
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div class="row footnote text-center">
+            <p>L’abus d’alcool est dangereux pour la santé, à consommer avec modération <br />
+            Copyright © 2017 - All Rights Reserved - Nicolas <br /> <a href="http://www.teamcloudagency.com">TEAM CLOUD</a>
+            </p>
+        </div>
+    </div>
+</footer>

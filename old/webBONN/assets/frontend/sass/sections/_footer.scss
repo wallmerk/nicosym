@@ -1,0 +1,158 @@
+/********************************************
+ * 				Footer: ;					*
+ ********************************************/
+.nsFooterSection {
+	padding-top: 70px;
+	padding-bottom: 20px;
+	background-image: url("../images/bg-btn2.png");
+
+	color: #fff;
+
+	.expertise {
+		display: block;
+	    width: 80%;
+	    margin: 0 auto;
+
+		.item {
+
+			color: #fff;
+			h3 {
+				font-size: 14px;
+    			font-weight: 700;
+    			font-style: italic;
+    			letter-spacing: 1px;
+    			margin-bottom: 10px;
+			}
+			p {
+				color: #ccc;
+				font-size: 13px;
+			}
+			.separator {
+				display: block;
+			    height: 2px;
+			    width: 50px;
+			    background: #fff;
+			    margin: 15px auto;
+			}
+		}
+	}
+
+	.divider {
+		display: block;
+		width: 100%;
+		height: 7px;
+		background-image: url('../images/footer_divider.png');
+		margin-top: 50px;
+		margin-bottom: 40px;
+	}
+
+	.footer {
+		margin-bottom: 100px;
+		.extra-links {
+			ul {
+				list-style: none;
+			}
+
+			ul > li >a {
+				color: #ccc;
+				&:hover {
+					color: #eee;
+					text-decoration: none;
+				}
+			}
+		}
+
+		.newsletter {
+			
+			form {
+				border-top: 2px solid #525252;
+			    border-bottom: 2px solid #525252;
+			    padding-top: 20px;
+			    padding-bottom: 20px;
+			    margin-bottom: 20px;
+			}
+			h2 {
+				font-size: 16px;
+				font-weight: 600;
+				text-transform: uppercase;
+				color: #fff;
+				margin:0;
+			}
+
+			input[type="email"] {
+				width: 100%;
+			    border: none;
+			    padding: 8px;
+			    border-radius: 50px;
+			    font-size: 13px;
+			    color: #000;
+			    padding-left: 15px;
+			    font-style: italic;
+			    outline: none;
+			    margin-bottom: 20px;
+			    margin-top: 20px;
+			}
+
+			button{
+			    display: inline-block;
+			    background: #fcb714;
+			    color: #541617;
+			    text-transform: uppercase;
+			    padding: 10px;
+			    font-size: 14px;
+			    font-weight: 700;
+			    min-width: 150px;
+			    letter-spacing: 1px;
+			    position: relative;
+			    border: none;
+			
+			    &:hover {
+			    	text-decoration: none;
+			    }
+
+			}
+			.download {
+				text-transform: uppercase;
+    			font-weight: 700;
+    			
+    			.icon-download {
+    				display: inline-block;
+    				background-image: url("../images/icon-download.png");
+    				height: 14px;
+    				width: 10px;
+    				margin-right: 8px;
+    			}
+    			a {
+    				color: #fff;
+    			}
+    			a:hover,
+    			a:focus,
+    			a:visited {
+    				text-decoration: none;
+    			}
+			}
+		}
+	}
+
+	.footnote p {
+		color: #ccc;
+		font-size: 14px;
+	}
+	@media (max-width: $screen-sm-min) {
+		.newsletter{
+			margin-top: 3em;
+		}
+		.footer {
+			margin-bottom: 3em;
+		}
+		
+		.expertise .item {
+			margin-bottom: 1em;
+		} 
+		.expertise .item .separator,
+		.expertise .item p{
+			display:none;
+		}
+	}
+	
+}

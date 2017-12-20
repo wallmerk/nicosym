@@ -1,0 +1,69 @@
+{% extends 'BDMNicolasBackendBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+
+
+                {{ render(controller('BDMNicolasBackendBundle:Partials:flashbag')) }}
+
+                <div class="col-lg-12">
+                    <section class="panel">
+
+                        <header class="panel-heading">
+                            Gestion Des Pays
+                        </header>
+                        <div class="panel-body">
+                            <section id="unseen">
+                                <div class="clearfix">
+                                    <div class="btn-group">
+                                        <button id="editable-sample_new" class="btn btn-primary" onclick="window.location='{{ url('_backend_country_add') }}'">
+                                            Ajouter <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <br />
+
+                                {{ render(controller('BDMNicolasBackendBundle:Partials:flashbag')) }}
+
+                                <br />
+                                {% if countries|length !=0 %}
+                                    <table class="table table-bordered table-striped table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Label</th>
+                                            <th>Slug</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        {% for country in countries %}
+                                            <tr>
+                                                <td>{{ country.id }}</td>
+                                                <td>{{ country.label }}</td>
+                                                <td>{{ country.slug }}</td>
+                                                <td>
+                                                    <button onclick="window.location='{{ url('_backend_country_edit', {'id':country.id}) }}'" type="button" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> Modifier</button>
+                                                    <button onclick="window.location='{{ url('_backend_country_delete', {'id':country.id }) }}'"
+                                                            type="button" class="btn btn-danger btn-xs"><i
+                                                                class="fa fa-trash-o"></i> Supprimer
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                {% endif %}
+                            </section>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+{% endblock %}

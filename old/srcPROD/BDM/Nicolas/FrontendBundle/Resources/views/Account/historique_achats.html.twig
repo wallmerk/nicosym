@@ -1,0 +1,98 @@
+{% extends '@BDMNicolasFrontend/layout.html.twig' %}
+
+{% block content %}
+
+	<main>
+
+		<div class="breadCrumb breadcrumb--border container">
+            <ol class="breadCrumb-nav" role="navigation">
+                <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Acceuil</a></li>
+                <li class="breadCrumb-item"><a href="#" class="breadCrumb-link"> {{page_title}} </a></li>
+            </ol>
+        </div>
+
+        <div class="container account_header_section">
+        	<div class="col-sm-2">
+        		<a href="#" class="account_header_link">
+        			< retour
+        		</a>
+        	</div>
+        	<div class="col-sm-8 account_header_title">
+        		Mon historique d'achat
+        	</div>
+        	{# <div class="col-sm-2"  style=" text-align: right;">
+        		<a href="#" class="account_header_link">
+        			X se déconnecter
+        		</a>
+        	</div> #}
+        	{# <div class="col-sm-12 account_header_infos">
+        		<p>
+        			Détail de mes achats du <b>05/03/2016</b> - Origine de la commande : <b>Nicolas.com</b>
+        		</p>
+        	</div> #}
+        </div>
+
+		<section class="container nsSection nsSection-gray" style="padding:3em; margin-bottom: 5em;">
+
+			<div class="row">
+				<div class="col-sm-12"  style="margin-bottom: 2em;">
+					<table class="nsTable">
+						<thead class="border-bottom-dotted">
+							<tr>
+								<td>Origine</td>
+								<td>Date d'achat</td>
+								<td>N° de commande</td>
+								<td>Etat</td>
+								<td>Total</td>
+								<td>Facture</td>
+							</tr>
+						</thead>
+						<span class="dotted_divider"></span>
+						<tbody>
+							<tr>
+								<td>SUC AUTEUIL</td>
+								<td>04/05/2016</td>
+								<td>52625945984515</td>
+								<td>Retrait en magasin</td>
+								<td>
+									<div class="product-priceContainer">
+										<span class="nicolas-price product-price ">
+											<span class="price-unityContainer">
+												<span class="price-unity">159,</span>
+												<sup class="price-currency">DH</sup>
+											</span>
+											<span class="price-decimal">50</span>
+										</span>
+									</div>
+								</td>
+								<td>
+									<a href="" class="nsForm_link_pdf">Telecharger</a>	
+								</td>
+								
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="row text-center">
+				<div class="" style="max-width: 400px;     margin: 0 auto;">
+	                <a class="nicoButton nicoButton-default product-button" data-="" href="#">
+						<span class="nicoButton-content">
+							<i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>
+							contactez-nous par mail
+						</span>
+	                </a>
+				</div>
+			</div>
+		</section>
+	</main>
+
+{% endblock %}
+
+{% block front_end_css %}
+{% endblock %}
+
+{% block front_end_js %}
+
+{% endblock %}

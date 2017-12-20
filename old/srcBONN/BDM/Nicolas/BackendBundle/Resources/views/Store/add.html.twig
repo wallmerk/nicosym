@@ -1,0 +1,284 @@
+{% extends 'BDMNicolasBackendBundle::layout.html.twig' %}
+
+{% block content %}
+    <!--main content start-->
+    <section id="main-content" class="">
+        <section class="wrapper">
+            <!-- page start-->
+            <!-- page start-->
+            <div class="row">
+                {{ render(controller('BDMNicolasBackendBundle:Partials:flashbag')) }}
+
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Gestion Des Magasins :: Ajout
+                        </header>
+                        <div class="panel-body">
+
+                            <div class="col-md-6 form">
+                                <form class="cmxform form-horizontal" id="userCreateForm" method="post"
+                                      enctype="multipart/form-data" action="{{ path('_backend_stores_add') }}">
+
+                                    <div class="form-group ">
+                                        <label for="name" class="control-label col-md-3">Nom:</label>
+
+                                        <div class="col-md-9">
+                                            <input class=" form-control" id="name" name="name" type="text"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="description" class="control-label col-md-3">Description:</label>
+
+                                        <div class="col-md-9">
+                                            <textarea name="description" id="description" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="address" class="control-label col-md-3">Adresse:</label>
+
+                                        <div class="col-md-9">
+                                            <input class=" form-control" id="address" name="address"
+                                                   type="text"/>
+                                        </div>
+                                    </div>
+                                    {# <div class="form-group">
+                                        <label for="address" class="control-label col-md-3">Adresse:</label>
+
+                                        <div class="col-md-9">
+                                            <textarea class="form-control" name="address" id="address"
+                                                      rows="6"></textarea>
+                                        </div>
+                                    </div> #}
+
+                                    <div class="form-group">
+                                        <label for="city" class="control-label col-md-3">Ville:</label>
+
+                                        <div class="col-md-9">
+                                            <input class=" form-control" id="city" name="city"
+                                                   type="text"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="longitude" class="control-label col-md-3">Longitude:</label>
+
+                                        <div class="col-md-9">
+                                            <input class=" form-control" id="longitude" name="longitude"
+                                                   type="text"/>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="latitude" class="control-label col-md-3">Latitude:</label>
+
+                                        <div class="col-md-9">
+                                            <input class=" form-control" id="latitude" name="latitude"
+                                                   type="text"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="phone" class="control-label col-md-3">Téléphone:</label>
+
+                                        <div class="col-md-9">
+                                            <input class=" form-control" id="phone" name="phone"
+                                                   type="text"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group last">
+                                        <label class="control-label col-md-3">Image :</label>
+                                        <div class="col-md-9">
+                                            <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                                </div>
+                                                <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                                <div>
+                                                           <span class="btn btn-white btn-file">
+                                                           <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Selection d'image</span>
+                                                           <span class="fileupload-exists"><i class="fa fa-undo"></i> Changer</span>
+                                                           <input type="file" class="default" id="image" name="image"/>
+                                                           </span>
+                                                    <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash"></i>Supprimer</a>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-3 col-lg-6">
+                                            <button class="btn btn-primary" type="submit">Save</button>
+                                            <button onclick="window.location='{{ url('_backend_stores') }}'"
+                                                    class="btn btn-default" type="button">Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                            <div class="col-md-6 map">
+                                <div id="map">
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+            <!-- page end-->
+        </section>
+    </section>
+{% endblock %}
+
+
+{% block css %}
+    <link href="/assets/backend/bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/backend/css/bootstrap-reset.css" rel="stylesheet">
+    <link href="/assets/backend/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="/assets/backend/css/bootstrap-switch.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/bootstrap-wysihtml5/bootstrap-wysihtml5.css"/>
+
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/bootstrap-datepicker/css/datepicker.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/bootstrap-timepicker/css/timepicker.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/bootstrap-colorpicker/css/colorpicker.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/bootstrap-daterangepicker/daterangepicker-bs3.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/bootstrap-datetimepicker/css/datetimepicker.css"/>
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-fileupload/jasny-bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/jquery-multi-select/css/multi-select.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/jquery-tags-input/jquery.tagsinput.css"/>
+
+    <link rel="stylesheet" type="text/css" href="/assets/backend/js/select2/select2.css"/>
+
+    <!-- Custom styles for this template -->
+    <link href="/assets/backend/css/style.css" rel="stylesheet">
+    <link href="/assets/backend/css/style-responsive.css" rel="stylesheet"/>
+
+    <style>
+        #map {
+            min-width: 400px;
+            width: 100%;
+            min-height: 400px;
+            border: 1px solid #ccc;
+        }
+    </style>
+{% endblock %}
+
+{% block js %}
+    
+  {# 
+   <script type="text/javascript" src="/assets/backend/js/jquery-multi-select/js/jquery.multi-select.js"></script>
+    <script type="text/javascript" src="/assets/backend/js/jquery-multi-select/js/jquery.quicksearch.js"></script>
+    <script type="text/javascript" src="/assets/backend/js/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+    <script src="/assets/backend/js/jquery-tags-input/jquery.tagsinput.js"></script>
+    <script src="/assets/backend/js/select2/select2.js"></script>
+    <script src="/assets/backend/js/select-init.js"></script>
+    <script src="/assets/backend/js/iCheck/jquery.icheck.js"></script>
+    <script type="text/javascript" src="/assets/backend/js/ckeditor/ckeditor.js"></script>
+    <script src="/assets/backend/js/toggle-init.js"></script>
+    <script src="/assets/backend/js/advanced-form.js"></script>
+
+  #}  
+    
+    <!--Sparkline Chart-->
+    <!--jQuery Flot Chart-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCE_maPmnVq7BmbPQHyQ0AcO4v33T8ov-s"
+    ></script>
+    <script>
+
+        $(function () {
+
+
+            // Google map api
+            var input_lat = document.getElementById('latitude');
+            var input_lng = document.getElementById('longitude');
+            var input_city = document.getElementById('city');
+            var input_addr = document.getElementById('address');
+            var current_marker = null ;
+
+            function geocodeCity(result) {
+                    // var city = "";
+                    for (var i = 0 ; i < result.address_components.length; i++)
+                    {
+                        var component = result.address_components[i];
+                        if (component.types[0] === 'locality'){
+                             return component.long_name;
+                        }
+                    }
+
+                    // return = 0;
+            }
+
+            function initialize() {
+
+                var initPosition = {lat: 30.414408799870536 , lng: -9.569306373596191};
+                var optionsMap = {
+                    center : initPosition,
+                    zoom : 10
+                };
+                var geocoder = new google.maps.Geocoder();
+                var map = new google.maps.Map(document.getElementById('map'), optionsMap );
+
+                google.maps.event.addListener(map, 'click', function(event) {
+
+                    var position = {
+                        lat : event.latLng.lat(),
+                        lng : event.latLng.lng()
+                    }
+                    input_lng.value = position.lng;
+                    input_lat.value = position.lat;
+
+                    // Reverse Geocoding 
+                    geocoder.geocode({'location':position}, function(results, status) {
+                        var addr = "";
+                        var city = "";
+                        if(status === 'OK') {
+                            //if(results[1]) {
+                                console.log(results);
+
+                                // Get city name 
+                                input_city.value = geocodeCity(results[0]);
+                                input_addr.value = results[0].formatted_address;
+                            //}
+                        }
+                    });
+
+                    
+                    if(current_marker)
+                        current_marker.setPosition(position);
+                    else
+                        addMarker(position, map);
+
+                });
+
+                function addMarker(position, map)
+                {
+                    current_marker = new google.maps.Marker({
+                        position: position,
+                        map: map,
+                    });
+                }
+
+            }
+
+            google.maps.event.addDomListener(window, 'load', initialize);
+            
+        });
+
+    </script>
+    {# Google Map API#}
+    {#<script src="/assets/backend/js/flot-chart/jquery.flot.js"></script>
+    <script src="/assets/backend/js/flot-chart/jquery.flot.tooltip.min.js"></script>
+    <script src="/assets/backend/js/flot-chart/jquery.flot.resize.js"></script>
+    <script src="/assets/backend/js/flot-chart/jquery.flot.pie.resize.js"></script>#}
+{% endblock %}

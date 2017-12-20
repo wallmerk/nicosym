@@ -1,0 +1,998 @@
+{% extends "@BDMNicolasFrontend/layout.html.twig" %}
+
+{% block content %}
+    <section class="headBand" style="background-image: url('{{ asset('assets/frontend/images/bg_headband1.jpg') }}');">
+        <div class="container text-center">
+            <div class="headBand-content">
+                <h1 class="headBand-title">{{ page_title }}</h1>
+                {% if category is defined and category %}
+                    <div class="headBand-description">
+                        <p>
+                            {% if category.description is defined and category.description %}{{ category.description }}{% endif %}
+                        </p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <!-- End headBand -->
+
+    <div class="hidden-xs filterSection">
+        <div class="container">
+
+            <div class="col-sm-12 breadCrumb">
+                <ol class="breadCrumb-nav" role="navigation">
+                    <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Acceuil</a></li>
+                    <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Vins</a></li>
+                    <li class="breadCrumb-item"><a href="#" class="breadCrumb-link">Bordeaux</a></li>
+                </ol>
+            </div><!-- End breadCrumb -->
+
+            <div class="col-sm-12 ns-pagination pagination-top">
+                <div class="col-sm-offset-3">
+                    <span class="totalResult">
+                        {% if products.getTotalItemCount is defined %}
+                            {{ products.getTotalItemCount }}
+                        {% else %}
+                            {{ products|length }}
+                        {% endif %}
+                        produits</span>
+                    {#<a class="pagination-prev" href="#"><</a>#}
+                    {#<span class="pagination-link pagination-link-active">1</span>#}
+                    {#<a href="#" class="pagination-link">2</a>#}
+                    {#<a href="#" class="pagination-link">3</a>#}
+                    {#<a href="#" class="pagination-link">4</a>#}
+                    {#<a href="#" class="pagination-link">5</a>#}
+                    {#<a class="pagination-next" href="#">></a>#}
+
+                    {% if products.getTotalItemCount is defined %}
+                        {{ knp_pagination_render(products) }}
+                    {% else %}
+                    {% endif %}
+                </div>
+            </div><!-- End Pagination -->
+
+            <div class=" col-sm-12 filterSort">
+                <div class="col-sm-offset-3">
+                    <p>
+                        <span class="filterSort-title">Trier par:</span>
+
+                        {% if products.getTotalItemCount is defined %}
+                            {{ knp_pagination_sortable(products, 'Prix', 'p.regularPrice') }}
+                            {{ knp_pagination_sortable(products, 'Libellé', 'p.label') }}
+                        {% else %}
+                        {% endif %}
+                    </p>
+                </div>
+                {# <form class="filterSort-list col-sm-offset-3 col-sm-9" action="" method="get"> #}
+                {#<div class="filterSort-select col-sm-4">#}
+                {#<select name="sort" class="customSelect" id="critiria_select">#}
+                {#<option value="" disabled selected>Trier par</option>#}
+                {#<option value="price-asc">Prix Croissant</option>#}
+                {#<option value="price-desc">Prix Décroissant</option>#}
+                {#<option value="newest">Nouveautés</option>#}
+                {#<option value="quantity-sold">Meilleures ventes</option>#}
+                {#<option value="topRated">Mieux notés</option>#}
+                {#</select>#}
+                {#</div>#}
+                {#<div class="filterSort-select col-sm-offset-4 col-sm-4">#}
+                {#<form method="get" action="/" id="limit_form">#}
+                {#<select name="limit" class="customSelect" id="limit_filter">#}
+                {#<option value="39" selected="selected">39 Produits</option>#}
+                {#<option value="66">66 Produits</option>#}
+                {#<option value="93">93 Produits</option>#}
+                {#<option value="All">Voir tous</option>#}
+                {#</select>#}
+                {#</form>#}
+                {#</div>#}
+                {# </form> #}
+            </div>
+
+        </div>
+    </div>
+    <!-- End filterSection -->
+
+    <div class="listingProduct">
+        <div class="container">
+
+            {% if category is defined and category.code == 'champagnes' %}
+                <aside class="hidden-xs col-sm-3 listingProduct-aside">
+                    {% if cepages is defined and cepages|length!=0 %}
+                        <div class="filterProduct-facet ">
+                            <button class="filterProduct-titleCategory">
+                                Cépages<i class="filterProduct-titleCategoryIcon fa fa-chevron-down"></i>
+                            </button>
+                            <div class="facetValues">
+                                <div class="allFacetValues" style="">
+                                    <ul class="facet_block ">
+                                        {% for cepage in cepages %}
+                                            {% if cepage.cepage %}
+                                                <li class="filterProduct-item">
+                                                    <a href="{{ path('_products_by_cepage_by_category',{'id_category':category.id, 'slug_category':category.slug, 'cepage':cepage.cepage|replace({' ':'_', '.':''})}) }}">
+
+                                                        {#<i class="filterProduct-icon ns-Icon ns-Icon--{% if color.slug %}{{ color.slug|capitalize }}{% endif %}"></i>#}
+                                                        <span class="filterProduct-iconContent">{% if cepage.cepage%}{{cepage.cepage }}{% endif %}</span>
+                                                    </a>
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if regions is defined and regions|length != 0 %}
+                        <div class="filterProduct-facet ">
+                            <button class="filterProduct-titleCategory">
+                                region<i class="filterProduct-titleCategoryIcon fa fa-chevron-down"></i>
+                            </button>
+                            <div class="facetValues">
+                                <div class="allFacetValues" style="">
+                                    <ul class="facet_block ">
+                                        {% for region in regions %}
+                                            <li class="filterProduct-item">
+                                                <a href="{{ path('_products_by_category_by_region',{'id_category':category.id, 'slug_category':category.slug, 'id_sub_category':0, 'slug_sub_category':'all', 'region':region.slug}) }}">
+                                                    <span class="filterProduct-iconContent">{% if region.label %}{{ region.label }}{% endif %}</span>
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<span class="filterProduct-iconContent">Autres</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<span class="filterProduct-iconContent">Beaujolais-Mâconnais</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<span class="filterProduct-iconContent">Bordeaux</span>#}
+                                        {#</li>#}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                </aside>
+            {% elseif category is defined and category.code == 'bieres' %}
+                <aside class="hidden-xs col-sm-3 listingProduct-aside">
+                    {% if subCategories is defined and subCategories|length!=0 %}
+                        <div class="filterProduct-facet ">
+                            <button class="filterProduct-titleCategory">
+                                {% if category.code == 'bieres' %}Sous Catégories{% elseif category.code == 'spiritueux' %}Familles{% endif %}
+                                <i class="filterProduct-titleCategoryIcon fa fa-chevron-down"></i>
+                            </button>
+                            <div class="facetValues">
+                                <div class="allFacetValues" style="">
+                                    <ul class="facet_block ">
+                                        {% for sub in subCategories %}
+                                            <li class="filterProduct-item">
+                                                <a href="{{ path('_products_by_category',{'id_category':category.id,'slug_category':category.slug,'id_sub_category':sub.id,'slug_sub_category':sub.slug}) }}">
+
+                                                    {#<i class="filterProduct-icon ns-Icon ns-Icon--{% if color.slug %}{{ color.slug|capitalize }}{% endif %}"></i>#}
+                                                    <span class="filterProduct-iconContent">{% if sub.label %}{{ sub.label }}{% endif %}</span>
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </aside>
+            {% elseif category is defined and category.id == 3 %}
+                <aside class="hidden-xs col-sm-3 listingProduct-aside">
+                    <div class="filterProduct-facet ">
+                        <button class="filterProduct-titleCategory">
+                            Familles
+                            <i class="filterProduct-titleCategoryIcon fa fa-chevron-down"></i>
+                        </button>
+                        <div class="facetValues">
+                            <div class="allFacetValues" style="">
+                                <ul class="facet_block ">
+                                        <li class="filterProduct-item">
+                                            <a href="{{ path('_products_by_category',{'id_category':3,'slug_category':'spiritueux','id_sub_category':8,'slug_sub_category':'Porto'}) }}">
+                                                <span class="filterProduct-iconContent">Porto</span>
+                                            </a>
+                                        </li>
+                                        <li class="filterProduct-item">
+                                            <a href="{{ path('_products_by_category',{'id_category':3,'slug_category':'spiritueux','id_sub_category':9,'slug_sub_category':'Cognac'}) }}">
+                                                <span class="filterProduct-iconContent">Cognac</span>
+                                            </a>
+                                        </li>
+                                        <li class="filterProduct-item">
+                                            <a href="{{ path('_products_by_category',{'id_category':3,'slug_category':'spiritueux','id_sub_category':10,'slug_sub_category':'Whisky'}) }}">
+                                                <span class="filterProduct-iconContent">Whisky</span>
+                                            </a>
+                                        </li>
+                                        <li class="filterProduct-item">
+                                            <a href="{{ path('_products_by_category',{'id_category':3,'slug_category':'spiritueux','id_sub_category':11,'slug_sub_category':'Liqueur'}) }}">
+                                                <span class="filterProduct-iconContent">Liqueur</span>
+                                            </a>
+                                        </li>
+                                        <li class="filterProduct-item">
+                                            <a href="{{ path('_products_by_category',{'id_category':3,'slug_category':'spiritueux','id_sub_category':12,'slug_sub_category':'Vodka'}) }}">
+                                                <span class="filterProduct-iconContent">Vodka</span>
+                                            </a>
+                                        </li>
+                                        <li class="filterProduct-item">
+                                            <a href="{{ path('_products_by_category',{'id_category':3,'slug_category':'spiritueux','id_sub_category':13,'slug_sub_category':'Gin'}) }}">
+                                                <span class="filterProduct-iconContent">Gin</span>
+                                            </a>
+                                        </li>
+                                        <li class="filterProduct-item">
+                                            <a href="{{ path('_products_by_category',{'id_category':3,'slug_category':'spiritueux','id_sub_category':14,'slug_sub_category':'Martini'}) }}">
+                                                <span class="filterProduct-iconContent">Martini</span>
+                                            </a>
+                                        </li>
+                                    <li class="filterProduct-item">
+                                        <a href="{{ path('_products_by_category',{'id_category':3,'slug_category':'spiritueux','id_sub_category':31,'slug_sub_category':'Rhum'}) }}">
+                                            <span class="filterProduct-iconContent">Rhum</span>
+                                        </a>
+                                    </li>
+                                    <li class="filterProduct-item">
+                                        <a href="{{ path('_products_by_category',{'id_category':3,'slug_category':'spiritueux','id_sub_category':32,'slug_sub_category':'Pastis'}) }}">
+                                            <span class="filterProduct-iconContent">Pastis</span>
+                                        </a>
+                                    </li>
+                                    <li class="filterProduct-item">
+                                        <a href="{{ path('_products_by_category',{'id_category':3,'slug_category':'spiritueux','id_sub_category':33,'slug_sub_category':'Eau de vie'}) }}">
+                                            <span class="filterProduct-iconContent">Eau de vie</span>
+                                        </a>
+                                    </li>
+                                    <li class="filterProduct-item">
+                                        <a href="{{ path('_products_by_category',{'id_category':3,'slug_category':'spiritueux','id_sub_category':34,'slug_sub_category':'Tequilla'}) }}">
+                                            <span class="filterProduct-iconContent">Tequilla</span>
+                                        </a>
+                                    </li>
+                                    <li class="filterProduct-item">
+                                        <a href="{{ path('_products_by_category',{'id_category':3,'slug_category':'spiritueux','id_sub_category':35,'slug_sub_category':'Digéstif'}) }}">
+                                            <span class="filterProduct-iconContent">Digéstif</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            {% else %}
+                <aside class="hidden-xs col-sm-3 listingProduct-aside">
+                    {% if colors is defined and colors|length!=0 %}
+                        <div class="filterProduct-facet ">
+                            <button class="filterProduct-titleCategory">
+                                Couleur<i class="filterProduct-titleCategoryIcon fa fa-chevron-down"></i>
+                            </button>
+                            <div class="facetValues">
+                                <div class="allFacetValues" style="">
+                                    <ul class="facet_block ">
+                                        {% for color in colors %}
+                                            <li class="filterProduct-item">
+                                                <a href="{{ path('_products_by_color',{'color':color.slug}) }}">
+
+                                                    <i class="filterProduct-icon ns-Icon ns-Icon--{% if color.slug %}{{ color.slug|capitalize }}{% endif %}"></i>
+                                                    <span class="filterProduct-iconContent">{% if color.label %}{{ color.label }}{% endif %}</span>
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<i class="filterProduct-icon ns-Icon ns-Icon--BLANC"></i>#}
+                                        {#<span class="filterProduct-iconContent">Blanc</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<i class="filterProduct-icon ns-Icon ns-Icon--ROSE"></i>#}
+                                        {#<span class="filterProduct-iconContent">Rosé</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<i class="filterProduct-icon ns-Icon ns-Icon--AMBRE"></i>#}
+                                        {#<span class="filterProduct-iconContent">Ambre</span>#}
+                                        {#</li>#}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <!-- End Couleur -->
+                    {% if brands is defined and brands|length !=0 %}
+                        <div class="filterProduct-facet ">
+                            <button class="filterProduct-titleCategory">
+                                marque<i class="filterProduct-titleCategoryIcon fa fa-chevron-down"></i>
+                            </button>
+                            <div class="facetValues">
+                                <div class="allFacetValues" style="">
+                                    <ul class="facet_block ">
+                                        {% for brand in brands %}
+                                            <li class="filterProduct-item">
+                                                <a href="{{ path('_products_by_brand',{'brand':brand.slug}) }}">
+                                                    <span class="filterProduct-iconContent">{% if brand.label %}{{ brand.label }}{% endif %}</span>
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<span class="filterProduct-iconContent"> Domaine Henri de Villamont</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<span class="filterProduct-iconContent">Albert Bichot</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<span class="filterProduct-iconContent">Baldès et fils</span>#}
+                                        {#</li>#}
+                                    </ul>
+                                    {#<button class="filterProduct-showButton" type="submit">Autres Marques</button>#}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <!-- End Marque -->
+                    {% if regions is defined and regions|length != 0 %}
+                        <div class="filterProduct-facet ">
+                            <button class="filterProduct-titleCategory">
+                                region<i class="filterProduct-titleCategoryIcon fa fa-chevron-down"></i>
+                            </button>
+                            <div class="facetValues">
+                                <div class="allFacetValues" style="">
+                                    <ul class="facet_block ">
+                                        {% for region in regions %}
+                                            <li class="filterProduct-item">
+                                                <a href="{{ path('_products_by_region',{'region':region.slug}) }}">
+                                                    <span class="filterProduct-iconContent">{% if region.label %}{{ region.label }}{% endif %}</span>
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<span class="filterProduct-iconContent">Autres</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<span class="filterProduct-iconContent">Beaujolais-Mâconnais</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<span class="filterProduct-iconContent">Bordeaux</span>#}
+                                        {#</li>#}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <!-- End region -->
+                    {% if appelations is defined and appelations|length !=0 %}
+                        <div class="filterProduct-facet ">
+                            <button class="filterProduct-titleCategory">
+                                appelation<i class="filterProduct-titleCategoryIcon fa fa-chevron-down"></i>
+                            </button>
+                            <div class="facetValues">
+                                <div class="allFacetValues" style="">
+                                    <ul class="facet_block ">
+                                        {% for appelation in appelations %}
+                                            {% if appelation.appelation %}
+                                                <li class="filterProduct-item">
+                                                    <a href="{{ path('_products_by_appelation',{'appelation':appelation.appelation}) }}">
+                                                        <span class="filterProduct-iconContent">{% if appelation.appelation %}{{ appelation.appelation }}{% endif %}</span>
+                                                    </a>
+                                                </li>
+
+                                            {% endif %}
+                                        {% endfor %}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<span class="filterProduct-iconContent">Arbois</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<span class="filterProduct-iconContent">Bandol</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<span class="filterProduct-iconContent">Banylus</span>#}
+                                        {#</li>#}
+                                    </ul>
+                                    {#<button class="filterProduct-showButton" type="submit">Autres Marques</button>#}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <!-- End appelation -->
+                    {% if vintages is defined and vintages|length!=0 %}
+                        <div class="filterProduct-facet ">
+
+                            <button class="filterProduct-titleCategory">
+                                millésime<i class="filterProduct-titleCategoryIcon fa fa-chevron-down"></i>
+                            </button>
+                            <div class="facetValues">
+                                <div class="allFacetValues" style="">
+                                    <ul class="facet_block ">
+                                        {% for vintage in vintages %}
+                                            <li class="filterProduct-item">
+                                                <a href="{{ path('_products_by_vintage',{'vintage':vintage.vintage}) }}">
+                                                    <span class="filterProduct-iconContent">{% if vintage.vintage %}{{ vintage.vintage }}{% endif %}</span>
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<span class="filterProduct-iconContent">1999</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<span class="filterProduct-iconContent">2004</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<span class="filterProduct-iconContent">2005</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<span class="filterProduct-iconContent">2006</span>#}
+                                        {#</li>#}
+                                    </ul>
+                                    {#<button class="filterProduct-showButton" type="submit">Autres Millésime</button>#}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <!-- End millésime -->
+                    {% if tastes is defined and tastes|length!=0 %}
+                        <div class="filterProduct-facet ">
+                            <button class="filterProduct-titleCategory">
+                                goût<i class="filterProduct-titleCategoryIcon fa fa-chevron-down"></i>
+                            </button>
+                            <div class="facetValues">
+                                <div class="allFacetValues" style="">
+                                    <ul class="facet_block ">
+                                        {% for taste in tastes %}
+                                            <li class="filterProduct-item">
+                                                <a href="{{ path('_products_by_taste',{'taste':taste.slug}) }}">
+                                                    <i class="filterProduct-icon ns-Icon ns-Icon--{% if taste.cssClass %}{{ taste.cssClass }}{% endif %}"></i>
+                                                    <span class="filterProduct-iconContent">{% if taste.label %}{{ taste.label }}{% endif %}</span>
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<i class="filterProduct-icon ns-Icon ns-Icon--FRUITE_ET_PLEIN"></i>#}
+                                        {#<span class="filterProduct-iconContent">Fruité et charnu</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<i class="filterProduct-icon ns-Icon ns-Icon--FUITE_SOUPLE"></i>#}
+                                        {#<span class="filterProduct-iconContent">Fruité et léger</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<i class="filterProduct-icon ns-Icon ns-Icon--BOUQUETE_ET_A_LA_RESERVE"></i>#}
+                                        {#<span class="filterProduct-iconContent">Puissant avec du potentiel</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<i class="filterProduct-icon ns-Icon ns-Icon--BOUQUETE_ET_SOUPLE"></i>#}
+                                        {#<span class="filterProduct-iconContent">Riche et rond</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<i class="filterProduct-icon ns-Icon ns-Icon--BOUQUETE_CORSE_ET_A_POINT"></i>#}
+                                        {#<span class="filterProduct-iconContent">Riche et puissant</span>#}
+                                        {#</li>#}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <!-- End goût -->
+                    {% if alliances is defined and alliances|length!=0 %}
+                        <div class="filterProduct-facet ">
+                            <button class="filterProduct-titleCategory">
+                                alliance<i class="filterProduct-titleCategoryIcon fa fa-chevron-down"></i>
+                            </button>
+                            <div class="facetValues">
+                                <div class="allFacetValues" style="">
+                                    <ul class="facet_block ">
+                                        {% set css_alliance ='' %}
+                                        {% for alliance in alliances %}
+                                            {% if alliance.slug =='charcuterie' %}
+                                                {% set css_alliance = 'CHARCUTERIES' %}
+                                            {% elseif alliance.slug =='fois-gras' %}
+                                                {% set css_alliance = 'FOIE_GRAS' %}
+                                            {% elseif alliance.slug =='crustacs' %}
+                                                {% set css_alliance = 'FRUIT_DE_MER' %}
+                                            {% elseif alliance.slug =='possoin-grill' %}
+                                                {% set css_alliance = 'POISSONS_GRILLES' %}
+                                            {% elseif alliance.slug =='poisson-en-sauce' %}
+                                                {% set css_alliance = 'POISSONS_EN_SAUCE' %}
+                                            {% elseif alliance.slug =='viande-blanche' %}
+                                                {% set css_alliance = 'VIANDES_BLANCHES' %}
+                                            {% elseif alliance.slug =='agneau' %}
+                                                {% set css_alliance = 'AGNEAU' %}
+                                            {% elseif alliance.slug =='gibier' %}
+                                                {% set css_alliance = 'GIBIER' %}
+                                            {% elseif alliance.slug =='viande-rouge' %}
+                                                {% set css_alliance = 'VIANDES_ROUGES' %}
+                                            {% elseif alliance.slug =='fromage-doux' %}
+                                                {% set css_alliance = 'FROMAGES_DOUX' %}
+                                            {% elseif alliance.slug =='fromage-cros' %}
+                                                {% set css_alliance = 'FROMAGES_CORSES' %}
+                                            {% elseif alliance.slug =='tartes' %}
+                                                {% set css_alliance = 'TARTES_AUX_FRUITS' %}
+                                            {% elseif alliance.slug =='gteau' %}
+                                                {% set css_alliance = 'PATISSERIES' %}
+                                            {% elseif alliance.slug =='glaces-et-sorbets' %}
+                                                {% set css_alliance = 'GLACES_ET_SORBETS' %}
+                                            {% endif %}
+                                            <li class="filterProduct-item">
+                                                <a href="{{ path('_products_by_alliance',{'alliance':alliance.slug }) }}">
+                                                    <img src="{{ asset('/uploads/backend/product/alliance/'~alliance.badge)| imagine_filter('alliance_thumb') }}">
+                                                    <span class="filterProduct-iconContent">{% if alliance.label %}{{ alliance.label }}{% endif %}</span>
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<i class="filterProduct-icon ns-Icon ns-Icon--FRUIT_DE_MER"></i>#}
+                                        {#<span class="filterProduct-iconContent">Charcuterie</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<i class="filterProduct-icon ns-Icon ns-Icon--CHARCUTERIES"></i>#}
+                                        {#<span class="filterProduct-iconContent">Crustacés</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<i class="filterProduct-icon ns-Icon ns-Icon--FOIE_GRAS"></i>#}
+                                        {#<span class="filterProduct-iconContent">Foie gras</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<i class="filterProduct-icon ns-Icon ns-Icon--FROMAGES_CORSES"></i>#}
+                                        {#<span class="filterProduct-iconContent">Fromage corsé</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<i class="filterProduct-icon ns-Icon ns-Icon--FROMAGES_DOUX"></i>#}
+                                        {#<span class="filterProduct-iconContent">Fromage doux</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<i class="filterProduct-icon ns-Icon ns-Icon--GIBIER"></i>#}
+                                        {#<span class="filterProduct-iconContent">Gibier</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<i class="filterProduct-icon ns-Icon ns-Icon--GLACES_ET_SORBETS"></i>#}
+                                        {#<span class="filterProduct-iconContent">Glace et sorbet</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<i class="filterProduct-icon ns-Icon ns-Icon--PATISSERIES"></i>#}
+                                        {#<span class="filterProduct-iconContent">Gâteau</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<i class="filterProduct-icon ns-Icon ns-Icon--POISSONS_EN_SAUCE"></i>#}
+                                        {#<span class="filterProduct-iconContent">Poisson en sauce</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item ns-Icon">#}
+                                        {#<i class="filterProduct-icon ns-Icon ns-Icon--POISSONS_GRILLES"></i>#}
+                                        {#<span class="filterProduct-iconContent">Poisson grillé</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<i class="filterProduct-icon ns-Icon ns-Icon--TARTES_AUX_FRUITS"></i>#}
+                                        {#<span class="filterProduct-iconContent">Tarte</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<i class="filterProduct-icon ns-Icon ns-Icon--VIANDES_BLANCHES"></i>#}
+                                        {#<span class="filterProduct-iconContent">Viande blanche</span>#}
+                                        {#</li>#}
+                                        {#<li class="filterProduct-item">#}
+                                        {#<i class="filterProduct-icon ns-Icon ns-Icon--VIANDES_ROUGES"></i>#}
+                                        {#<span class="filterProduct-iconContent">Viande rouge</span>#}
+                                        {#</li>#}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End alliance -->
+                    {% endif %}
+                </aside>
+            {% endif %}
+            <!-- End Aside -->
+
+            <article class="col-sm-9 listingProduct-content">
+
+                {% for product in products %}
+                    {% if (loop.index0 % 3 == 0) or loop.first %}
+                        <div class="row">
+                    {% endif %}
+
+                    <div class="listingProduct-item  col-sm-4 text-center">
+                        <div class="nicolas-product">
+                            <a href="{{ path('_single_product',{'id':product.id,'slug':product.slug}) }}"
+                               title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">
+                                <figure class="product-figure">
+                                    <img class="product-img "
+                                         src="{{ asset('/uploads/backend/product/image/' ~ product.getImages()[0].getFile())| imagine_filter('listing_product') }}"
+                                         alt=""
+                                         title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">
+                                    <figcaption
+                                            class="product-title">{% if product.label %}{{ product.label }}{% endif %}  {% if product.vintage %}{{ product.vintage }}{% endif %}
+                                    </figcaption>
+                                </figure>
+                            </a>
+
+                            {% if product.isNew == 1 %}
+                                <div class="product-sticker">
+                                    <img src="{{ asset('assets/frontend/images/productSticker3.png') }}" alt="">
+                                </div>
+                            {% endif %}
+
+                            {% if product.getRegion() %}
+                                <span class="product-district">{{ product.getRegion().getLabel() }}</span>
+                            {% endif %}
+
+                            <span class="product-domain">
+                                {% if product.appelation %}{{ product.appelation }}{% endif %}
+                            </span>
+
+                            {% set price = product.regularPrice %}
+                            {% set round_part = product.regularPrice|round %}
+                            {% set decimal = 1 - round_part + price %}
+                            <div class="product-priceContainer">
+                                <span class="nicolas-price product-price ">
+							         <span class="price-unityContainer">
+								        <span class="price-unity">{% if product.regularPrice and price!=round_part %}{{ round_part - 1 }}{% else %}{{ price }}{% endif %}
+                                            ,</span>
+								        <sup class="price-currency">DH</sup>
+							         </span>
+                                    <span class="price-decimal">{% if product.regularPrice and decimal != 1 %}{{ decimal|number_format(2)|replace({'0.':''}) }}{% else %}00{% endif %}</span>
+						        </span>
+                            </div>
+
+                            <span class="product-bottle">
+                                Bouteille de {% if product.volume %}{{ product.volume }}{% endif %}cl
+                            </span>
+
+                            <a class="nicoButton nicoButton-default product-button" data-=""
+                               href="{{ path('_single_product',{'id':product.id,'slug':product.slug}) }}" id="">
+					           <span class="nicoButton-content">
+					               <i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>
+                                   Découvrir
+                            </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    {% if ((loop.index0 + 1)%3 == 0) or loop.last %}
+                        </div>
+                    {% endif %}
+
+                {% endfor %}
+                {#<div class="listingProduct-item  col-sm-4 text-center">#}
+                {#<div class="nicolas-product">#}
+                {#<a href="#" title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<figure class="product-figure">#}
+                {#<img class="product-img " src="assets/frontend/images/bouteille1.png" alt=""#}
+                {#title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<figcaption class="product-title">Beaumes de Venise - Chapelle Notre Dame Aubune 2014#}
+                {#</figcaption>#}
+                {#</figure>#}
+                {#</a>#}
+
+                {#<span class="product-district">Rhône</span>#}
+                {#<span class="product-domain">Beaumes de Venise</span>#}
+
+                {#<div class="product-priceContainer">#}
+                {#<span class="nicolas-price product-price ">#}
+                {#<span class="price-unityContainer">#}
+                {#<span class="price-unity">10,</span>#}
+                {#<sup class="price-currency">€</sup>#}
+                {#</span>#}
+                {#<span class="price-decimal">75</span>#}
+                {#</span>#}
+                {#</div>#}
+
+                {#<span class="product-bottle">Bouteille de 75 cl</span>#}
+
+                {#<a class="nicoButton nicoButton-default product-button" data-="" href="#" id=""#}
+                {#title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<span class="nicoButton-content">#}
+                {#<i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>#}
+                {#Découvrir</span>#}
+                {#</a>#}
+                {#</div>#}
+                {#</div>#}
+
+                {#<div class="listingProduct-item  col-sm-4 text-center">#}
+                {#<div class="nicolas-product">#}
+                {#<a href="#" title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<figure class="product-figure">#}
+                {#<img class="product-img " src="assets/frontend/images/bouteille1.png" alt=""#}
+                {#title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<figcaption class="product-title">Beaumes de Venise - Chapelle Notre Dame Aubune 2014#}
+                {#</figcaption>#}
+                {#</figure>#}
+                {#</a>#}
+
+                {#<div class="product-sticker">#}
+                {#<img src="assets/frontend/images/productSticker.png" alt="">#}
+                {#</div>#}
+
+                {#<div class="product-loyalityPrice">#}
+                {#<span class="nicolas-price product-price ">#}
+                {#<span class="price-unityContainer">#}
+                {#<span class="price-unity">10,</span>#}
+                {#<sup class="price-currency">€</sup>#}
+                {#</span>#}
+                {#<span class="price-decimal">75</span>#}
+                {#</span>#}
+                {#<span class="product-loyalityPriceTxt">#}
+                {#avec la carte#}
+                {#</span>#}
+                {#</div>#}
+
+                {#<span class="product-district">Rhône</span>#}
+                {#<span class="product-domain">Beaumes de Venise</span>#}
+
+                {#<div class="product-priceContainer">#}
+                {#<span class="nicolas-price product-regularPrice ">#}
+                {#<span class="price-unityContainer">#}
+                {#<span class="price-unity">10,</span>#}
+                {#<sup class="price-currency">€</sup>#}
+                {#</span>#}
+                {#<span class="price-decimal">75</span>#}
+                {#</span>#}
+                {#<span class="nicolas-price product-price ">#}
+                {#<span class="price-unityContainer">#}
+                {#<span class="price-unity">10,</span>#}
+                {#<sup class="price-currency">€</sup>#}
+                {#</span>#}
+                {#<span class="price-decimal">75</span>#}
+                {#</span>#}
+                {#</div>#}
+
+                {#<span class="product-bottle">Bouteille de 75 cl</span>#}
+
+                {#<a class="nicoButton nicoButton-default product-button" data-="" href="#" id=""#}
+                {#title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<span class="nicoButton-content">#}
+                {#<i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>#}
+                {#Découvrir</span>#}
+                {#</a>#}
+                {#</div>#}
+                {#</div>#}
+
+                {#<div class="listingProduct-item  col-sm-4 text-center">#}
+                {#<div class="nicolas-product">#}
+                {#<a href="#" title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<figure class="product-figure">#}
+                {#<img class="product-img " src="assets/frontend/images/bouteille1.png" alt=""#}
+                {#title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<figcaption class="product-title">Beaumes de Venise - Chapelle Notre Dame Aubune 2014#}
+                {#</figcaption>#}
+                {#</figure>#}
+                {#</a>#}
+
+                {#<span class="product-district">Rhône</span>#}
+                {#<span class="product-domain">Beaumes de Venise</span>#}
+
+                {#<div class="product-priceContainer">#}
+                {#<span class="nicolas-price product-price ">#}
+                {#<span class="price-unityContainer">#}
+                {#<span class="price-unity">10,</span>#}
+                {#<sup class="price-currency">€</sup>#}
+                {#</span>#}
+                {#<span class="price-decimal">75</span>#}
+                {#</span>#}
+                {#</div>#}
+
+                {#<span class="product-bottle">Bouteille de 75 cl</span>#}
+
+                {#<a class="nicoButton nicoButton-default product-button" data-="" href="#" id=""#}
+                {#title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<span class="nicoButton-content">#}
+                {#<i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>#}
+                {#Découvrir</span>#}
+                {#</a>#}
+                {#</div>#}
+                {#</div>#}
+
+                {#<div class="listingProduct-item  col-sm-4 text-center">#}
+                {#<div class="nicolas-product">#}
+                {#<a href="#" title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<figure class="product-figure">#}
+                {#<img class="product-img " src="assets/frontend/images/bouteille1.png" alt=""#}
+                {#title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<figcaption class="product-title">Beaumes de Venise - Chapelle Notre Dame Aubune 2014#}
+                {#</figcaption>#}
+                {#</figure>#}
+                {#</a>#}
+
+                {#<span class="product-district">Rhône</span>#}
+                {#<span class="product-domain">Beaumes de Venise</span>#}
+
+                {#<div class="product-priceContainer">#}
+                {#<span class="nicolas-price product-price ">#}
+                {#<span class="price-unityContainer">#}
+                {#<span class="price-unity">10,</span>#}
+                {#<sup class="price-currency">€</sup>#}
+                {#</span>#}
+                {#<span class="price-decimal">75</span>#}
+                {#</span>#}
+                {#</div>#}
+
+                {#<span class="product-bottle">Bouteille de 75 cl</span>#}
+
+                {#<a class="nicoButton nicoButton-default product-button" data-="" href="#" id=""#}
+                {#title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<span class="nicoButton-content">#}
+                {#<i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>#}
+                {#Découvrir</span>#}
+                {#</a>#}
+                {#</div>#}
+                {#</div>#}
+
+                {#<div class="listingProduct-item  col-sm-4 text-center">#}
+                {#<div class="nicolas-product">#}
+                {#<a href="#" title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<figure class="product-figure">#}
+                {#<img class="product-img " src="assets/frontend/images/bouteille1.png" alt=""#}
+                {#title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<figcaption class="product-title">Beaumes de Venise - Chapelle Notre Dame Aubune 2014#}
+                {#</figcaption>#}
+                {#</figure>#}
+                {#</a>#}
+
+                {#<div class="product-sticker">#}
+                {#<img src="assets/frontend/images/productSticker.png" alt="">#}
+                {#</div>#}
+
+                {#<div class="product-loyalityPrice">#}
+                {#<span class="nicolas-price product-price ">#}
+                {#<span class="price-unityContainer">#}
+                {#<span class="price-unity">10,</span>#}
+                {#<sup class="price-currency">€</sup>#}
+                {#</span>#}
+                {#<span class="price-decimal">75</span>#}
+                {#</span>#}
+                {#<span class="product-loyalityPriceTxt">#}
+                {#avec la carte#}
+                {#</span>#}
+                {#</div>#}
+
+                {#<span class="product-district">Rhône</span>#}
+                {#<span class="product-domain">Beaumes de Venise</span>#}
+
+                {#<div class="product-priceContainer">#}
+                {#<span class="nicolas-price product-regularPrice ">#}
+                {#<span class="price-unityContainer">#}
+                {#<span class="price-unity">10,</span>#}
+                {#<sup class="price-currency">€</sup>#}
+                {#</span>#}
+                {#<span class="price-decimal">75</span>#}
+                {#</span>#}
+                {#<span class="nicolas-price product-price ">#}
+                {#<span class="price-unityContainer">#}
+                {#<span class="price-unity">10,</span>#}
+                {#<sup class="price-currency">€</sup>#}
+                {#</span>#}
+                {#<span class="price-decimal">75</span>#}
+                {#</span>#}
+                {#</div>#}
+
+                {#<span class="product-bottle">Bouteille de 75 cl</span>#}
+
+                {#<a class="nicoButton nicoButton-default product-button" data-="" href="#" id=""#}
+                {#title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<span class="nicoButton-content">#}
+                {#<i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>#}
+                {#Découvrir</span>#}
+                {#</a>#}
+                {#</div>#}
+                {#</div>#}
+
+                {#<div class="listingProduct-item  col-sm-4 text-center">#}
+                {#<div class="nicolas-product">#}
+                {#<a href="#" title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<figure class="product-figure">#}
+                {#<img class="product-img " src="assets/frontend/images/bouteille1.png" alt=""#}
+                {#title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<figcaption class="product-title">Beaumes de Venise - Chapelle Notre Dame Aubune 2014#}
+                {#</figcaption>#}
+                {#</figure>#}
+                {#</a>#}
+
+                {#<span class="product-district">Rhône</span>#}
+                {#<span class="product-domain">Beaumes de Venise</span>#}
+
+                {#<div class="product-priceContainer">#}
+                {#<span class="nicolas-price product-price ">#}
+                {#<span class="price-unityContainer">#}
+                {#<span class="price-unity">10,</span>#}
+                {#<sup class="price-currency">€</sup>#}
+                {#</span>#}
+                {#<span class="price-decimal">75</span>#}
+                {#</span>#}
+                {#</div>#}
+
+                {#<span class="product-bottle">Bouteille de 75 cl</span>#}
+
+                {#<a class="nicoButton nicoButton-default product-button" data-="" href="#" id=""#}
+                {#title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<span class="nicoButton-content">#}
+                {#<i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>#}
+                {#Découvrir</span>#}
+                {#</a>#}
+                {#</div>#}
+                {#</div>#}
+
+                {#<div class="listingProduct-item  col-sm-4 text-center">#}
+                {#<div class="nicolas-product">#}
+                {#<a href="#" title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<figure class="product-figure">#}
+                {#<img class="product-img " src="assets/frontend/images/bouteille1.png" alt=""#}
+                {#title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<figcaption class="product-title">Beaumes de Venise - Chapelle Notre Dame Aubune 2014#}
+                {#</figcaption>#}
+                {#</figure>#}
+                {#</a>#}
+
+                {#<span class="product-district">Rhône</span>#}
+                {#<span class="product-domain">Beaumes de Venise</span>#}
+
+                {#<div class="product-priceContainer">#}
+                {#<span class="nicolas-price product-price ">#}
+                {#<span class="price-unityContainer">#}
+                {#<span class="price-unity">10,</span>#}
+                {#<sup class="price-currency">€</sup>#}
+                {#</span>#}
+                {#<span class="price-decimal">75</span>#}
+                {#</span>#}
+                {#</div>#}
+
+                {#<span class="product-bottle">Bouteille de 75 cl</span>#}
+
+                {#<a class="nicoButton nicoButton-default product-button" data-="" href="#" id=""#}
+                {#title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<span class="nicoButton-content">#}
+                {#<i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>#}
+                {#Découvrir</span>#}
+                {#</a>#}
+                {#</div>#}
+                {#</div>#}
+
+                {#<div class="listingProduct-item  col-sm-4 text-center">#}
+                {#<div class="nicolas-product">#}
+                {#<a href="#" title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<figure class="product-figure">#}
+                {#<img class="product-img " src="assets/frontend/images/bouteille1.png" alt=""#}
+                {#title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<figcaption class="product-title">Beaumes de Venise - Chapelle Notre Dame Aubune 2014#}
+                {#</figcaption>#}
+                {#</figure>#}
+                {#</a>#}
+
+                {#<span class="product-district">Rhône</span>#}
+                {#<span class="product-domain">Beaumes de Venise</span>#}
+
+                {#<div class="product-priceContainer">#}
+                {#<span class="nicolas-price product-price ">#}
+                {#<span class="price-unityContainer">#}
+                {#<span class="price-unity">10,</span>#}
+                {#<sup class="price-currency">€</sup>#}
+                {#</span>#}
+                {#<span class="price-decimal">75</span>#}
+                {#</span>#}
+                {#</div>#}
+
+                {#<span class="product-bottle">Bouteille de 75 cl</span>#}
+
+                {#<a class="nicoButton nicoButton-default product-button" data-="" href="#" id=""#}
+                {#title="Beaumes de Venise - Chapelle Notre Dame Aubune 2014">#}
+                {#<span class="nicoButton-content">#}
+                {#<i class="nicoButton-icon ns-Icon ns-Icon--chevron"></i>#}
+                {#Découvrir</span>#}
+                {#</a>#}
+                {#</div>#}
+                {#</div>#}
+
+            </article>
+            <!-- End Listing Products -->
+
+            {#<div class="col-xs-12 ns-pagination">#}
+            {#<div class="col-sm-offset-3">#}
+            {#<a class="pagination-prev" href="#"><</a>#}
+            {#<span class="pagination-link pagination-link-active">1</span>#}
+            {#<a href="#" class="pagination-link">2</a>#}
+            {#<a href="#" class="pagination-link">3</a>#}
+            {#<a href="#" class="pagination-link">4</a>#}
+            {#<a href="#" class="pagination-link">5</a>#}
+            {#<a class="pagination-next" href="#">></a>#}
+            {#</div>#}
+            {#</div>#}
+            <!-- End Pagination -->
+        </div>
+    </div>
+
+{% endblock %}
+
+    {% block front_end_css %}
+    {% endblock %}
+
+    {% block front_end_js %}
+        <script type="text/javascript">
+        </script>
+    {% endblock %}

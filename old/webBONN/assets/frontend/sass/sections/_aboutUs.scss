@@ -1,0 +1,75 @@
+/********************************************
+ * 				AboutUs: ;					*
+ ********************************************/
+
+ .aboutUsSection {
+	padding: 5em 0;
+ 	.whoAreWe {
+ 		text-align: center;
+	 	.whoAreWe-icon {
+	 		margin-bottom: 1em;
+	 	}
+	 	.whoAreWe-title {
+	 		font-weight: 800;
+	    	font-size: 20px;
+	    	text-transform: uppercase;
+	 	}
+	 	.whoAreWe-desc {
+	 		font-weight: 500;
+	 	}
+	 	.whoAreWe-desc .highlight {
+			color:  #ff7300;
+	 	}
+ 	}
+
+	.didYouKnow {
+	
+		margin-top: 2em;
+	 	.didYouKnow-left{
+	 		background: #972e35;
+			color: #fff;
+			padding: 15px;
+			position: relative;
+	 	}
+
+	 	.didYouKnow-title {
+			font-size: 20px;
+		    font-weight: 800;
+		    letter-spacing: 1px;
+		    text-transform: uppercase;
+	 	}
+
+		.didYouKnow-desc {
+			margin-bottom: 2em;
+		}
+	 	.didYouKnow-desc .highlight {
+			color: #ff7300;
+		}
+		
+	}
+
+	@media (min-width: $screen-sm-min) {
+		.didYouKonw {
+			margin-top:0;
+		}
+		.didYouKnow-right,
+		.didYouKnow-left{
+			min-height: 365px;
+		}
+		.didYouKnow-left {
+			height: auto;
+		}
+	 	.didYouKnow-icon {
+	 		margin-top: 30px;
+	 	}
+	 	.didYouKnow-footnote {
+			position: absolute;
+			bottom: 5px;
+			font-size: 12px;
+			font-style: italic;
+			opacity: 0.5;
+			letter-spacing: 0.5px;
+		}
+	}
+
+ }

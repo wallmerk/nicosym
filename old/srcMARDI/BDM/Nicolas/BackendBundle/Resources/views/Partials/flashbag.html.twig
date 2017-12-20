@@ -1,0 +1,64 @@
+{% set messages = app.session.flashbag.get('success') %}
+{% if messages %}
+    <div class="alert alert-success alert-block fade in">
+        <button data-dismiss="alert" class="close close-sm" type="button">
+            <i class="fa fa-times"></i>
+        </button>
+        <h4>
+            <i class="icon-ok-sign"></i>
+            Success!
+        </h4>
+
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% set messages = app.session.flashbag.get('error') %}
+{% if messages %}
+<div class="alert alert-block alert-danger fade in">
+    <button data-dismiss="alert" class="close close-sm" type="button">
+        <i class="fa fa-times"></i>
+    </button>
+    <h4>
+        <i class="icon-ok-sign"></i>
+        Erreur!
+    </h4>
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% set messages = app.session.flashbag.get('notice') %}
+{% if messages %}
+<div class="alert alert-info fade in">
+    <button data-dismiss="alert" class="close close-sm" type="button">
+        <i class="fa fa-times"></i>
+    </button>
+    <h4>
+        <i class="icon-ok-sign"></i>
+        Notice!
+    </h4>
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% set messages = app.session.flashbag.get('warning') %}
+{% if messages %}
+<div class="alert alert-warning fade in">
+    <button data-dismiss="alert" class="close close-sm" type="button">
+        <i class="fa fa-times"></i>
+    </button>
+    <h4>
+        <i class="icon-ok-sign"></i>
+        Warning!
+    </h4>
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+</div>
+{% endif %}

@@ -1,0 +1,77 @@
+{% extends 'BDMNicolasBackendBundle::layout.html.twig' %}
+
+{% block content %}
+    <section id="main-content">
+        <section class="wrapper">
+            <div class="row">
+                {{ render(controller('BDMNicolasBackendBundle:Partials:flashbag')) }}
+
+                <div class="col-lg-12">
+                    <section class="panel">
+
+                        <header class="panel-heading">
+                            {{page_title}}
+                        </header>
+                        <div class="panel-body">
+                            <section id="unseen">
+                                <div class="clearfix">
+                                    <div class="btn-group">
+                                        <button id="editable-sample_new" class="btn btn-primary"
+                                                onclick="window.location='{{ url('_backend_page_add') }}'">
+                                            Ajouter <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <br/>
+
+                                <br/>
+
+
+                                {% if pages %}
+                                    <table id="article" class="table table-bordered table-striped table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <th><strong>#</strong></th>
+                                            <th>Name</th>
+                                            <th>Title</th>
+                                            <th>Display</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for page in pages %}
+                                            <tr>
+                                                <td>{{ page.id }}</td>
+                                                <td>{{ page.name }}</td>
+                                                <td>{{ page.title }}</td>
+                                                <td> {% if page.display %}
+                                                        Public
+                                                     {% else %}  
+                                                        Privé      
+                                                     {% endif %} </td>
+
+                                                <td>
+                                                    <button onclick="window.location='{{ url('_backend_page_edit', {'id': page.id}) }}'"
+                                                            type="button" class="btn btn-info btn-xs"><i
+                                                                class="fa fa-edit"></i> Modifier
+                                                    </button>
+                                                    <button onclick="window.location='{{ url('_backend_page_add', {'id': page.id}) }}'"
+                                                            type="button" class="btn btn-danger btn-xs"><i
+                                                                class="fa fa-trash-o"></i> Supprimer
+                                                    </button>
+                                                </td>
+
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                {% endif %}
+                            </section>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+
+{% endblock %}

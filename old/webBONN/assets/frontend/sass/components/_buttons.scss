@@ -1,0 +1,53 @@
+/********************************************
+ * 				Buttons 					*
+ ********************************************/
+
+
+
+.nicoButton {
+	display: inline-block;
+    padding: .85em 2em;
+    font-family: $font-raleway;
+    font-size: 1em;
+    transition: all .5s ease;
+    position: relative;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    border:0;
+
+    .nicoButton-content {
+    	padding-left: 1.3em;
+    	position: relative;
+    	display: inline-block;
+    	vertical-align: middle;
+    }
+    .nicoButton-icon {
+    	position: absolute;
+		left: 0;
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		transform: translateY(-50%);
+		display: inline-block;
+		vertical-align: middle;
+    }
+
+
+}
+
+.nicoButton-default {
+	background: #ff7300;
+	&:hover {
+		background: #fcb714;
+    	color: #000;
+	}
+}
+
+
+
+.product-button {
+	display: block;
+	width: 100%;
+	vertical-align: middle;
+}
